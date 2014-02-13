@@ -1,11 +1,11 @@
-## Your First Java Class
+## Binary Quiz!
 
-To get this show on the road, open your command prompt and **CD** into this README's directory (jdk).
+Open your command prompt and **CD** into this README's directory (binary).
 
-Run the following command:
+Compile the Java code by running the following command:
 
 ``` bash
-javac -d bin -sourcepath src src/com/bloc/firstpackage/MyFirstJavaClass.java
+javac -d bin -sourcepath src src/com/bloc/binary/BinaryExercises.java
 ```
 
 If you see an error, check to make sure you've typed in the command exactly and try again.
@@ -19,13 +19,7 @@ cd bin/
 From within bin, run the following command:
 
 ``` bash
-java com.bloc.firstpackage.MyFirstJavaClass
+java com.bloc.binary.BinaryExercises
 ```
 
-You should see the following outputted to your prompt:
-
-```
-Welcome to Bloc's Android apprenticeship! You're on your way!
-```
-
-Congratulations, you've ran some pretty gnarly code! Ready for more? Of course you are.
+A small quiz should show up in your command prompt. Answer the questions and claim victory!
