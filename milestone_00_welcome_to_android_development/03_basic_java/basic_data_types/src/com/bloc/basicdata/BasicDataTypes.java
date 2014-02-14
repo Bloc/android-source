@@ -1,13 +1,13 @@
-package com.bloc.binary;
+package com.bloc.basicdata;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BinaryExercises extends Object {
+public class BasicDataTypes extends Object {
 
 	public static void main(String [] args) {
-		System.out.print("Excited for some Binary exercises? We sure are!\n\nType your answers in the command prompt and hit return to submit.\n\nEnter 'Q' if you'd like to quit.\n\nLet's get started!\n\n");
+		System.out.print("Let's tackle some types!\n\nType your answers in the command prompt and hit return to submit.\n\nEnter 'Q' if you'd like to quit.\n\nLet's get started!\n\n");
 
 		while (!test1()) {
 			// Wait
@@ -33,14 +33,14 @@ public class BinaryExercises extends Object {
 			// Wait
 		}
 
-		System.out.print("Congratulations! It's over!\nFor future reference, type \"152 in hex\" into Google and watch the magic happen.\n");
+		System.out.print("Congratulations! Go learn something else!\n");
 	}
 
 	private static boolean test1() {
-		System.out.print("1. Which DECIMAL number does 10 (BINARY) represent? Answer: ");
+		System.out.print("1. How many bits are reserved for this piece of data: '18'? Answer: ");
 		int input = getInteger();
-		if (input == 2) {
-			System.out.print("Great!\n\n");
+		if (input == 32) {
+			System.out.print("Yup!\n\n");
 			return true;
 		}
 		System.out.print("Sorry, try again!\n\n");
@@ -48,10 +48,10 @@ public class BinaryExercises extends Object {
 	}
 
 	private static boolean test2() {
-		System.out.print("2. How do you represent the number 10 (DECIMAL) in BINARY? Answer: ");
+		System.out.print("2. How about this one: '18f'? Answer: ");
 		int input = getInteger();
-		if (input == 1010) {
-			System.out.print("Rock on!\n\n");
+		if (input == 32) {
+			System.out.print("Yes'm!\n\n");
 			return true;
 		}
 		System.out.print("Sorry, try again!\n\n");
@@ -59,10 +59,10 @@ public class BinaryExercises extends Object {
 	}
 
 	private static boolean test3() {
-		System.out.print("3. How do you represent the number 10 (DECIMAL) in HEXADECIMAL? Answer: ");
-		String input = getHex();
-		if (input.equals("a")) {
-			System.out.print("You're killing it!\n\n");
+		System.out.print("3. And finally, what about this piece of data: '18d'? Answer: ");
+		int input = getInteger();
+		if (input == 64) {
+			System.out.print("We agree!\n\n");
 			return true;
 		}
 		System.out.print("Sorry, try again!\n\n");
@@ -70,10 +70,10 @@ public class BinaryExercises extends Object {
 	}
 
 	private static boolean test4() {
-		System.out.print("4. Please convert 0x42E3 (HEXADECIMAL) into BINARY. Answer: ");
-		String input = getBinary();
-		if (input.equals("100 0010 1110 0011") || input.equals("100001011100011")) {
-			System.out.print("You're getting this.\n\n");
+		System.out.print("4. Given this array {1, 2, 3}, what's the value at index 1? Answer: ");
+		int input = getInteger();
+		if (input == 2) {
+			System.out.print("Right on.\n\n");
 			return true;
 		}
 		System.out.print("Sorry, try again!\n\n");
@@ -81,10 +81,10 @@ public class BinaryExercises extends Object {
 	}
 
 	private static boolean test5() {
-		System.out.print("5. Please convert 1001110101011011 into HEXADECIMAL. Answer: ");
-		String input = getHex();
-		if (input.equals("9d5b")) {
-			System.out.print("Way to go!\n\n");
+		System.out.print("5. What's the highest index of this array: {false, true, true, false, true, false}? Answer: ");
+		int input = getInteger();
+		if (input == 5) {
+			System.out.print("Totes m'gotes.\n\n");
 			return true;
 		}
 		System.out.print("Sorry, try again!\n\n");
@@ -92,9 +92,9 @@ public class BinaryExercises extends Object {
 	}
 
 	private static boolean test6() {
-		System.out.print("6. Please convert 353 (DECIMAL) into HEXADECIMAL.\nHINT: Convert to binary first, then to hex\nAnswer: ");
-		String input = getHex();
-		if (input.equals("161")) {
+		System.out.print("6. True or false, pi (π) can be accurately expressed as a long. Answer: ");
+		String input = getInput();
+		if (input.equals("false")) {
 			System.out.print("All done!\n\n");
 			return true;
 		}
