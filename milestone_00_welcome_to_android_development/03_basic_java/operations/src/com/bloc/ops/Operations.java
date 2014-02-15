@@ -1,6 +1,6 @@
 package com.bloc.ops;
 
-import com.bloc.libs.ops.*;
+import com.libs.ops.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;

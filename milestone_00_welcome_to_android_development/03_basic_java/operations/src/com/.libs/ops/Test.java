@@ -1,4 +1,4 @@
-package com.bloc.libs.ops;
+package com.libs.ops;
 
 public class Test extends Object {
 	public static final boolean testX(int x) {
