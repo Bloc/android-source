@@ -19,7 +19,7 @@ cd bin/
 From within bin, run the following command:
 
 ``` bash
-// Replace ':' with ';' on Windows machines
+# Replace ':' with ';' on Windows machines
 java -cp .:../libs/test_jar.jar com.bloc.ops.Operations
 ```
 
