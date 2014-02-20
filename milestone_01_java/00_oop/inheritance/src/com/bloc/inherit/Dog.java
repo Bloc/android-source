@@ -145,9 +145,9 @@ abstract class Dog {
 	 * @return nothing
 	 */
 	void feed() {
-		mWeight += 0.1f;
-		// Pre-increment feed counter, mod by 3 to check for 3rd feeding
-		if (++feedCounter % 3 == 0) {
+		mWeight += WEIGHT_GAINED_FROM_FEEDING;
+		// Pre-increment feed counter
+		if (++feedCounter == 3) {
 			changeSize(true);
 			feedCounter = 0;
 		}
@@ -165,8 +165,8 @@ abstract class Dog {
 		if (getWeight() < MINIMUM_WEIGHT) {
 			setWeight(MINIMUM_WEIGHT);
 		}
-		// Pre-increment play counter, mod by 6 to check for 6th play
-		if (++playCounter % 6 == 0) {
+		// Pre-increment play counter
+		if (++playCounter == 6) {
 			changeSize(false);
 			playCounter = 0;
 		}
@@ -192,8 +192,8 @@ abstract class Dog {
 	 * @return nothing
 	 */
 	void changeSize(boolean grow) {
-		int sizeIndex = getSizeIndex(getSize());
-		sizeIndex = sizeIndex + grow ? 1 : -1;
+		int sizeIndex = getSizeIndex();
+		sizeIndex = sizeIndex + (grow ? 1 : -1);
 		if (sizeIndex > 3) {
 			sizeIndex = 3;
 		} else if (sizeIndex < 0) {
@@ -218,6 +218,10 @@ abstract class Dog {
 	 * 		   array of {"tiny", "small", "average", "large"}
 	 */
 	int getSizeIndex(String size) {
+		if (size == null) {
+			// Return default "average" when missing size
+			return 2;
+		}
 		switch(size) {
 			case "tiny": return 0;
 			case "small": return 1;

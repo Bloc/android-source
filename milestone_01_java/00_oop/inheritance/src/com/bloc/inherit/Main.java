@@ -6,9 +6,9 @@ public class Main extends Object {
 
 	public static void main(String [] args) {
 		// Check for Dog subclasses
-		Class<?> chihuahuaClass = chihuahuaClass("com.bloc.inherit.Chihuahua");
-		Class<?> greatDaneClass = chihuahuaClass("com.bloc.inherit.GreatDane");
-		Class<?> goldenRetrieverClass = chihuahuaClass("com.bloc.inherit.GoldenRetriever");
+		Class<?> chihuahuaClass = checkForClass("com.bloc.inherit.Chihuahua");
+		Class<?> greatDaneClass = checkForClass("com.bloc.inherit.GreatDane");
+		Class<?> goldenRetrieverClass = checkForClass("com.bloc.inherit.GoldenRetriever");
 
 		try {
 			// Test Chihuahua : Higher Metabolism
@@ -31,8 +31,9 @@ public class Main extends Object {
 				System.exit(1);
 			}
 			chihuahua.feed(); // Fifth
-			if (chihuahua.getSizeIndex() == 1) {
-				System.out.println("Your chihuahua's getting a bit chubby… But that was expected\n");
+			if (chihuahua.getSizeIndex() != 1) {
+				System.out.println("Your chihuahua should be \"small\" now, hmm…\n");
+				System.exit(1);
 			}
 		} catch (Exception e) {
 			System.out.println("Something went wrong in the Chihuahua code… Can't believe I just typed that");
@@ -94,7 +95,7 @@ public class Main extends Object {
 
 		try {
 			// Test GoldenRetriever
-			Dog golden = goldenRetrieverClass.newInstance();
+			Dog golden = (Dog) goldenRetrieverClass.newInstance();
 
 			golden.changeSize(true);
 			if (3 != golden.getSizeIndex()) {
@@ -114,7 +115,7 @@ public class Main extends Object {
 				System.exit(1);
 			}
 
-			golden.play(); // First
+			golden.play(); // Third
 			if (2 != golden.getSizeIndex()) {
 				System.out.println("Your GoldenRetriever should have shrank to \"average\"");
 				System.exit(1);
@@ -136,13 +137,14 @@ public class Main extends Object {
 		System.out.println("/************************/\n");
 	}
 
-	private Class<?> checkForClass(String name) {
+	private static Class<?> checkForClass(String name) {
 		try {
 			Class<?> dogSub = Class.forName(name);
 			if (!Dog.class.isAssignableFrom(dogSub)) {
 				System.out.println("Your " + dogSub.getName() + " class is not a subclass of Dog");
 				System.exit(1);
 			}
+			return dogSub;
 		} catch (Exception e) {
 			System.out.println("Failed to find " + name + " class");
 			System.exit(1);
