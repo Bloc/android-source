@@ -151,20 +151,4 @@ public class Main extends Object {
 		}
 		return null;
 	}
-
-	private static Method recoverMethod(String name) {
-		return Main.recoverMethod(name, new Class<?>[0]);
-	}
-
-	private static Method recoverMethod(String name, Class<?>... params) {
-		Method method = null;
-		try {
-			method = Dog.class.getMethod(name, params);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(name + " method missing");
-			System.exit(1);
-		}
-		return method;
-	}
 }
