@@ -1,20 +1,17 @@
-## Inheritance
+## Objects
 
-Open your command prompt and **CD** into this README's directory (inheritance). Edit the following 3 files:
-* `Chihuahua.java`
+Open your command prompt and **CD** into this README's directory (objects). Edit the following files:
+* `Artist.java`
+* `Ensemble.java`
+* `Song.java`
+* `PopSong.java`
 
-Extend the `Dog` class. Chihuahuas have a high metabolism, they only grow to a new size after being **fed 5 times**
-* `GreatDane.java`
+Each of these classes are missing their constructors, fill them in where the comments have indicated.
 
-Extend the `Dog` class. Great Danes can get rather large… Let's add another size category for them: **"huge"**
-* `GoldenRetriever.java`
-
-Extend the `Dog` class. Golden Retrievers are incredibly athletic, they shrink by one size after **only 3 plays**
-
-Make sure you name the classes _identically_ to their respective file names, otherwise the tests will fail. After you've finished, compile your Java code by running the following command:
+After you've finished, compile your Java code by running the following command:
 
 ``` bash
-javac -d bin src/com/bloc/inherit/*
+javac -d bin src/com/bloc/objects/*
 ```
 
 Correct compilation errors as they are a result of modifications made by you.
@@ -28,7 +25,7 @@ cd bin/
 From within bin, execute your code by running the following command:
 
 ``` bash
-java com.bloc.inherit.Main
+java com.bloc.objects.Main
 ```
 
-If you see a nice congrats message, you've written some pretty solid subclasses.
+If you see a nice congrats message, your constructors are rocking it.

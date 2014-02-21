@@ -18,7 +18,7 @@ class Ensemble extends Object {
 	 * Second Constructor
 	 * This constructor takes a name and a variable length of Artist objects
 	 * Side-effect: if the 'name' parameter is null, uses the first and
-	 * 				last name of the 0-indexed Artist
+	 * 				last name of the first Artist
 	 * Hint:		You can add Strings together with a '+'
 	 * @param name the name of the group
 	 * @param artists variable length artists

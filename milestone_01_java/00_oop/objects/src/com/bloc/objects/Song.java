@@ -10,29 +10,24 @@ class Song extends Object {
 
 	/*
 	 * Basic Constructor
+	 * Side-effects: Assigns some default ensemble, title and
+	 *				 and year
 	 */
-	Song() {
-
-	}
+	// CONSTRUCTOR CODE GOES HERE
 
 	/*
 	 * Partial Constructor
-	 * @param ensemble the artist(s) responsible
+	 * Side-effects: Sets the year of release to 0
+	 * @param ensemble the ensemble responsible
 	 * @param title the song title
 	 */
-	Song(Ensemble ensemble, String title) {
-		this(ensemble, title, 0);
-	}
+	// CONSTRUCTOR CODE GOES HERE
 
 	/*
 	 * Full Constructor
-	 * @param ensemble the artist(s) responsible
+	 * @param ensemble the ensemble responsible
 	 * @param title the song title
 	 * @param yearReleased the year the song was released
 	 */
-	Song(Ensemble ensemble, String title, int yearReleased) {
-		mEnsemble = ensemble;
-		mTitle = title;
-		mYearReleased = yearReleased;
-	}
+	// CONSTRUCTOR CODE GOES HERE
 }

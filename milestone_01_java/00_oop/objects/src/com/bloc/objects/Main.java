@@ -6,7 +6,8 @@ import java.lang.reflect.Constructor;
 public class Main extends Object {
 
 	public static void main(String [] args) {
-		Constructor<?> artistConstructor = getConstructor(Artist.class, String.class, String.class);
+		Constructor<?> artistConstructor = getConstructor(String.class, String.class);
+		Artist bono = (Artist) artistConstructor.newInstance("Bono", null);
 
 		System.out.println("/************************/");
 		System.out.println("/*                      */");

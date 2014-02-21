@@ -5,7 +5,31 @@ class PopSong extends Song {
 	int mWeeksOnBillboard;
 
 	/*
-	 * Full Constructor
+	 * Basic Constructor
+	 * Side-effects: Assigns some default ensemble, title,
+	 *				 year and weeks on billboard
+	 */
+	// CONSTRUCTOR CODE GOES HERE
+
+	/*
+	 * Partial Constructor
+	 * Side-effects: Sets the year of release to 0
+	 * @param ensemble the ensemble responsible
+	 * @param title the song title
+	 */
+	// CONSTRUCTOR CODE GOES HERE
+
+	/*
+	 * Full Song Constructor
+	 * Side-effects: Sets the weeks on billboard to 0
+	 * @param ensemble the ensemble responsible
+	 * @param title the song title
+	 * @param yearReleased the year the song was released
+	 */
+	// CONSTRUCTOR CODE GOES HERE
+
+	/*
+	 * Full PopSong Constructor
 	 * @param ensemble the artist(s) responsible
 	 * @param title the song title
 	 * @param yearReleased the year the song was released
