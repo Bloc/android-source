@@ -12,11 +12,12 @@ public class Main extends Object {
 		fruits[2] = new Orange();
 		fruits[3] = new Grapefruit();
 
-		Color[] colors = new Colors[4];
-		colors[0] = new Red();
-		colors[1] = new LimeGreen();
-		colors[2] = new Orange();
-		colors[3] = new OrangeRed();
+		Color[] colors = new Colors[5];
+		colors[0] = fruits[0].getColor();
+		colors[0] = fruits[1].getColor();
+		colors[0] = fruits[2].getColor();
+		colors[0] = fruits[3].getColor();
+		colors[4] = new Orange();
 
 		
 		System.out.println("/************************/");
