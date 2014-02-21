@@ -30,7 +30,7 @@ class PopSong extends Song {
 
 	/*
 	 * Full PopSong Constructor
-	 * @param ensemble the artist(s) responsible
+	 * @param ensemble the ensemble responsible
 	 * @param title the song title
 	 * @param yearReleased the year the song was released
 	 * @param weeksOnBillboard number of weeks this song lasted on the
