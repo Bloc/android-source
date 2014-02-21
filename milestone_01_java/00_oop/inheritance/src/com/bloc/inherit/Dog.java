@@ -22,9 +22,9 @@ abstract class Dog {
 	// The color of its coat
 	String mColor;
 	// Tracks how many times the dog has been fed
-	int feedCounter;
+	int mFeedCounter;
 	// Tracks how many times the dog has played
-	int playCounter;
+	int mPlayCounter;
 
 	/* Abstract Methods */
 
@@ -147,7 +147,7 @@ abstract class Dog {
 	void feed() {
 		mWeight += WEIGHT_GAINED_FROM_FEEDING;
 		// Pre-increment feed counter
-		if (++feedCounter == 3) {
+		if (++mFeedCounter == 3) {
 			changeSize(true);
 			feedCounter = 0;
 		}
@@ -166,7 +166,7 @@ abstract class Dog {
 			setWeight(MINIMUM_WEIGHT);
 		}
 		// Pre-increment play counter
-		if (++playCounter == 6) {
+		if (++mPlayCounter == 6) {
 			changeSize(false);
 			playCounter = 0;
 		}
