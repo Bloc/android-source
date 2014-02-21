@@ -23,3 +23,5 @@ java com.bloc.classes.Main
 ```
 
 If you see a nice congrats message, you've implemented the methods properly.
+
+Commit and push your changes often.

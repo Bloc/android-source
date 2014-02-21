@@ -32,3 +32,5 @@ java com.bloc.inherit.Main
 ```
 
 If you see a nice congrats message, you've written some pretty solid subclasses.
+
+Commit and push your changes often.

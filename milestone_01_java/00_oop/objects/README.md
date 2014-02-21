@@ -29,3 +29,5 @@ java com.bloc.objects.Main
 ```
 
 If you see a nice congrats message, your constructors are rocking it.
+
+Commit and push your changes often.
