@@ -5,7 +5,7 @@ Open your command prompt and **CD** into this README's directory (security_packa
 After you've finished, compile your code by running the following command:
 
 ``` bash
-javac -d bin src/com/bloc/{your_package_1}/* src/com/bloc/{your_package_2}/* … src/com/bloc/securitypackages/Main.java
+javac -d bin src/com/bloc/{your_package_1}/*.java src/com/bloc/{your_package_2}/*.java {…} src/com/bloc/securitypackages/*.java
 ```
 
 After it compiles successfully, **CD** into the bin directory:
