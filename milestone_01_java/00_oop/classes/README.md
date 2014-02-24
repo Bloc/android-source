@@ -5,7 +5,7 @@ Open your command prompt and **CD** into this README's directory (classes). Edit
 After you've finished, compile your Java code by running the following command:
 
 ``` bash
-javac -d bin -sourcepath src src/com/bloc/classes/*
+javac -d bin -sourcepath src src/com/bloc/classes/*.java
 ```
 
 Correct compilation errors as they are a result of modifications made by you.
