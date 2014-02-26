@@ -1,4 +1,4 @@
-package com.bloc.singeletons;
+package com.bloc.singletons;
 
 /*
  * This is a singleton class which maintains communication
