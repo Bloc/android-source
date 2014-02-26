@@ -1,0 +1,27 @@
+## Exceptions
+
+Open your command prompt and **CD** into this README's directory (exceptions). Inside `Main.java` are 2 methods: `tryGetMax` and `tryRemove`. These methods call a couple others from within `FunMethods.java` which may or may not throw some exceptions.
+
+Compile and execute the code first to find the first uncaught exception. Modify `Main.java` with the fewest uses of try…catch in order to correct the errors.
+
+After you've finished, compile your code by running the following command:
+
+``` bash
+javac -d bin src/com/bloc/exceptions/*.java
+```
+
+After it compiles successfully, **CD** into the bin directory:
+
+``` bash
+cd bin/
+```
+
+From within bin, execute your code by running the following command:
+
+``` bash
+java com.bloc.exceptions.Main
+```
+
+If you see a nice congrats message, you've caught some hot exceptions!
+
+Commit and push your changes often.
