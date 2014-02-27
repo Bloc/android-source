@@ -1,26 +1,26 @@
 ## Loops
 
-Open your command prompt and **CD** into this README's directory (loops). In the `src` path is a file named `Loops.java`. Open it and fill in the portions of the code where the comments have indicated.
+Open your command prompt and `cd` into this README's directory (loops). In the src path is a file named Loops.java. Open it and fill in the portions of the code where the comments have indicated.
 
 When you've completed your work, test your code by compiling it with the following command:
 
 ``` bash
-javac -d bin/ -classpath libs/test_jar.jar src/com/bloc/loops/Loops.java
+$ javac -d bin/ -classpath libs/test_jar.jar src/com/bloc/loops/Loops.java
 ```
 
 Correct any and all errors that appear. If something goes wrong during compilation, it will be a result from the new code.
 
-After it returns successfully, **CD** into the bin directory:
+After it returns successfully, `cd` into the bin directory:
 
 ``` bash
-cd bin/
+$ cd bin/
 ```
 
 From within bin, run the following command:
 
 ``` bash
 # Replace ':' with ';' on Windows machines
-java -cp .:../libs/test_jar.jar com.bloc.loops.Loops
+$ java -cp .:../libs/test_jar.jar com.bloc.loops.Loops
 ```
 
 If you see successful while and for loop messages, you've done it! Commit your changes and push them to Github.

@@ -1,25 +1,25 @@
 ## Your First Java Class
 
-To get this show on the road, open your command prompt and **CD** into this README's directory (jdk).
+To get this show on the road, open your command prompt and `cd` into this README's directory (jdk).
 
 Run the following command:
 
 ``` bash
-javac -d bin -sourcepath src src/com/bloc/firstpackage/MyFirstJavaClass.java
+$ javac -d bin src/com/bloc/firstpackage/MyFirstJavaClass.java
 ```
 
 If you see an error, check to make sure you've typed in the command exactly and try again.
 
-After it returns successfully, **CD** into the bin directory:
+After it returns successfully, `cd` into the bin directory:
 
 ``` bash
-cd bin/
+$ cd bin/
 ```
 
 From within bin, run the following command:
 
 ``` bash
-java com.bloc.firstpackage.MyFirstJavaClass
+$ java com.bloc.firstpackage.MyFirstJavaClass
 ```
 
 You should see the following outputted to your prompt:
