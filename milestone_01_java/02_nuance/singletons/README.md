@@ -1,8 +1,8 @@
 ## Singletons
 
-Open your command prompt and `cd` into this README's directory (singletons). Edit Speakerphone.java to create a singleton messaging center. Classes found within **talkers** and **listeners** are meant to communicate with one another.
+Open your command prompt and `cd` into this README's directory (singletons). Edit `Speakerphone.java` to create a singleton messaging center. Classes found within `talkers/` and `listeners/` are meant to communicate with one another.
 
-After implementing the methods required in **Speakerphone**, play around with it in Main.java.
+After implementing the methods required in **Speakerphone**, play around with it in `Main.java`.
 
 After you've finished, compile your code by running the following command:
 

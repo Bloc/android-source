@@ -1,6 +1,6 @@
 ## Loops
 
-Open your command prompt and `cd` into this README's directory (loops). In the src path is a file named Loops.java. Open it and fill in the portions of the code where the comments have indicated.
+Open your command prompt and `cd` into this README's directory (loops). In the src path is a file named `Loops.java`. Open it and fill in the portions of the code where the comments have indicated.
 
 When you've completed your work, test your code by compiling it with the following command:
 

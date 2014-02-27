@@ -1,10 +1,10 @@
 ## Objects
 
 Open your command prompt and `cd` into this README's directory (objects). Edit the following files:
-* Artist.java
-* Ensemble.java
-* Song.java
-* PopSong.java
+* `Artist.java`
+* `Ensemble.java`
+* `Song.java`
+* `PopSong.java`
 
 Each of these classes are missing their constructors, fill them in where the comments have indicated.
 

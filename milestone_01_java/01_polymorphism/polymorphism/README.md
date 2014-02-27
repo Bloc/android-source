@@ -1,6 +1,6 @@
 ## Polymorphism
 
-Open your command prompt and `cd` into this README's directory (polymorphism). Edit Main.java and re-do the work indicated using polymorphism.
+Open your command prompt and `cd` into this README's directory (polymorphism). Edit `Main.java` and re-do the work indicated using polymorphism.
 
 After you've finished, compile your code by running the following command:
 

@@ -1,6 +1,6 @@
 ## Operations
 
-Open your command prompt and `cd` into this README's directory (operations). In the src path is a file named Operations.java. Open it and fill in the portions of the code where the comments have indicated.
+Open your command prompt and `cd` into this README's directory (operations). In the src path is a file named `Operations.java`. Open it and fill in the portions of the code where the comments have indicated.
 
 When you've completed your work, test your code by compiling it with the following command:
 

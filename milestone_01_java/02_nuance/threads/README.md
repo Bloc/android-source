@@ -1,6 +1,6 @@
 ## Threads
 
-Open your command prompt and `cd` into this README's directory (threads). Extract the image downloading code found in Main.java to a separate thread class, ImageGetter.java.
+Open your command prompt and `cd` into this README's directory (threads). Extract the image downloading code found in `Main.java` to a separate thread class, `ImageGetter.java`.
 
 Allow custom URLs and a boolean option for whether or not the file should be launched after completion. Start an **ImageGetter** thread in place of the code found in **Main**.
 
