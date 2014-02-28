@@ -12,4 +12,26 @@ During the next few milestones, you will be learning paramount Android features 
 
 ![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-1.png "Step 1")
 
-* ****
+* **Create A Launcher Icon** This is the icon of your BlocNotes application. You can match the one I have below with a color of #262626 or make whatever you like. Take your time if you're one of those creative types :)
+
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-2.png "Step 2")
+
+* **Create An Activity** Select "Blank Activity" and press "Next"
+
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-3.png "Step 3")
+
+* **Navigation Drawer** Leave the defaults but choose "Navigation Drawer" from the drop down menu, click "Finish"
+
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-4.png "Step 4")
+
+* **Wait** This might take a little bit of time…
+
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-5.png "Step 5")
+
+### Run It
+
+Run the application on your Android device. You should see "Hello world" text present on the screen, sweet.
+
+### Commit
+
+Commit your new project to your android-source repository and push. You now have a tiny Android nugget all to yourself.
