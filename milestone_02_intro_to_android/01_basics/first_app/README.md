@@ -30,7 +30,27 @@ During the next few milestones, you will be learning paramount Android features 
 
 ### Run It
 
-Run the application on your Android device. You should see "Hello world" text present on the screen, sweet.
+Run the application on your Android device. If you see BlocNotes running successfully, congratulations!
+
+### Adding 2 Rows To The Navigation Drawer
+
+You will have to modify the following files:
+
+* BlocNotes.java
+* NavigationDrawerFragment.java
+* strings.xml
+
+#### Hints
+
+> _Use CMD (Ctrl) + O to find classes_
+<br>
+> _Try CMD (Ctrl) + Shift + O to find files_
+<br>
+> _And use CMD (Ctrl) + Alt + O to find symbols (methods, variables, etc)_
+<br>
+> _CMD (Ctrl) + Click on anything to learn more about it or find its declaration_
+<br>
+> _Alt + F7 on any symbol to find everywhere its used_
 
 ### Commit
 
