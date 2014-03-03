@@ -41,14 +41,20 @@ public class Operations extends Object {
 			Then post-Decrement dubs and multiply it by itself in a single statement
 		*/
 
-		if (Test.testX(x) && Test.testY(y)
-						  && Test.testZ(z)
-						  && Test.testRemainder(remainder)
-						  && Test.testFloat(floaty)
-						  && Test.testDouble(dubs)) {
-			System.out.print("Congratulations! Everything works!\n");
+		if (!Test.testX(x)) {
+			System.out.print("Sorry, looks like something's wrong with 'x'\n");
+		} else if (!Test.testY(y)) {
+			System.out.print("Sorry, looks like something's wrong with 'y'\n");
+		} else if (!Test.testZ(z)) {
+			System.out.print("Sorry, looks like something's wrong with 'z'\n");
+		} else if (!Test.testRemainder(remainder)) {
+			System.out.print("Sorry, looks like something's wrong with 'remainder'\n");
+		} else if (!Test.testFloat(floaty)) {
+			System.out.print("Sorry, looks like something's wrong with 'floaty'\n");
+		} else if (!Test.testDouble(dubs)) {
+			System.out.print("Sorry, looks like something's wrong with 'dubs'\n");
 		} else {
-			System.out.print("Sorry, looks like something's not right…\n");
+			System.out.print("Congratulations! Everything works!\n");
 		}
 	}
 }
