@@ -6,27 +6,27 @@ During the next few milestones, you will be learning paramount Android features 
 
 * **Launch Android Studio** Start Android Studio and wait for it to load. If you have a previous project open, close it. The helper window should be visible now. Select "New Project…"
 
-![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-0.png "Step 0")
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes_create_0.png "Step 0")
 
 * **Fill In Details** Match the details below. Place the project at the root of your android-source folder
 
-![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-1.png "Step 1")
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes_create_1.png "Step 1")
 
 * **Create A Launcher Icon** This is the icon of your BlocNotes application. You can match the one I have below with a color of #262626 or make whatever you like. Take your time if you're one of those creative types :)
 
-![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-2.png "Step 2")
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes_create_2.png "Step 2")
 
 * **Create An Activity** Select "Blank Activity" and press "Next"
 
-![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-3.png "Step 3")
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes_create_3.png "Step 3")
 
 * **Navigation Drawer** Leave the defaults but choose "Navigation Drawer" from the drop down menu, click "Finish"
 
-![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-4.png "Step 4")
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes_create_4.png "Step 4")
 
 * **Wait** This might take a little bit of time…
 
-![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes-create-5.png "Step 5")
+![alt text](https://bloc-global-assets.s3.amazonaws.com/images-android/milestone_02_intro_to_android/01_basics/first_app/blocnotes_create_5.png "Step 5")
 
 ### Run It
 
