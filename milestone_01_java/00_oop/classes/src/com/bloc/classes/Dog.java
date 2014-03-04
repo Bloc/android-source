@@ -81,7 +81,7 @@ class Dog {
 	/*
 	 * setWeight
 	 * Sets the weight of the Dog
-	 * @param age the new weight of the Dog, a float
+	 * @param weight the new weight of the Dog, a float
 	 * @return nothing
 	 */
 	// ADD YOUR METHOD HERE, NAME MUST MATCH DESCRIPTION

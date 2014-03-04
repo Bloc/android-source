@@ -171,7 +171,7 @@ public class Main extends Object {
 	private static Method recoverMethod(String name, Class<?>... params) {
 		Method method = null;
 		try {
-			method = Dog.class.getMethod(name, params);
+			method = Dog.class.getDeclaredMethod(name, params);
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println(name + " method missing");
