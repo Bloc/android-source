@@ -149,7 +149,7 @@ abstract class Dog {
 		// Pre-increment feed counter
 		if (++mFeedCounter == 3) {
 			changeSize(true);
-			feedCounter = 0;
+			mFeedCounter = 0;
 		}
 	}
 
@@ -168,7 +168,7 @@ abstract class Dog {
 		// Pre-increment play counter
 		if (++mPlayCounter == 6) {
 			changeSize(false);
-			playCounter = 0;
+			mPlayCounter = 0;
 		}
 	}
 
