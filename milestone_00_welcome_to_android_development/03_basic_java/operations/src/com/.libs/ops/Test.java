@@ -23,7 +23,7 @@ public class Test extends Object {
 
 	public static final boolean testDouble(double dubs) {
 		double testDub = 5.3d;
-		testDub = testDub++ * testDub;
+		testDub = testDub-- * testDub;
 		return testDub == dubs;
 	}
 	
