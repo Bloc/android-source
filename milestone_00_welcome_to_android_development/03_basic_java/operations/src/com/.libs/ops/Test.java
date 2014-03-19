@@ -18,7 +18,7 @@ public class Test extends Object {
 	}
 
 	public static final boolean testFloat(float floaty) {
-		return 5.0f/3f == floaty;
+		return 5f/3f == floaty;
 	}
 
 	public static final boolean testDouble(double dubs) {
