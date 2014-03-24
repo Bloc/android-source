@@ -4,8 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class WorstPractices extends Object
-{
+public class WorstPractices extends Object {
+
+// EDIT BELOW
 
 	public static void main(String [] args) {
 	int MAGIC_NUMBER = WorstPractices.animals(false);
@@ -32,4 +33,6 @@ private static int animals(boolean yeswellheresthething)
 	for (int brown = 0; brown < aInt; brown++) { sparklesfairy *= aInt;
 	} return (int) sparklesfairy * aInt;
 }
+
+// STOP EDITING
 }
