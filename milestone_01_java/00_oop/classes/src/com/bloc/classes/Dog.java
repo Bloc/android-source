@@ -1,6 +1,14 @@
 package com.bloc.classes;
 
 class Dog {
+    // The length of hair which
+    final float HAIR_CUT_LENGTH = 0.15f
+    // Minimum weight that any Dog can be
+    final float MIN_WEIGHT = 1.25f;
+	// Amount of weight to gain after eating
+	final float WEIGHT_GAIN = 0.25f;
+	// Amount of weight to lose after playing
+	final float WEIGHT_LOSS = 0.2f;
 	// Hair length
 	float mHairLength;
 	// Gender, either "male" or "female"
@@ -102,25 +110,28 @@ class Dog {
 
 	/*
 	 * feed
-	 * Side-effect: 1. The Dog gains weight
-	 * 				2. Every 3 meals, the Dog grows to a larger size, if possible
-	 *				i.e. "tiny" -> "small" -> "average" -> "large"
+	 * Side-effect: 1. The Dog gains weight, specifically WEIGHT_GAIN
+	 *              2. Every 3 meals, the Dog grows to a larger size, if *                 possible
+	 *              i.e. "tiny" (3 meals later ->) "small" (3 meals later ->)
+	 *                   "average" (3 meals later ->) "large"
 	 * @return nothing
 	 */
 	// ADD YOUR METHOD HERE, NAME MUST MATCH DESCRIPTION
 
 	/*
 	 * play
-	 * Side-effect: 1. The Dog loses weight
-	 *				2. Every 6 play invocations, the Dog shrinks to a smaller size, if possible
-	 *				i.e. "large" -> "average" -> "small" -> "tiny"
+	 * Side-effect: 1. The Dog loses weight, specifically WEIGHT_LOSS
+	 *				2. Every 6 play invocations, the Dog shrinks to a smaller *                 size, if possible
+	 *				i.e. "large" (6 plays later->) "average" (6 plays later->) *                   "small" -> "tiny"
+     *              3. The Dog cannot shrink to a weight smaller than *                 MIN_WEIGHT
 	 * @return nothing
 	 */
 	// ADD YOUR METHOD HERE, NAME MUST MATCH DESCRIPTION
 
 	/*
 	 * cutHair
-	 * Side-effect: the Dog's hair length is reduced
+	 * Side-effect: the Dog's hair length is reduced by HAIR_CUT_LENGTH
+     * The Dog's hair cannot be shorter than 0f
 	 * @return nothing
 	 */
 	// ADD YOUR METHOD HERE, NAME MUST MATCH DESCRIPTION
