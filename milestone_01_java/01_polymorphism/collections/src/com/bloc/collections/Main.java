@@ -62,7 +62,7 @@ public class Main extends Object {
 
 			String one = "one";
 			String two = "two";
-			Stirng three = "three";
+			String three = "three";
 
 			myStringList.add(one);
 			myStringList.add(two);
