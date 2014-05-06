@@ -37,7 +37,7 @@ public class BasicDataTypes extends Object {
 	}
 
 	private static boolean test1() {
-		System.out.print("1. How many bits are reserved for this piece of data: '18'? Answer: ");
+		System.out.print("1. How many bits are reserved for the following number? 18. Answer: ");
 		int input = getInteger();
 		if (input == 32) {
 			System.out.print("Yup!\n\n");
@@ -48,7 +48,7 @@ public class BasicDataTypes extends Object {
 	}
 
 	private static boolean test2() {
-		System.out.print("2. How about this one: '18f'? Answer: ");
+		System.out.print("2. How about this one? 18f. Answer: ");
 		int input = getInteger();
 		if (input == 32) {
 			System.out.print("Yes'm!\n\n");
@@ -59,7 +59,7 @@ public class BasicDataTypes extends Object {
 	}
 
 	private static boolean test3() {
-		System.out.print("3. And finally, what about this piece of data: '18d'? Answer: ");
+		System.out.print("3. And finally, this one? 18d. Answer: ");
 		int input = getInteger();
 		if (input == 64) {
 			System.out.print("We agree!\n\n");
@@ -92,7 +92,7 @@ public class BasicDataTypes extends Object {
 	}
 
 	private static boolean test6() {
-		System.out.print("6. True or false, pi (π) can be accurately expressed as a long. Answer: ");
+		System.out.print("6. True or false, pi (π) can be accurately expressed as a double. Answer: ");
 		String input = getInput();
 		if (input.equals("false")) {
 			System.out.print("All done!\n\n");
