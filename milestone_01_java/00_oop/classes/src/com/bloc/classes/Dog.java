@@ -2,7 +2,7 @@ package com.bloc.classes;
 
 class Dog {
     // The length of hair which
-    final float HAIR_CUT_LENGTH = 0.15f
+    final float HAIR_CUT_LENGTH = 0.15f;
     // Minimum weight that any Dog can be
     final float MIN_WEIGHT = 1.25f;
 	// Amount of weight to gain after eating
