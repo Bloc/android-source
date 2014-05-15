@@ -30,7 +30,7 @@ During the next few milestones, you will be learning paramount Android features 
 
 ### Run It
 
-Run the application on your Android device. If you see BlocNotes running successfully, congratulations!
+[Run the application](https://bloc-global-assets.s3.amazonaws.com/images-android/android-studio-gifs/run-application.gif) on your Android device. If you see BlocNotes running successfully, congratulations!
 
 ### Adding 2 Rows To The Navigation Drawer
 
