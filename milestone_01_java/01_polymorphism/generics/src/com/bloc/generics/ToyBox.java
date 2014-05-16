@@ -13,7 +13,7 @@ class ToyBox extends Object {
 	}
 
 	public int addToy(Toy<?> newToy) {
-		Toy<?>[] toysTemp = new Toy<?>[mToys.length];
+		Toy<?>[] toysTemp = new Toy<?>[mToys.length + 1];
 		for (int i = 0; i < mToys.length; i++) {
 			toysTemp[i] = mToys[i];
 		}
