@@ -17,7 +17,7 @@ $ cd bin/
 From within bin, execute your code by running the following command:
 
 ``` bash
-$ java com.bloc.generics.Main
+$ java -ea com.bloc.generics.Main
 ```
 
 If you see a nice congrats message, you've successfully added toys to your toy box!
