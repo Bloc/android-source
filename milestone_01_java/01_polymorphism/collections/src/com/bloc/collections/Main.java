@@ -57,29 +57,29 @@ public class Main extends Object {
 			favoritePastries.addPastry(pastries[0], ratings[0]);
 
 			// Test getPastriesForRating
-			Set<Pastry> negOneSet = favoritePastries.getPastriesForRating(-1);
-			assert negOneSet != null : "getPastriesForRating returned null";
+			Collection<Pastry> negOneSet = favoritePastries.getPastriesForRating(-1);
+			assert negOneSet != null : "getPastriesForRating returned null when given -1";
 			assert negOneSet.size() == 0 : "getPastriesForRating was supposed to return an empty set for rating -1";
 
 			int[] pastryCounts = new int[8];
-			Set<Pastry> oneSet = favoritePastries.getPastriesForRating(1);
-			returnCount(oneSet, pastries, ratings);
+			Collection<Pastry> oneSet = favoritePastries.getPastriesForRating(1);
+			returnCount(oneSet, pastries, pastryCounts);
 
-			Set<Pastry> twoSet = favoritePastries.getPastriesForRating(2);
-			returnCount(twoSet, pastries, ratings);
+			Collection<Pastry> twoSet = favoritePastries.getPastriesForRating(2);
+			returnCount(twoSet, pastries, pastryCounts);
 
-			Set<Pastry> threeSet = favoritePastries.getPastriesForRating(3);
-			returnCount(threeSet, pastries, ratings);
+			Collection<Pastry> threeSet = favoritePastries.getPastriesForRating(3);
+			returnCount(threeSet, pastries, pastryCounts);
 
-			Set<Pastry> fourSet = favoritePastries.getPastriesForRating(4);
-			returnCount(fourSet, pastries, ratings);
+			Collection<Pastry> fourSet = favoritePastries.getPastriesForRating(4);
+			returnCount(fourSet, pastries, pastryCounts);
 
-			Set<Pastry> fiveSet = favoritePastries.getPastriesForRating(5);
-			returnCount(fiveSet, pastries, ratings);
+			Collection<Pastry> fiveSet = favoritePastries.getPastriesForRating(5);
+			returnCount(fiveSet, pastries, pastryCounts);
 
 			for (int i = 0; i < pastryCounts.length; i++) {
-				assert pastryCounts[i] > 0 : "Pastry(" + pastries[i] + ") absent from Set returned by getPastriesForRating";
-				assert pastryCounts[i] == 1 : "Pastry(" + pastries[i] + ") had duplicate entries in Sets returned by getPastriesForRating";
+				assert pastryCounts[i] > 0 : "Pastry(" + pastries[i] + ") absent from Collection returned by getPastriesForRating";
+				assert pastryCounts[i] == 1 : "Pastry(" + pastries[i] + ") had duplicate entries in Collections returned by getPastriesForRating";
 			}
 		} catch (Exception e) {
 			System.out.println("Something went wrong with this pastry collection\n");
@@ -97,9 +97,9 @@ public class Main extends Object {
 		System.out.println("/************************/\n");
 	}
 
-	private static void returnCount(Set<Pastry> set, Pastry[] pastries, int[] ratings) {
+	private static void returnCount(Collection<Pastry> coll, Pastry[] pastries, int[] pastryCounts) {
 		for (int i = 0; i < pastries.length; i++) {
-			ratings[i] += set.contains(pastries[i]) ? 1 : 0;
+			pastryCounts[i] += coll.contains(pastries[i]) ? 1 : 0;
 		}
 	}
 }

@@ -91,9 +91,9 @@ public class FavoritePastries {
 	 * 		   of `rating`. Returns an empty set if none are
 	 *         found
 	 */
-	public Set<Pastry> getPastriesForRating(int rating) {
+	public Collection<Pastry> getPastriesForRating(int rating) {
 		// WORK HERE
-		return new HashSet<Pastry>();
+		return null;
 	}
 
 }
