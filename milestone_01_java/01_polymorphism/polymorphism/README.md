@@ -17,7 +17,7 @@ $ cd bin/
 From within bin, execute your code by running the following command:
 
 ``` bash
-$ java com.bloc.polymorph.Main
+$ java -ea com.bloc.polymorph.Main
 ```
 
 If you see a nice congrats message, you've successfully poly-morphed!
