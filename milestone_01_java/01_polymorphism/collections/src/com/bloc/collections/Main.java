@@ -1,87 +1,88 @@
 package com.bloc.collections;
 
+import java.util.*;
+
 public class Main extends Object {
 
 	public static void main(String [] args) {
 		try {
-			MyArrayList<String> myStringList = new MyArrayList<String>();
+			Pastry[] pastries = new Pastry[8];
+			// Let's get some pastries going
+			pastries[0] = new Pastry("Cronut");
+			pastries[1] = new Pastry("Pop-Tart");
+			pastries[2] = new Pastry("Apple Pie");
+			pastries[3] = new Pastry("Cherry Pie");
+			pastries[4] = new Pastry("Bear Claw");
+			pastries[5] = new Pastry("Croissant");
+			pastries[6] = new Pastry("Danish");
+			pastries[7] = new Pastry("Raspberry Tart");
 
-			myStringList.add("Some Stringy Thingy");
-			if (!myStringList.contains("Some Stringy Thingy")) {
-				System.out.println("ERROR: .contains should've returned true\n");
-				System.exit(1);
+			// Create a favorite pastries object
+			FavoritePastries favoritePastries = new FavoritePastries();
+
+			int[] ratings = new int[8];
+			// Generate ratings
+			Random rand = new Random();
+			for (int i = 0; i < ratings.length; i++) {
+				ratings[i] = rand.nextInt(5) + 1;
 			}
 
-			if (myStringList.size() != 1) {
-				System.out.println("ERROR: Size should be 1\n");
-				System.exit(1);
+			// Add Pastries
+			for (int i = 0; i < pastries.length; i++) {
+				favoritePastries.addPastry(pastries[i], ratings[i]);
 			}
 
-			myStringList.add("Another Stringy");
-
-			if (myStringList.size() != 2) {
-				System.out.println("ERROR: Size should be 2\n");
-				System.exit(1);
+			// Test getRatingForPastry
+			for (int i = 0; i < pastries.length; i++) {
+				assert favoritePastries.getRatingForPastry(pastries[i]) == ratings[i] : "getRatingForPastry returned an incorrect value";	
 			}
+			assert favoritePastries.getRatingForPastry(new Pastry("Surprise!")) == -1 : "getRatingForPastry returned an incorrect value when passed an unknown Pastry";
+			assert favoritePastries.getRatingForPastry(null) == -1 : "getRatingForPastry returned an incorrect value when passed an unknown Pastry";
 
-			if (myStringList.contains("Another Stringy") == false) {
-				System.out.println("ERROR: .contains should've returned true\n");
-				System.exit(1);
+			// Test addPastry with existing Pastries
+			ratings[0]++;
+			if (ratings[0] > 5) {
+				ratings[0] = 1;
 			}
+			favoritePastries.addPastry(pastries[0], ratings[0]);
+			assert favoritePastries.getRatingForPastry(pastries[0]) == ratings[0] : "addPastry failed to update a rating for an existing Pastry";
 
-			if ("Another Stringy".equals(myStringList.get(1)) == false) {
-				System.out.println("ERROR: The object at index 1 doesn't match\n");
-				System.exit(1);
-			}
+			// Test removePastry
+			assert favoritePastries.removePastry(pastries[0]) == true : "removePastry was supposed to return true";
+			assert favoritePastries.getRatingForPastry(pastries[0]) == -1 : "removePastry failed to remove a Pastry";
+			assert favoritePastries.removePastry(null) == false : "removePastry was supposed to return false when removing null";
+			assert favoritePastries.removePastry(new Pastry("Surprise!")) == false : "removePastry was supposed to return false when removing a non-existent Pastry";
 
-			if (1 != myStringList.indexOf("Another Stringy")) {
-				System.out.println("ERROR: The object at index 1 doesn't match\n");
-				System.exit(1);
-			}
+			// Re-add cronut
+			favoritePastries.addPastry(pastries[0], ratings[0]);
 
-			if (!myStringList.remove("Another Stringy")) {
-				System.out.println("ERROR: Failed to remove object\n");
-				System.exit(1);
-			}
+			// Test getPastriesForRating
+			Collection<Pastry> negOneSet = favoritePastries.getPastriesForRating(-1);
+			assert negOneSet != null : "getPastriesForRating returned null when given -1";
+			assert negOneSet.size() == 0 : "getPastriesForRating was supposed to return an empty set for rating -1";
 
-			if (myStringList.size() != 1) {
-				System.out.println("ERROR: The size of the list should be 1\n");
-				System.exit(1);
-			}
+			int[] pastryCounts = new int[8];
+			Collection<Pastry> oneSet = favoritePastries.getPastriesForRating(1);
+			returnCount(oneSet, pastries, pastryCounts);
 
-			String sStrTh = myStringList.remove(0);
-			if ("Some Stringy Thingy".equals(sStrTh) == false) {
-				System.out.println("ERROR: The item removed doesn't match the original\n");
-				System.exit(1);	
-			}
+			Collection<Pastry> twoSet = favoritePastries.getPastriesForRating(2);
+			returnCount(twoSet, pastries, pastryCounts);
 
-			if (myStringList.isEmpty() == false) {
-				System.out.println("ERROR: isEmpty should be returning true\n");
-				System.exit(1);
-			}
+			Collection<Pastry> threeSet = favoritePastries.getPastriesForRating(3);
+			returnCount(threeSet, pastries, pastryCounts);
 
-			String one = "one";
-			String two = "two";
-			String three = "three";
+			Collection<Pastry> fourSet = favoritePastries.getPastriesForRating(4);
+			returnCount(fourSet, pastries, pastryCounts);
 
-			myStringList.add(one);
-			myStringList.add(two);
-			myStringList.add(three);
+			Collection<Pastry> fiveSet = favoritePastries.getPastriesForRating(5);
+			returnCount(fiveSet, pastries, pastryCounts);
 
-			myStringList.set(0, three);
-
-			if (three != myStringList.get(0)) {
-				System.out.println("ERROR: object at index 0 did not match\n");
-				System.exit(1);
-			}
-
-			myStringList.clear();
-			if (myStringList.isEmpty() == false) {
-				System.out.println("ERROR: List should be empty\n");
-				System.exit(1);
+			for (int i = 0; i < pastryCounts.length; i++) {
+				assert pastryCounts[i] > 0 : "Pastry(" + pastries[i] + ") absent from Collection returned by getPastriesForRating";
+				assert pastryCounts[i] == 1 : "Pastry(" + pastries[i] + ") had duplicate entries in Collections returned by getPastriesForRating";
 			}
 		} catch (Exception e) {
-			System.out.println("Something went wrong in MyArrayList :(\n");
+			System.out.println("Something went wrong with this pastry collection\n");
 			e.printStackTrace();
 			System.exit(1);
 		}
@@ -94,5 +95,11 @@ public class Main extends Object {
 		System.out.println("/*                      */");
 		System.out.println("/*                      */");
 		System.out.println("/************************/\n");
+	}
+
+	private static void returnCount(Collection<Pastry> coll, Pastry[] pastries, int[] pastryCounts) {
+		for (int i = 0; i < pastries.length; i++) {
+			pastryCounts[i] += coll.contains(pastries[i]) ? 1 : 0;
+		}
 	}
 }
