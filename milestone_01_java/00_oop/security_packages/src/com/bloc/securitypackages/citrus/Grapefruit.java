@@ -1,4 +1,4 @@
-package com.bloc.securitypackage.citrus;
+package com.bloc.securitypackages.citrus;
 
 class Grapefruit extends Fruit {
 	Grapefruit() {

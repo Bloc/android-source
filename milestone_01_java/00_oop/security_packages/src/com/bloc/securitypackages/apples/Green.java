@@ -1,4 +1,4 @@
-package com.bloc.securitypackage.apples;
+package com.bloc.securitypackages.apples;
 
 class Green extends Apple {
 

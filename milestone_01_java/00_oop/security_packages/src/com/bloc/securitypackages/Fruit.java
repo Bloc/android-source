@@ -1,4 +1,4 @@
-package com.bloc.securitypackage;
+package com.bloc.securitypackages;
 
 public abstract class Fruit extends Object {
 	// The name of the fruit
