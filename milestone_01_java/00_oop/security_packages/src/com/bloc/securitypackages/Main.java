@@ -14,9 +14,9 @@ public class Main extends Object {
 
 		Color[] colors = new Color[5];
 		colors[0] = fruits[0].getColor();
-		colors[0] = fruits[1].getColor();
-		colors[0] = fruits[2].getColor();
-		colors[0] = fruits[3].getColor();
+		colors[1] = fruits[1].getColor();
+		colors[2] = fruits[2].getColor();
+		colors[3] = fruits[3].getColor();
 		colors[4] = new Orange();
 
 		
