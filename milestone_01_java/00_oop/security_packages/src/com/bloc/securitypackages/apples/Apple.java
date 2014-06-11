@@ -1,6 +1,6 @@
-package com.bloc.securitypackage.apples;
+package com.bloc.securitypackages.apples;
 
-abstract class Apples extends Fruit {
+abstract class Apple extends Fruit {
 
 	abstract void bite();
 
