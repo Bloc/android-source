@@ -42,7 +42,7 @@ public class Operations extends Object {
 		/*****************************************************************
 		 *	ASSIGNMENT:
 		 *	Assign 5.3 into dubs
-		 *	Then post-Decrement dubs and multiply it by itself in a single statement
+		 *	Then multiply dubs by itself
 		******************************************************************/
 
 		double dubs;

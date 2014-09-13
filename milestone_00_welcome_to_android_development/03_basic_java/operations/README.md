@@ -8,7 +8,7 @@ When you've completed your work, test your code by compiling it with the followi
 $ javac -d bin/ src/com/bloc/ops/Operations.java
 ```
 
-Correct any and all errors that appear. If something goes wrong during compilation, it will be a result from the new code.
+Correct any and all errors that appear.
 
 After it returns successfully, `cd` into the bin directory:
 
