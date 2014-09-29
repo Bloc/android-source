@@ -28,7 +28,7 @@ private static int animals(boolean yeswellheresthething)
 		/*
 			Start off with one of these
 		*/
-	int anint = yeswellheresthething ? 34 : 21;
+	int aInt = yeswellheresthething ? 34 : 21;
 	float sparklesfairy = .5f;
 	for (int brown = 0; brown < aInt; brown++) { sparklesfairy *= aInt;
 	} return (int) sparklesfairy * aInt;
