@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-
-    <string name="app_name">My First Android Application</string>
-    <string name="hello_world">Welcome to Bloc\'s Android Apprenticeship</string>
-    <string name="action_settings">Settings</string>
-
-</resources>
