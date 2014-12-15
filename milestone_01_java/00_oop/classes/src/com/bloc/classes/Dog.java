@@ -111,7 +111,8 @@ class Dog {
 	/*
 	 * feed
 	 * Side-effect: 1. The Dog gains weight, specifically WEIGHT_GAIN
-	 *              2. Every 3 meals, the Dog grows to a larger size, if *                 possible
+	 *              2. Every 3 meals, the Dog grows to a larger size, if
+	 *                 possible
 	 *              i.e. "tiny" (3 meals later ->) "small" (3 meals later ->)
 	 *                   "average" (3 meals later ->) "large"
 	 * @return nothing
@@ -121,9 +122,11 @@ class Dog {
 	/*
 	 * play
 	 * Side-effect: 1. The Dog loses weight, specifically WEIGHT_LOSS
-	 *				2. Every 6 play invocations, the Dog shrinks to a smaller *                 size, if possible
-	 *				i.e. "large" (6 plays later->) "average" (6 plays later->) *                   "small" -> "tiny"
-     *              3. The Dog cannot shrink to a weight smaller than *                 MIN_WEIGHT
+	 *		2. Every 6 play invocations, the Dog shrinks to a smaller 
+	 *		   size, if possible i.e. "large" (6 plays later->) "average" (6 plays later->) 
+	 *		   "small" -> "tiny"
+	 *		   3. The Dog cannot shrink to a weight smaller than
+	 *		   MIN_WEIGHT
 	 * @return nothing
 	 */
 	// ADD YOUR METHOD HERE, NAME MUST MATCH DESCRIPTION
@@ -131,7 +134,7 @@ class Dog {
 	/*
 	 * cutHair
 	 * Side-effect: the Dog's hair length is reduced by HAIR_CUT_LENGTH
-     * The Dog's hair cannot be shorter than 0f
+	 * 		The Dog's hair cannot be shorter than 0f
 	 * @return nothing
 	 */
 	// ADD YOUR METHOD HERE, NAME MUST MATCH DESCRIPTION
