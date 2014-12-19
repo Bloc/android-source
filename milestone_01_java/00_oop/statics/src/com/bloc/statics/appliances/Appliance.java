@@ -45,7 +45,7 @@ public abstract class Appliance extends Object {
 	 * 		   is plugged in
 	 */
 	public boolean isOn() {
-		return mIsOn && mPowerSupply != null && mPowerSupply.hasAppliance(this);
+		return mPowerSupply == null ? false : mPowerSupply.hasAppliance(this) && mIsOn;
 	}
 
 	/*
