@@ -1,5 +1,9 @@
 package com.bloc.polymorph.pets;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 public abstract class Pet extends Object {
 	private boolean mWashed = false;
 	private boolean mFed = false;

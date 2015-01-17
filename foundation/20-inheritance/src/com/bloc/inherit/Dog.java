@@ -1,6 +1,11 @@
 package com.bloc.inherit;
 
 abstract class Dog {
+
+	/************************************************
+ 	*	YOU MAY MODIFY THIS FILE
+	/************************************************/
+
 	// Add this amount for each meal
 	final static float WEIGHT_GAINED_FROM_FEEDING = .1f;
 	// Reduce this amount for each play

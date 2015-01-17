@@ -5,36 +5,54 @@ class PopSong extends Song {
 	int mWeeksOnBillboard;
 
 	/*
-	 * Basic Constructor
+	 * PopSong
+	 *
 	 * Side-effects: Assigns some default ensemble, title,
-	 *				 year and weeks on billboard
+	 *				 year and number of weeks on billboard
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the first PopSong constructor
+	/************************************************/
 
 	/*
-	 * Partial Constructor
+	 * PopSong
+	 * 
 	 * Side-effects: Sets the year of release to 0
-	 * @param ensemble the ensemble responsible
-	 * @param title the song title
+	 *
+	 * @param ensemble the ensemble responsible (Ensemble)
+	 * @param title the song title (String)
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the second PopSong constructor
+	/************************************************/
 
 	/*
-	 * Full Song Constructor
+	 * PopSong
+	 *
 	 * Side-effects: Sets the weeks on billboard to 0
-	 * @param ensemble the ensemble responsible
-	 * @param title the song title
-	 * @param yearReleased the year the song was released
+	 *
+	 * @param ensemble the ensemble responsible (Ensemble)
+	 * @param title the song title (String)
+	 * @param yearReleased the year the song was released (int)
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the third PopSong constructor
+	/************************************************/
 
 	/*
-	 * Full PopSong Constructor
-	 * @param ensemble the ensemble responsible
-	 * @param title the song title
-	 * @param yearReleased the year the song was released
+	 * PopSong
+	 *
+	 * @param ensemble the ensemble responsible (Ensemble)
+	 * @param title the song title (String)
+	 * @param yearReleased the year the song was released (int)
 	 * @param weeksOnBillboard number of weeks this song lasted on the
-	 *		  				   Billboard's top 100
+	 *		  				   Billboard's top 100 (int)
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the fourth PopSong constructor
+	/************************************************/
 }

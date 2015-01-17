@@ -2,7 +2,7 @@
 
 Open your command prompt and `cd` into this README's directory (exceptions). Inside `Main.java` are 2 methods: `tryGetMax` and `tryRemove`. These methods call a couple others from within `FunMethods.java` which may or may not throw some exceptions.
 
-Compile and execute the code first to locate the first uncaught exception. Modify `Main.java` with the fewest uses of try… catch in order to correct the errors.
+Compile and execute the code in order to locate the first uncaught exception. Modify `Main.java` with the fewest uses of try… catch in order to correct the errors.
 
 After you've finished, compile your code by running the following command:
 

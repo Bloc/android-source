@@ -1,5 +1,9 @@
 package com.bloc.securitypackages;
 
+/************************************************
+ *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
+/************************************************/
+
 class Color extends Object {
 	// Name of the color
 	String mName;

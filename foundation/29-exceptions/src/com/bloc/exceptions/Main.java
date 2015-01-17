@@ -1,5 +1,14 @@
 package com.bloc.exceptions;
 
+/************************************************
+ *	ASSIGNMENT:
+ *	Catch exceptions thrown by the FunMethods class.
+ *	Use as few try…catch statements as necessary.
+ *
+ *	However, avoid wrapping the entire method in a try…catch,
+ *	this is bad practice.
+/************************************************/
+
 import java.util.Random;
 
 public class Main extends Object {
@@ -18,9 +27,10 @@ public class Main extends Object {
 		System.out.println("/************************/\n");
 	}
 
-	/*
-	 * CATCH SOME EXCEPTIONS
-	 */
+	/************************************************
+	 *	ASSIGNMENT:
+ 	 *	Catch thrown exceptions
+	/************************************************/
 	private static final void tryGetMax() {
 		int max = 0;
 		max = FunMethods.getMax((Integer[])null);
@@ -35,9 +45,10 @@ public class Main extends Object {
 		max = FunMethods.getMax(numbers);
 	}
 
-	/*
-	 * CATCH SOME EXCEPTIONS
-	 */
+	/************************************************
+	 *	ASSIGNMENT:
+ 	 *	Catch thrown exceptions
+	/************************************************/
 	private static final void tryRemove() {
 		FunMethods.remove(null, 2);
 		Object[] someObjects = new Object[12];

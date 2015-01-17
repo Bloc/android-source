@@ -1,8 +1,8 @@
-## Classes
+## Interfaces
 
-Open your command prompt and `cd` into this README's directory (interfaces). Convert Person.java into a non-abstract class and 3 separate interfaces: `Driver.java`, `Skydiver.java` and `SalsaDancer.java`.
+Open your command prompt and `cd` into this README's directory (interfaces). Populate the 3 separate interfaces: `Driver.java`, `Skydiver.java` and `SalsaDancer.java`.
 
-Have the 3 people (`Albert.java`, `Mary.java`, `John.java`) implement the appropriate interface as expected by `Main.java`.
+Have the 3 people (`Albert.java`, `Mary.java`, `John.java`) implement the appropriate interfaces as expected by `Main.java`.
 
 After you've finished, compile your Java code by running the following command:
 
@@ -10,9 +10,9 @@ After you've finished, compile your Java code by running the following command:
 $ javac -d bin src/com/bloc/interfaces/*.java src/com/bloc/interfaces/*/*.java src/com/bloc/interfaces/*/*/*.java
 ```
 
-Correct compilation errors as they are a result of modifications made by you.
+Correct any compilation errors.
 
-After it returns successfully, `cd` into the bin directory:
+After it compiles successfully, `cd` into the bin directory:
 
 ``` bash
 $ cd bin/

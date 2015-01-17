@@ -1,7 +1,15 @@
 package com.bloc.securitypackages;
 
-// YOUR IMPORTS GO HERE
-// import com.bloc.{your_package};
+/************************************************
+ *	ASSIGNMENT:
+ *	Import the appopriate classes/packages below
+/************************************************/
+
+// e.g. import com.bloc.{your_package};
+
+/************************************************
+ *	DO NOT MODIFY BELOW THIS BLOCK
+/************************************************/
 
 public class Main extends Object {
 

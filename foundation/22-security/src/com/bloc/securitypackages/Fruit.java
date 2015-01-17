@@ -1,5 +1,9 @@
 package com.bloc.securitypackages;
 
+/************************************************
+ *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
+/************************************************/
+
 public abstract class Fruit extends Object {
 	// The name of the fruit
 	private String mName;

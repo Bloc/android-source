@@ -1,5 +1,9 @@
 package com.bloc.collections;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 public class Pastry {
 	private String mName;
 

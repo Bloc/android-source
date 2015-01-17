@@ -4,6 +4,10 @@ import java.lang.reflect.Method;
 
 public class Main extends Object {
 
+	/************************************************
+ 	 *	DO NOT MODIFY THIS FILE
+	/************************************************/
+
 	public static void main(String [] args) {
 		// Check for Dog subclasses
 		Class<?> chihuahuaClass = checkForClass("com.bloc.inherit.Chihuahua");

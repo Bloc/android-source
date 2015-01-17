@@ -1,5 +1,9 @@
 package com.bloc.collections;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 import java.util.*;
 
 public class Main extends Object {

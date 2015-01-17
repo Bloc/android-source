@@ -1,5 +1,9 @@
 package com.bloc.singletons.listeners;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 import com.bloc.singletons.Listener;
 
 public class Child extends Object implements Listener {

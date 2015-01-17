@@ -1,5 +1,9 @@
 package com.bloc.statics.appliances;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 public class Toaster extends Appliance {
 	public Toaster() {
 		// Empty

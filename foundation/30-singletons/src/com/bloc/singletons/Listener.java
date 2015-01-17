@@ -1,5 +1,9 @@
 package com.bloc.singletons;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 public interface Listener {
 	/*
 	 * onMessageReceived

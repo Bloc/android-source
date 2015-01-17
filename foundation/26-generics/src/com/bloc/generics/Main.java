@@ -7,9 +7,11 @@ public class Main extends Object {
 	public static void main(String [] args) {
 
 		ToyBox toyBox = new ToyBox();
-		/*
-		 * Put a bunch of Toys in toyBox!
-		 */
+		
+		/************************************************
+ 		 *	ASSIGNMENT:
+ 		 *	Place several Toy objects into toyBox
+		/************************************************/
 
 		assert toyBox.getToyCount() > 0 : "Let's get some toys in that box!";
 		System.out.println("Inside your toybox you've got:");

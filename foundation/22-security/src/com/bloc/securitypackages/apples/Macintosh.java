@@ -1,5 +1,9 @@
 package com.bloc.securitypackages.apples;
 
+/************************************************
+ *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
+/************************************************/
+
 class Macintosh extends Apple {
 
 	Macintosh() {

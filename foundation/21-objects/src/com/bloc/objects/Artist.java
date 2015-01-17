@@ -7,9 +7,13 @@ class Artist extends Object {
 	String mLastName;
 
 	/*
-	 * Only Constructor
-	 * @param firstName
-	 * @param lastName
+	 * Artist
+	 *
+	 * @param firstName (String)
+	 * @param lastName (String)
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the Artist constructor
+	/************************************************/
 }

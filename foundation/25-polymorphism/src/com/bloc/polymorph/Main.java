@@ -12,7 +12,10 @@ public class Main extends Object {
 		Snake snake = new Snake();
 		Tarantula tarantula = new Tarantula();
 
-		// Accomplish the below using polymorphism
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Replace the operations below by employing polymorphism
+		/************************************************/
 
 		dog.feed();
 		dog.wash();
@@ -34,7 +37,10 @@ public class Main extends Object {
 		tarantula.wash();
 		tarantula.exercise();
 
-		// Accomplish the above using polymorphism
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Replace the operations above by employing polymorphism
+		/************************************************/
 
 		assert dog.isFed() && dog.isWashed() && dog.isExercised() : "Your dog needs a little more attention";
 		assert cat.isFed() && cat.isWashed() && cat.isExercised() : "Your cat needs a little more attention";

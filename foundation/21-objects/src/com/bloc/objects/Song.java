@@ -9,25 +9,39 @@ class Song extends Object {
 	int mYearReleased;
 
 	/*
-	 * Basic Constructor
+	 * Song
+	 *
+	 * Defailt Constructor
 	 * Side-effects: Assigns some default ensemble, title and
 	 *				 and year of your choosing
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the first Song constructor
+	/************************************************/
 
 	/*
-	 * Partial Constructor
+	 * Song
+	 *
 	 * Side-effects: Sets the year of release to 0
-	 * @param ensemble the ensemble responsible
-	 * @param title the song title
+	 *
+	 * @param ensemble the ensemble responsible (Ensemble)
+	 * @param title the song title (String)
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the second Song constructor
+	/************************************************/
 
 	/*
-	 * Full Constructor
-	 * @param ensemble the ensemble responsible
-	 * @param title the song title
-	 * @param yearReleased the year the song was released
+	 * Song
+	 *
+	 * @param ensemble the ensemble responsible (Ensemble)
+	 * @param title the song title (String)
+	 * @param yearReleased the year the song was released (int)
 	 */
-	// CONSTRUCTOR CODE GOES HERE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Create the third Song constructor
+	/************************************************/
 }

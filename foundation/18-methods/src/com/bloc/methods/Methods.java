@@ -14,10 +14,15 @@ public class Methods extends Object {
 			System.out.println("Looks like your \'" + method.getName() + "\' method has an issue with it.\n");
 		}
 	}
-	// DO NOT MODIFY ABOVE
+
+	/************************************************
+	 *	DO NOT MODIFY ABOVE THIS BLOCK
+	/************************************************/
 
 
 	/*
+	 * giveMeTheOpposite
+	 * 
 	 * Returns the logical opposite of a given boolean
 	 *
 	 * This method returns the logical opposite value
@@ -36,6 +41,8 @@ public class Methods extends Object {
 	}
 
 	/*
+	 * flipTheSign
+	 *
 	 * This method reverses the sign of each integer in a
 	 * given array
 	 *
@@ -57,6 +64,8 @@ public class Methods extends Object {
 
 
 	/*
+	 * boolsRule
+	 *
 	 * This method returns an array of booleans based on
 	 * comparisons made in a given integer array with an
 	 * integer floor.
@@ -87,6 +96,8 @@ public class Methods extends Object {
 	}
 
 	/*
+	 * getMinAndMax
+	 *
 	 * Recover the minimum and maximum value found in an
 	 * array of numbers.
 	 *
@@ -112,14 +123,9 @@ public class Methods extends Object {
 	}
 
 
-	/****************************************************************
-	*
-	*
-	* DO NOT MODIFY THE TESTS BELOW
-	*
-	*
-	* Seriously, don't…
-	*****************************************************************/
+	/************************************************
+	 *	DO NOT MODIFY BELOW THIS BLOCK
+	/************************************************/
 
 
 	public static final Method testMethods(Methods methods) {

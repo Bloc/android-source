@@ -11,21 +11,25 @@ public class Logic extends Object {
 	public static void main(String [] args) {
 		StringBuffer buffer = new StringBuffer();
 
-		/*
-		 * ASSIGNMENT:
-		 * Change the following logical operation such that the statement evaluates to 'true' 
-		 */
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Change the following logical operation such 
+	 	 *	that the statement evaluates to 'true' 
+		/************************************************/
+
 		if (false && true) { // Change something here
 			buffer.append("r");
 		} else {
 			buffer.append("w");
 		}
 
-		/*
-		 * ASSIGNMENT:
-		 * Change a single character in the following 4 lines of code in order to evaluate
-		 * the conditional as 'true'
-		 */
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Change a single character in the following 4
+	 	 *	lines of code in order to evaluate
+		 *	the conditional as 'true'
+		/************************************************/
+
 		int x = 5; // Change here
 		int y = 10; // Or here
 		int z = 30; // Or here
@@ -35,10 +39,12 @@ public class Logic extends Object {
 			buffer.append("r");
 		}
 
-		/*
-		 * ASSIGNMENT:
-		 * Add a single operator to the conditional statement in order to evaluate it as 'true'
-		 */
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Add a single operator to the conditional
+	 	 *	statement in order to evaluate it as 'true'
+		/************************************************/
+
 		boolean aSincereFalsehood = false;
 		if (aSincereFalsehood) { // Add an operator to this line
 			buffer.append("g");
@@ -46,21 +52,25 @@ public class Logic extends Object {
 			buffer.append("o");
 		}
 
-		/*
-		 * ASSIGNMENT:
-		 * Change the comparison below in order for the statement to evaluate as 'true'
-		 */
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Change the comparison below in order for the
+	 	 *	statement to evaluate as 'true'
+		/************************************************/
+
 		if (200 > 200) {
 			buffer.append("h");
 		} else {
 			buffer.append("n");
 		}
 
-		/*
-		 * ASSIGNMENT:
-		 * Alter the statements within parenthesis in order for all 3 statements to evaluate
-		 * as 'true'
-		 */
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Alter the statements within parenthesis in 
+	 	 *	order for all 3 statements to evaluate
+		 * 	as 'true'
+		/************************************************/
+
 		boolean lastOne = false;
 		if ((8 < 0) && !(15 == 15) && (lastOne == true)) { // Modify this line
 			buffer.append("t");

@@ -1,5 +1,9 @@
 package com.bloc.generics;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 class ToyBox extends Object {
 	private Toy<?>[] mToys;
 

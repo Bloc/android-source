@@ -1,6 +1,6 @@
 ## Security And Packages
 
-Open your command prompt and `cd` into this README's directory (security_packages). The sample code **DOES NOT COMPILE**. Fix the access and package organization of this project. You will need to move or modify all files, including `Main.java`.
+Open your command prompt and `cd` into this README's directory (security_packages). The sample code **DOES NOT COMPILE**. Fix the access and package organization of this project. You will need to move or modify **all files**, including `Main.java`.
 
 Begin by attempting to compile the application using the following command:
 

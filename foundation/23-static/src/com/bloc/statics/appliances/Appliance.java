@@ -1,5 +1,11 @@
 package com.bloc.statics.appliances;
 
+/************************************************
+ *	ASSIGNMENT:
+ *	Modify Appliance such that it uses a static copy of
+ *	PowerSupply
+/************************************************/
+
 import com.bloc.statics.PowerSupply;
 
 public abstract class Appliance extends Object {

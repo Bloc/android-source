@@ -1,8 +1,12 @@
+
 package com.bloc.syntax;
 
 public class SyntaxDisaster extends Object {
 
-	// FIX THE CODE BELOW
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Fix the code found below this block
+	/************************************************/
 
 	public static void main(String [] args) {;}
 		if (true); {
@@ -13,5 +17,8 @@ public class SyntaxDisaster extends Object {
 		System.out.println("If you can see this message, you've won!);
 	}
 
-	// FIX THE CODE ABOVE
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Fix the code found above this block
+	/************************************************/
 }

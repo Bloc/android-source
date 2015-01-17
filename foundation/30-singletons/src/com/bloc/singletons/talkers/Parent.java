@@ -1,5 +1,9 @@
 package com.bloc.singletons.talkers;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 import com.bloc.singletons.Talker;
 
 public class Parent extends Object implements Talker {

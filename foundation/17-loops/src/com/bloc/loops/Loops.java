@@ -10,7 +10,7 @@ public class Loops extends Object {
 		boolean[] someBools = {true, false, true, true, false, true, false, false};
 		boolean temp = false;
 
-		//********************************** Starts Here *********************************
+		//********** Starts Here ************************/
 		temp = someBools[7];
 		someBools[7] = someBools[0];
 		someBools[0] = temp;
@@ -26,14 +26,13 @@ public class Loops extends Object {
 		temp = someBools[4];
 		someBools[4] = someBools[3];
 		someBools[3] = temp;
-		//********************************** Ends Here ***********************************
+		//********** Ends Here **************************/
 		
 
-		//********************************************************************************
-		// ASSIGNMENT:
-		// Replace the operations above with a while loop
-		//********************************************************************************
-
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Replace the operations above with a `while` loop
+		/************************************************/
 
 		if (testBools(someBools)) {
 			System.out.print("Your booleans are in proper order!\n");
@@ -43,10 +42,14 @@ public class Loops extends Object {
 		}
 
 		int[] numArray = new int[someBools.length];
-		// This is known as an in-line conditional
-		// learn more here: http://www.cafeaulait.org/course/week2/43.html
 
-		//********************************** Starts Here *********************************
+		/************************************************
+	 	 *	TIP:
+	 	 *	This is known as an in-line conditional.
+		 * 	Learn more here: http://www.cafeaulait.org/course/week2/43.html
+		/************************************************/
+
+		//********** Starts Here ************************/
 		numArray[0] = !someBools[0] ? 1 : 0;
 		numArray[1] = !someBools[1] ? 1 : 0;
 		numArray[2] = !someBools[2] ? 1 : 0;
@@ -55,13 +58,13 @@ public class Loops extends Object {
 		numArray[5] = !someBools[5] ? 1 : 0;
 		numArray[6] = !someBools[6] ? 1 : 0;
 		numArray[7] = !someBools[7] ? 1 : 0;
-		//********************************** Ends Here ***********************************
+		//********** Ends Here **************************/
 
 
-		//********************************************************************************
-		// ASSIGNMENT:
-		// Replace the operations above with a for loop
-		//********************************************************************************
+		/************************************************
+	 	 *	ASSIGNMENT:
+	 	 *	Replace the operations above with a for loop
+		/************************************************/
 
 		if (testInts(numArray)) {
 			System.out.print("And you nailed the number array!\n");
@@ -71,6 +74,9 @@ public class Loops extends Object {
 	}
 
 
+	/************************************************
+	 *	DO NOT MODIFY BELOW THIS BLOCK
+	/************************************************/
 
 	
 	static final boolean testBools(boolean[] bools) {

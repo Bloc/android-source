@@ -1,5 +1,9 @@
 package com.bloc.interfaces;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 import com.bloc.interfaces.people.*;
 import com.bloc.interfaces.people.hobbies.*;
 

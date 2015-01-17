@@ -6,7 +6,10 @@ import java.io.InputStreamReader;
 
 public class WorstPractices extends Object {
 
-// EDIT BELOW
+	/************************************************
+	 *	ASSIGNMENT:
+	 *	Fix code and comments below this block
+	/************************************************/
 
 	public static void main(String [] args) {
 	int MAGIC_NUMBER = WorstPractices.animals(false);
@@ -34,5 +37,8 @@ private static int animals(boolean yeswellheresthething)
 	} return (int) sparklesfairy * aInt;
 }
 
-// STOP EDITING
+	/************************************************
+	 *	ASSIGNMENT
+	 *	Fix code and comments above this block
+	/************************************************/
 }

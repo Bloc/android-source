@@ -9,7 +9,11 @@ public class Main extends Object {
 
 	public static void main(String [] args) {
 
-		// Extract content beneath to ImageGetter
+		/************************************************
+		 *	ASSIGNMENT:
+		 *	Perform the following block of code on a separate
+		 *	Thread, use the ImageGetter class.
+		/************************************************/
 
 		try {
 			File existingImage = new File("google_logo.png");
@@ -33,6 +37,12 @@ public class Main extends Object {
 			System.exit(1);
 		}
 
+		/************************************************
+		 *	ASSIGNMENT:
+		 *	Perform the previous block of code on a separate
+		 *	Thread, use the ImageGetter class.
+		/************************************************/
+
 		File logo = new File("google_logo.png");
 		boolean exists = false;
 		try {
@@ -42,18 +52,23 @@ public class Main extends Object {
 			System.exit(1);
 		}
 
-		// ^^^ Extract the above to ImageGetter
-
-		// This shouldn't exist yet, therefore we should be able to print 
-		if (exists == false) {
+		if (exists) {
 			System.out.println("/************************/");
 			System.out.println("/*                      */");
 			System.out.println("/*                      */");
-			System.out.println("/*   If you see this,   */");
-			System.out.println("/*   congratulations!   */");
+			System.out.println("/* Download that image  */");
+			System.out.println("/* on a separate thread */");
 			System.out.println("/*                      */");
 			System.out.println("/*                      */");
-			System.out.println("/************************/");	
+			System.out.println("/************************/\n");
+		} else {
+			System.out.println("/************************/");
+			System.out.println("/*                      */");
+			System.out.println("/*                      */");
+			System.out.println("/* Nice work, you pass! */");
+			System.out.println("/*                      */");
+			System.out.println("/*                      */");
+			System.out.println("/************************/\n");
 		}
 	}
 }

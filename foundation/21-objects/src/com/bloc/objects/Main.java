@@ -5,6 +5,10 @@ import java.lang.reflect.Constructor;
 
 public class Main extends Object {
 
+		/************************************************
+	 	 *	DO NOT MODIFY THIS FILE
+		/************************************************/
+
 	public static void main(String [] args) {
 		Artist kurtCobain = null;
 		Artist daveGrohl = null;

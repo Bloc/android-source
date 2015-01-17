@@ -19,16 +19,22 @@ import java.util.*;
  */
 public class FavoritePastries {
 
-	/*
-	 * Use a HashMap to store the relationship
-	 * between rating and pastry
-	 */
+	/************************************************
+ 	 *	ASSIGNMENT:
+	 *	Use a HashMap to store the relationship
+	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
+	/************************************************/
+
 
 	public FavoritePastries() {
-		// WORK HERE
+		/************************************************
+ 	 	 *	WORK HERE
+		/************************************************/
 	}
 
 	/* 
+	 * addPastry
+	 *
 	 * Add a Pastry to the FavoritePastries class.
 	 *
 	 * This method stores this Pastry and its
@@ -42,10 +48,14 @@ public class FavoritePastries {
 	 * @return nothing
 	 */
 	public void addPastry(Pastry pastry, int rating) {
-		// WORK HERE
+		/************************************************
+ 	 	 *	WORK HERE
+		/************************************************/
 	}
 
-	/*
+	/* 
+	 * removePastry
+	 *
 	 * Remove a Pastry from FavoritePastries
 	 *
 	 * This method removes any reference to this exact
@@ -56,11 +66,15 @@ public class FavoritePastries {
 	 *		   false otherwise
 	 */
 	public boolean removePastry(Pastry pastry) {
-		// WORK HERE
+		/************************************************
+ 	 	 *	WORK HERE, you must modify the return value
+		/************************************************/
 		return false;
 	}
 
-	/*
+	/* 
+	 * getRatingForPastry
+	 *
 	 * Return the associated rating for a given Pastry
 	 *
 	 * This method will find the associated rating for
@@ -73,11 +87,15 @@ public class FavoritePastries {
 	 *		   -1 if not found among FavoritePastries
 	 */
 	public int getRatingForPastry(Pastry pastry) {
-		// WORK HERE
+		/************************************************
+ 	 	 *	WORK HERE, you must modify the return value
+		/************************************************/
 		return -1;
 	}
 
-	/*
+	/* 
+	 * getPastriesForRating
+	 *
 	 * Return a Set of all the Pastries with a given
 	 * rating.
 	 *
@@ -92,7 +110,9 @@ public class FavoritePastries {
 	 *         found
 	 */
 	public Collection<Pastry> getPastriesForRating(int rating) {
-		// WORK HERE
+		/************************************************
+ 	 	 *	WORK HERE, you must modify the return value
+		/************************************************/
 		return null;
 	}
 

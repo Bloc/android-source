@@ -1,5 +1,9 @@
 package com.bloc.interfaces.people;
 
+/************************************************
+ *	YOU MAY NOT MODIFY THIS FILE
+/************************************************/
+
 public abstract class Person extends Object {
 	// First name
 	private String mFirstName;
@@ -76,27 +80,4 @@ public abstract class Person extends Object {
 	public void setEyeColor(String eyeColor) {
 		mEyeColor = eyeColor;
 	}
-
-	/*
-	 * Abstract void
-	 methods
-	 */
-
-	public abstract void getInCar();
-
-	public abstract void startEngine();
-
-	public abstract void driveFast();
-
-	public abstract void getInPlane();
-
-	public abstract void jumpFromPlane();
-
-	public abstract void releaseParachute();
-
-	public abstract void putOnShoes();
-
-	public abstract void findAPartner();
-
-	public abstract void salsa();
 }
