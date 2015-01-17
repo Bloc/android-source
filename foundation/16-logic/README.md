@@ -1,10 +1,10 @@
 ## Logic
 
-Open your command prompt and `cd` into this README's directory (logic). In the src path is a file named `Logic.java`. Open it and fill in the portions of the code where the comments have indicated to do so.
+Open your command prompt and `cd` into this README's directory (`foundation/16-logic`). In the src path is a file named `Logic.java`. Open it and fill in the portions of the code where the comments have indicated to do so.
 
 When you've completed your work, test your code by compiling it with the following command:
 
-``` bash
+```bash
 $ javac -d bin/ src/com/bloc/logic/Logic.java
 ```
 
@@ -12,14 +12,24 @@ Correct any and all errors that appear. If something goes wrong during compilati
 
 After it returns successfully, `cd` into the bin directory:
 
-``` bash
+```bash
 $ cd bin/
 ```
 
 From within bin, run the following command:
 
-``` bash
+```bash
 $ java com.bloc.logic.Logic
 ```
 
-If you see the _right_ message, you've rocked it! Commit your changes and push them to Github.
+If you see the _right_ message, you've rocked it!
+
+## All Done?
+
+Commit and push your work to GitHub:
+
+```bash(/Users/your_user_name/where/you/keep/your/work/android-source)
+$ git add .
+$ git commit -m "Checkpoint 16 completed"
+$ git push
+```

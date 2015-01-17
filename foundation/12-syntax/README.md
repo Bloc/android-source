@@ -16,4 +16,15 @@ Finally, execute your fixed Java code by invoking the following command from wit
 $ java com.bloc.syntax.SyntaxDisaster
 ```
 
-If you see a message printed to the prompt, everything with the world is right once more. Commit your changes to Github.
+If you see a message printed to the prompt, everything with the world is right once more.
+
+## All Done?
+
+Commit and push your work to GitHub:
+
+```bash(/Users/your_user_name/where/you/keep/your/work/android-source)
+$ git add .
+$ git commit -m "Checkpoint 12 completed"
+$ git push
+```
+

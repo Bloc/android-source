@@ -29,3 +29,13 @@ Welcome to Bloc's Android apprenticeship! You're on your way!
 ```
 
 Congratulations, you've ran some pretty gnarly code! Ready for more? Of course you are.
+
+## All Done?
+
+Commit and push your work to GitHub:
+
+```bash(/Users/your_user_name/where/you/keep/your/work/android-source)
+$ git add .
+$ git commit -m "Checkpoint 7 completed"
+$ git push
+```
