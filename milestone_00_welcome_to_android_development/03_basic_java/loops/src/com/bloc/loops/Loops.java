@@ -11,34 +11,45 @@ public class Loops extends Object {
 		boolean temp = false;
 
 		//********************************** Starts Here *********************************
-		temp = someBools[7];
-		someBools[7] = someBools[0];
-		someBools[0] = temp;
+		// temp = someBools[7];
+		// someBools[7] = someBools[0];
+		// someBools[0] = temp;
 
-		temp = someBools[6];
-		someBools[6] = someBools[1];
-		someBools[1] = temp;
+		// temp = someBools[6];
+		// someBools[6] = someBools[1];
+		// someBools[1] = temp;
 
-		temp = someBools[5];
-		someBools[5] = someBools[2];
-		someBools[2] = temp;
+		// temp = someBools[5];
+		// someBools[5] = someBools[2];
+		// someBools[2] = temp;
 
-		temp = someBools[4];
-		someBools[4] = someBools[3];
-		someBools[3] = temp;
+		// temp = someBools[4];
+		// someBools[4] = someBools[3];
+		// someBools[3] = temp;
 		//********************************** Ends Here ***********************************
-		
+
 
 		//********************************************************************************
 		// ASSIGNMENT:
 		// Replace the operations above with a while loop
 		//********************************************************************************
 
+		int i = 0;
+		while (i < 4) {
+			temp = someBools[7-i];
+			// System.out.print(someBools[7-i] + "\n"); for debugging
+			someBools[7-i] = someBools[i];
+			// System.out.print(someBools[i] + "\n"); debugging
+			someBools[i] = temp;
+			i++;
+			// System.out.print(i); debugging
+			}
+
 
 		if (testBools(someBools)) {
 			System.out.print("Your booleans are in proper order!\n");
 		} else {
-			System.out.print("Something in the while loop…\n");
+			System.out.print("Your booleans are supposed to come out as Z@7afa0094 yet they are currently appearing as " + someBools + "\n"); // I rewrote this statement to be more helpful
 			System.exit(0);
 		}
 
@@ -57,6 +68,9 @@ public class Loops extends Object {
 		numArray[7] = !someBools[7] ? 1 : 0;
 		//********************************** Ends Here ***********************************
 
+for (int j = 0; j < 8; j++) {
+	numArray[j] = !someBools[j] ? 1 : 0;
+}
 
 		//********************************************************************************
 		// ASSIGNMENT:
@@ -66,13 +80,13 @@ public class Loops extends Object {
 		if (testInts(numArray)) {
 			System.out.print("And you nailed the number array!\n");
 		} else {
-			System.out.print("Issue with the numbers…\n");
+			System.out.print("Issue with the numbers… the numArray is supposed to be [I@333c339f yet yours is " + numArray + " \n"); // rewritten test
 		}
 	}
 
 
 
-	
+
 	static final boolean testBools(boolean[] bools) {
 		if (bools == null || bools.length != 8) {
 			return false;
