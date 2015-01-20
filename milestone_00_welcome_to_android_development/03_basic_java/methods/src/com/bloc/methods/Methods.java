@@ -2,6 +2,8 @@ package com.bloc.methods;
 
 import java.lang.reflect.Method;
 
+import java.util.ArrayList;
+
 public class Methods extends Object {
 
 	// DO NOT MODIFY BELOW
@@ -30,9 +32,9 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
+		boolean opposite = !original;
 		// You are free to modify the return statement
-		return false;
+		return opposite;
 	}
 
 	/*
@@ -53,7 +55,11 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
+		for (int i = 0; i < numbers.length; i++) {
+			numbers[i] *= -1;
+		}
 	}
+
 
 
 	/*
@@ -66,10 +72,10 @@ public class Methods extends Object {
 	 * index is at least floor or greater, the corresponding
 	 * index in a boolean array is set to `true`, `false`
 	 * otherwise.
-	 * 
+	 *
 	 * E.g. {0, 5, 18, 2} with a floor of 6 returns
 	 * {false, false, true, false}
-	 * 
+	 *
 	 * {16, 20} with a floor of 21 will return the following
 	 * array of booleans: {false, false}
 	 *
@@ -81,10 +87,18 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
-		// You are free to modify the return statement
-		return new boolean [0];
-	}
+		boolean [] booleanArray = new boolean [someNumbers.length];
+		// defines an array of booleans, then defines amt of args
+		for (int j = 0; j < someNumbers.length; j++) { // iterating through int array
+			if (someNumbers[j] < floor) {
+				booleanArray[j] = false;
+			} // ends if
+			else {
+				booleanArray[j] = true;
+			} // ends else
+		} // ends for
+		return booleanArray;
+	} // ends boolsRule
 
 	/*
 	 * Recover the minimum and maximum value found in an
@@ -106,9 +120,18 @@ public class Methods extends Object {
 		/************************************************
 		 * Your work goes here
 		 ************************************************/
-
-		// You are free to modify the return statement
-		return new int[2];
+	int [] minMaxArray = new int [2]; // array to store min/max
+	minMaxArray[0] = someNumbers[0];
+	minMaxArray[1] = someNumbers[0];
+	for (int k = 0; k < someNumbers.length; k++) {
+		if (someNumbers[k] > minMaxArray[1]) {
+			minMaxArray[1] = someNumbers[k];
+		}
+		else if (someNumbers[k] < minMaxArray[0]) {
+			minMaxArray[0] = someNumbers[k];
+		}
+	}
+		return minMaxArray;
 	}
 
 
