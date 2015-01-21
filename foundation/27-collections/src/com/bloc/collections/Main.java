@@ -37,11 +37,15 @@ public class Main extends Object {
 			}
 
 			// Test getRatingForPastry
+			int pastryRating = 0;
 			for (int i = 0; i < pastries.length; i++) {
-				assert favoritePastries.getRatingForPastry(pastries[i]) == ratings[i] : "getRatingForPastry returned an incorrect value";	
+				pastryRating = favoritePastries.getRatingForPastry(pastries[i]);
+				assert pastryRating == ratings[i] : "getRatingForPastry returned an incorrect value";
 			}
-			assert favoritePastries.getRatingForPastry(new Pastry("Surprise!")) == -1 : "getRatingForPastry returned an incorrect value when passed an unknown Pastry";
-			assert favoritePastries.getRatingForPastry(null) == -1 : "getRatingForPastry returned an incorrect value when passed an unknown Pastry";
+			pastryRating = favoritePastries.getRatingForPastry(new Pastry("Surprise!"));
+			assert pastryRating == -1 : "getRatingForPastry returned an incorrect value when passed an unknown Pastry";
+			pastryRating = favoritePastries.getRatingForPastry(null);
+			assert pastryRating == -1 : "getRatingForPastry returned an incorrect value when passed an unknown Pastry";
 
 			// Test addPastry with existing Pastries
 			ratings[0]++;
@@ -49,7 +53,8 @@ public class Main extends Object {
 				ratings[0] = 1;
 			}
 			favoritePastries.addPastry(pastries[0], ratings[0]);
-			assert favoritePastries.getRatingForPastry(pastries[0]) == ratings[0] : "addPastry failed to update a rating for an existing Pastry";
+			pastryRating = favoritePastries.getRatingForPastry(pastries[0]);
+			assert pastryRating == ratings[0] : "addPastry failed to update a rating for an existing Pastry";
 
 			// Test removePastry
 			assert favoritePastries.removePastry(pastries[0]) == true : "removePastry was supposed to return true";
