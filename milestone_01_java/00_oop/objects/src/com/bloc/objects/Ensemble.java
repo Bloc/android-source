@@ -30,8 +30,9 @@ class Ensemble extends Object {
 	// CONSTRUCTOR CODE GOES HERE
 
 Ensemble(String mName, Artist [] mArtists) { // feels correct
-	if (mArtists[] == null) {
-		this.mArtists = mArtists[0] // lines 33-34 are where I am stuck - how do I access the firstName lastName variables from the Artist class?
+	if (mArtists[].class == null) {
+		this.mArtists = mArtists[0];
+		// lines 33-34 are where I am stuck - how do I access the firstName lastName variables from the Artist class?
 	}
 
 // some non-functional code I worked on earlier
@@ -43,5 +44,5 @@ Ensemble(String mName, Artist [] mArtists) { // feels correct
 // 			this.mName = mName;
 // 		}
 // 		this.mArtists = mArtists[];
-// 	}
+	} // ends Ensemble constructor
 } // ends Ensemble class
