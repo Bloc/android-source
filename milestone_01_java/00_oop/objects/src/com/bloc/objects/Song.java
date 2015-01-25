@@ -15,6 +15,11 @@ class Song extends Object {
 	 */
 	// CONSTRUCTOR CODE GOES HERE
 
+	// Song(Ensemble ensemble, String title, int yearReleased) {
+	// 	this.ensemble = ensemble;
+	// 	this.title = title;
+	// 	this.yearReleased = yearReleased;
+	// }
 	/*
 	 * Partial Constructor
 	 * Side-effects: Sets the year of release to 0

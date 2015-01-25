@@ -14,6 +14,10 @@ class Ensemble extends Object {
 	 */
 	// CONSTRUCTOR CODE GOES HERE
 
+	Ensemble(Artist [] mArtists) { // a string of artists
+		this.mArtists = mArtists;
+	} // I believe that this is correct.
+
 	/*
 	 * Second Constructor
 	 * This constructor takes a name and a variable length of Artist objects
@@ -24,4 +28,20 @@ class Ensemble extends Object {
 	 * @param artists variable length artists
 	 */
 	// CONSTRUCTOR CODE GOES HERE
-}
+
+Ensemble(String mName, Artist [] mArtists) { // feels correct
+	if (mArtists[] == null) {
+		this.mArtists = mArtists[0] // lines 33-34 are where I am stuck - how do I access the firstName lastName variables from the Artist class?
+	}
+
+// some non-functional code I worked on earlier
+
+// 		if (mName == null) {
+// 			this.mName = mArtists[0].mFirstName + " " + mArtists[0].mLastName;
+// 		}
+// 		else {
+// 			this.mName = mName;
+// 		}
+// 		this.mArtists = mArtists[];
+// 	}
+} // ends Ensemble class
