@@ -11,6 +11,10 @@ class PopSong extends Song {
 	 */
 	// CONSTRUCTOR CODE GOES HERE
 
+PopSong() {
+	super();
+}
+
 	/*
 	 * Partial Constructor
 	 * Side-effects: Sets the year of release to 0
@@ -18,6 +22,10 @@ class PopSong extends Song {
 	 * @param title the song title
 	 */
 	// CONSTRUCTOR CODE GOES HERE
+
+PopSong(Ensemble ladyGaga, String title) {
+	super(ladyGaga, title);
+}
 
 	/*
 	 * Full Song Constructor
@@ -28,6 +36,10 @@ class PopSong extends Song {
 	 */
 	// CONSTRUCTOR CODE GOES HERE
 
+PopSong(Ensemble theKillers, String title, int yearReleased) {
+	super(theKillers, title, yearReleased);
+}
+
 	/*
 	 * Full PopSong Constructor
 	 * @param ensemble the ensemble responsible
@@ -37,4 +49,10 @@ class PopSong extends Song {
 	 *		  				   Billboard's top 100
 	 */
 	// CONSTRUCTOR CODE GOES HERE
+
+PopSong(Ensemble beethoven, String title, int yearReleased, int weeksOnBillboard) {
+	super(beethoven, title, yearReleased);
+	mWeeksOnBillboard = weeksOnBillboard;
+}
+
 }

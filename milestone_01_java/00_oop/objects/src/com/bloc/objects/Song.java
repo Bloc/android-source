@@ -14,6 +14,15 @@ class Song extends Object {
 	 *				 and year of your choosing
 	 */
 	// CONSTRUCTOR CODE GOES HERE
+Song() {
+		Artist kurtCobain = new Artist("Kurt", "Cobain"); // instantiates a new artist
+		Artist[] nvm = { kurtCobain }; // adding the new artist into the array nvm
+		Ensemble Nirvana = new Ensemble(nvm); // instantiates a new ensemble w/the array of artists
+		this.mEnsemble = Nirvana; // sets ensemble to this artist
+		this.mTitle = "Smells like teen spirit";
+		this.mYearReleased = 1994;
+} // I believ this is correct
+
 
 	// Song(Ensemble ensemble, String title, int yearReleased) {
 	// 	this.ensemble = ensemble;
@@ -28,6 +37,12 @@ class Song extends Object {
 	 */
 	// CONSTRUCTOR CODE GOES HERE
 
+Song(Ensemble mEnsemble, String mTitle) {
+		this.mEnsemble = mEnsemble;
+		this.mTitle = mTitle;
+		this.mYearReleased = 0;
+} // I believe this is correct
+
 	/*
 	 * Full Constructor
 	 * @param ensemble the ensemble responsible
@@ -35,4 +50,11 @@ class Song extends Object {
 	 * @param yearReleased the year the song was released
 	 */
 	// CONSTRUCTOR CODE GOES HERE
+
+Song(Ensemble pEnsemble, String pTitle, int pYearReleased) {
+		this.mEnsemble = pEnsemble;
+		this.mTitle = pTitle;
+		this.mYearReleased = pYearReleased;
+}
+
 }
