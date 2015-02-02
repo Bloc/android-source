@@ -1,6 +1,8 @@
 package com.bloc.securitypackages.apples;
 
-public class Green extends Apple { // added public abstract
+import com.bloc.securitypackages.colors.LimeGreen; // added import
+
+public class Green extends Apple { // added public
 
 	public Green() { // added public
 		super(Green.class.getSimpleName(), 230, new LimeGreen(), 0.21d);

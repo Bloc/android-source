@@ -5,8 +5,8 @@ import com.bloc.securitypackages.*; // added
 
 public abstract class Apple extends Fruit { // added public
 
-  // Apple(String apple) {
-  //   super(apple);
-  // } // my attempt to connect with a suitable constructor
+    Apple(String name, int calories, Color color, double weight) {
+      super(name, calories, color, weight);
+  } // added constructor to call super Fruit
 
 }
