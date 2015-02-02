@@ -1,8 +1,12 @@
 package com.bloc.securitypackages.apples;
 
-class Macintosh extends Apple {
+import com.bloc.securitypackages.apples.Apple; // added
+import com.bloc.securitypackages.Color; // added
 
-	Macintosh() {
+
+public class Macintosh extends Apple { // added public
+
+	public Macintosh() { // added public
 		super(Macintosh.class.getSimpleName(), 200, new Red(), 0.14d);
 	}
 

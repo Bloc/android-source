@@ -1,7 +1,12 @@
-package com.bloc.securitypackages.apples;
+package com.bloc.securitypackages.apples; // this remains the same
 
-abstract class Apple extends Fruit {
+import com.bloc.securitypackages.Fruit; // added
+import com.bloc.securitypackages.*; // added
 
-	abstract void bite();
+public abstract class Apple extends Fruit { // added public
+
+  // Apple(String apple) {
+  //   super(apple);
+  // } // my attempt to connect with a suitable constructor
 
 }

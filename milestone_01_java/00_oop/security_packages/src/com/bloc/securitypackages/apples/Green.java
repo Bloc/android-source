@@ -1,8 +1,8 @@
 package com.bloc.securitypackages.apples;
 
-class Green extends Apple {
+public class Green extends Apple { // added public abstract
 
-	Green() {
+	public Green() { // added public
 		super(Green.class.getSimpleName(), 230, new LimeGreen(), 0.21d);
 	}
 

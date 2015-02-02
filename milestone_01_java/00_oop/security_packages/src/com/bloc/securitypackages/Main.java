@@ -3,6 +3,10 @@ package com.bloc.securitypackages;
 // YOUR IMPORTS GO HERE
 // import com.bloc.{your_package};
 
+import com.bloc.securitypackages.colors.*; // added
+import com.bloc.securitypackages.citrus.*; // added
+import com.bloc.securitypackages.apples.*; // added
+
 public class Main extends Object {
 
 	public static void main(String [] args) {
@@ -17,9 +21,9 @@ public class Main extends Object {
 		colors[1] = fruits[1].getColor();
 		colors[2] = fruits[2].getColor();
 		colors[3] = fruits[3].getColor();
-		colors[4] = new Orange();
+		colors[4] = new ColorOrange();
 
-		
+
 		System.out.println("/************************/");
 		System.out.println("/*                      */");
 		System.out.println("/*                      */");

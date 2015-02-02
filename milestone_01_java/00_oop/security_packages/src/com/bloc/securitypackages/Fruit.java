@@ -1,68 +1,70 @@
 package com.bloc.securitypackages;
 
-public abstract class Fruit extends Object {
-	// The name of the fruit
-	private String mName;
-	// Number of calories
-	private int mCalories;
-	// Color of the fruit
-	private Color mColor;
-	// Weight of the fruit, in pounds
-	private double mWeight;
+import com.bloc.securitypackages.apples.*;
 
-	Fruit() {
+abstract public class Fruit extends Object {
+	// The name of the fruit
+	public String mName;
+	// Number of calories
+	public int mCalories;
+	// Color of the fruit
+	public Color mColor;
+	// Weight of the fruit, in pounds
+	public double mWeight;
+
+	public Fruit() {
 		this("Apple");
 		// Default fruit
 	}
 
-	Fruit(String name) {
+	public Fruit(String name) {
 		this(name, 0);
 	}
 
-	Fruit(String name, int calories) {
+	public Fruit(String name, int calories) {
 		this(name, calories, null);
 	}
 
-	Fruit(String name, int calories, Color color) {
+	public Fruit(String name, int calories, Color color) {
 		this(name, calories, color, 0d);
 	}
 
-	Fruit(String name, int calories, Color color, double weight) {
+	public Fruit(String name, int calories, Color color, double weight) {
 		this.mName = name;
 		this.mCalories = calories;
 		this.mColor = color;
 		this.mWeight = weight;
 	}
 
-	private String getName() {
+	public String getName() {
 		return mName;
 	}
 
-	private void setName(String name) {
+	public void setName(String name) {
 		mName = name;
 	}
 
-	int getCalories() {
+	public int getCalories() {
 		return mCalories;
 	}
 
-	void setCalories(int calories) {
+	public void setCalories(int calories) {
 		mCalories = calories;
 	}
 
-	private Color getColor() {
+	public Color getColor() {
 		return mColor;
 	}
 
-	private void setColor(Color color) {
+	public void setColor(Color color) {
 		mColor = color;
 	}
 
-	double getWeight() {
+	public double getWeight() {
 		return mWeight;
 	}
 
-	private void setWeight(double weight) {
+	public void setWeight(double weight) {
 		mWeight = weight;
 	}
 }
