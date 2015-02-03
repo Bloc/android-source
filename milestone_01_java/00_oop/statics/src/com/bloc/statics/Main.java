@@ -12,6 +12,7 @@ public class Main extends Object {
 
 		toaster.plugIn();
 		toaster.flipPowerSwitch();
+		// toaster.unplug();
 		if (!toaster.isOn()) {
 			System.out.println("Something went wrong powering on the toaster");
 			System.exit(1);
@@ -19,12 +20,12 @@ public class Main extends Object {
 
 		frige.plugIn();
 		frige.flipPowerSwitch();
-		frige.unplug();
+		frige.unplug(); // commented out temporarily
 		if (frige.isOn()) {
 			System.out.println("The frige should be off… hmm");
 			System.exit(1);
 		}
-		
+
 		System.out.println("/************************/");
 		System.out.println("/*                      */");
 		System.out.println("/*                      */");
