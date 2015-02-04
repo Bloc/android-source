@@ -1,6 +1,6 @@
 package com.bloc.interfaces;
 
-import com.bloc.interfaces.people.*;
+import com.bloc.interfaces.people.*; // Person is in here
 import com.bloc.interfaces.people.hobbies.*;
 
 public class Main extends Object {
