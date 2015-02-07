@@ -4,7 +4,7 @@ import java.util.*;
 
 /*
  * FavoritePastries
- * 
+ *
  * This class maintains a record of Pastry objects and their
  * relation to a 1 to 5 rating scale.
  *
@@ -19,6 +19,8 @@ import java.util.*;
  */
 public class FavoritePastries {
 
+	private HashMap<Pastry, Integer> mPastryMap;
+
 	/*
 	 * Use a HashMap to store the relationship
 	 * between rating and pastry
@@ -26,9 +28,11 @@ public class FavoritePastries {
 
 	public FavoritePastries() {
 		// WORK HERE
+		mPastryMap = new HashMap<Pastry, Integer>(); // instantiates a new hashmap
+
 	}
 
-	/* 
+	/*
 	 * Add a Pastry to the FavoritePastries class.
 	 *
 	 * This method stores this Pastry and its
@@ -43,6 +47,9 @@ public class FavoritePastries {
 	 */
 	public void addPastry(Pastry pastry, int rating) {
 		// WORK HERE
+
+		mPastryMap.put(pastry, rating);
+
 	}
 
 	/*
@@ -57,6 +64,10 @@ public class FavoritePastries {
 	 */
 	public boolean removePastry(Pastry pastry) {
 		// WORK HERE
+
+		if (mPastryMap.containsKey(pastry)) {
+			return mPastryMap.remove(pastry) > 0;
+		}
 		return false;
 	}
 
@@ -74,6 +85,10 @@ public class FavoritePastries {
 	 */
 	public int getRatingForPastry(Pastry pastry) {
 		// WORK HERE
+
+		if (mPastryMap.containsKey(pastry)) {
+			return (mPastryMap.get(pastry));
+		} // ends if
 		return -1;
 	}
 
@@ -93,7 +108,18 @@ public class FavoritePastries {
 	 */
 	public Collection<Pastry> getPastriesForRating(int rating) {
 		// WORK HERE
-		return null;
+
+		ArrayList<Pastry> ratedPastries = new ArrayList<Pastry>();
+
+		for (Pastry pastry : mPastryMap.keySet()) {
+		// for (int rating = 0; i < mPastryMap.size(); i++) {
+			if (mPastryMap.get(pastry) == rating) {
+				ratedPastries.add(pastry);
+			} // ends if
+		} // ends for
+
+		return ratedPastries;
+
 	}
 
 }
