@@ -1,4 +1,4 @@
-package com.bloc.loops;
+ 
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,21 +11,21 @@ public class Loops extends Object {
 		boolean temp = false;
 
 		//********** Starts Here ************************/
-		temp = someBools[7];
-		someBools[7] = someBools[0];
-		someBools[0] = temp;
-
-		temp = someBools[6];
-		someBools[6] = someBools[1];
-		someBools[1] = temp;
-
-		temp = someBools[5];
-		someBools[5] = someBools[2];
-		someBools[2] = temp;
-
-		temp = someBools[4];
-		someBools[4] = someBools[3];
-		someBools[3] = temp;
+// 		temp = someBools[7];//equals false
+// 		someBools[7] = someBools[0]; //equals true
+// 		someBools[0] = temp; //equals false
+// 
+// 		temp = someBools[6]; //equals false
+// 		someBools[6] = someBools[1]; //equals false
+// 		someBools[1] = temp;//equals false
+// 
+// 		temp = someBools[5];//equals true
+// 		someBools[5] = someBools[2];//equals false
+// 		someBools[2] = temp;//equals true
+// 
+// 		temp = someBools[4];//equals false
+// 		someBools[4] = someBools[3];//equals true
+// 		someBools[3] = temp;//equals false
 		//********** Ends Here **************************/
 		
 
@@ -33,19 +33,19 @@ public class Loops extends Object {
 	 	 *	ASSIGNMENT:
 	 	 *	Replace the operations above with a `while` loop
 		/************************************************/
-		int i = 0;
-		while (i < someBools.length) {
-			if (i <= someBools.length){
-				System.out.print("Your booleans are in proper order!\n");
-				i++;}
-			else 
+ 		int i =0;
+		while (i<someBools.length) {
+		    testBools(someBools);
+ 			if (temp = someBools[i]){
+ 				System.out.print("Your booleans are in proper order!\n");
+ 				i++;}
+ 			else
 				System.out.print("Something in the while loop…\n");
-			
-			//System.exit(0);
+ 			System.exit(0);}
 		
-	}
+	
 
-		int[] numArray = new int[someBools.length];
+		int[] numArray = new int[someBools.length]; //creates numArray[7]
 
 		/************************************************
 	 	 *	TIP:
@@ -54,14 +54,14 @@ public class Loops extends Object {
 		/************************************************/
 
 		//********** Starts Here ************************/
-		numArray[0] = !someBools[0] ? 1 : 0;
-		numArray[1] = !someBools[1] ? 1 : 0;
-		numArray[2] = !someBools[2] ? 1 : 0;
-		numArray[3] = !someBools[3] ? 1 : 0;
-		numArray[4] = !someBools[4] ? 1 : 0;
-		numArray[5] = !someBools[5] ? 1 : 0;
-		numArray[6] = !someBools[6] ? 1 : 0;
-		numArray[7] = !someBools[7] ? 1 : 0;
+// 		numArray[0] = !someBools[0] ? 1 : 0;
+// 		numArray[1] = !someBools[1] ? 1 : 0;
+// 		numArray[2] = !someBools[2] ? 1 : 0;
+// 		numArray[3] = !someBools[3] ? 1 : 0;
+// 		numArray[4] = !someBools[4] ? 1 : 0;
+// 		numArray[5] = !someBools[5] ? 1 : 0;
+// 		numArray[6] = !someBools[6] ? 1 : 0;
+// 		numArray[7] = !someBools[7] ? 1 : 0;
 		//********** Ends Here **************************/
 
 
@@ -69,12 +69,9 @@ public class Loops extends Object {
 	 	 *	ASSIGNMENT:
 	 	 *	Replace the operations above with a for loop
 		/************************************************/
-		
-		
-		
-		
-		for ( i = 0; i < numArray.length; i++) {
-			if (i <= numArray.length)
+ 		for ( i = 0; i <= numArray.length; i++) {
+			testInts(numArray);
+ 		    if (i = numArray[i])
 			System.out.print("And you nailed the number array!\n");
 			else
 			System.out.print("Issue with the numbers…\n");
