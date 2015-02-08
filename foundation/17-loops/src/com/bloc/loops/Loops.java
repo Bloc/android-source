@@ -35,11 +35,15 @@ public class Loops extends Object {
 		/************************************************/
 		int i = 0;
 		while (i < someBools.length) {
-			System.out.print("Your booleans are in proper order!\n");
-			i++;
-		} 
-			System.out.print("Something in the while loop…\n");
+			if (i <= someBools.length){
+				System.out.print("Your booleans are in proper order!\n");
+				i++;}
+			else 
+				System.out.print("Something in the while loop…\n");
+			
 			//System.exit(0);
+		
+	}
 
 		int[] numArray = new int[someBools.length];
 
@@ -66,10 +70,15 @@ public class Loops extends Object {
 	 	 *	Replace the operations above with a for loop
 		/************************************************/
 		
+		
+		
+		
 		for ( i = 0; i < numArray.length; i++) {
+			if (i <= numArray.length)
 			System.out.print("And you nailed the number array!\n");
-		}
+			else
 			System.out.print("Issue with the numbers…\n");
+		}
 	}
 
 
