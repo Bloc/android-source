@@ -8,7 +8,7 @@ public class FunMethods extends Object {
 
 	public static Integer getMax(Integer... numbers) {
 		if (numbers == null) {
-			throw new IllegalArgumentException("Numbers must be a valud array");
+			throw new IllegalArgumentException("Numbers must be a valid array");
 		}
 		Integer max = numbers[0];
 		for (int i = 0; i < numbers.length; i++) {
