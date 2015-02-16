@@ -15,7 +15,7 @@ class Dog {
     // Gender, either "male" or "female"
     String mGender[] = {"male", "female"};
     // Size, either "tiny", "small", "average", or "large"
-    String[] mSize = {"tiny", "small", "average", "large"};
+    String mSize;
     // Its age
     int mAge;
     // Its weight in pounds
@@ -27,7 +27,6 @@ class Dog {
      * ADD MEMBER VARIABLES HERE IF NECESSARY      
     /************************************************/
     int dogGender;
-    int dogSize;
     int meals;
     int plays;
     
@@ -97,7 +96,7 @@ void setGender(String gender){
      *  Create the getSize method
     /************************************************/
 String getSize(){
-    return mSize[dogSize];
+    return mSize;
 }
     /*
      * setSize
@@ -112,7 +111,7 @@ String getSize(){
      *  Create the setSize method
     /************************************************/
 void setSize(String size){
-    mSize[dogSize] = size;
+mSize = size;
 }
     /*
      * getAge
@@ -216,18 +215,17 @@ void setColor(String color){
     /************************************************/
 void feed(){
     mWeight += WEIGHT_GAIN;
-    if (dogSize == 0)
-    setSize(mSize[1]);
-    //it works this way, but after 4 invocations it goes straight to large
-    if(++meals==2 &&getSize()!= mSize[mSize.length-1]){ 
-    dogSize++;
-    getSize();
-    meals = 1;   
-    }
+    meals++;
+    if (meals < 3)
+    setSize("small");
+    else if(getSize().equals("small")&&meals%3==0)
+    setSize("average");
+    else if (getSize().equals("average")&& meals%3==0)
+    setSize("large");
+    else if (getSize().equals("large")&& meals%3==0)
+    setSize("large");
    
 }
-
-
     /*
      * play
      *
@@ -248,15 +246,14 @@ void feed(){
 void play (){
     mWeight -= WEIGHT_LOSS;
     plays ++;
-    if(dogSize ==0)
-    setSize(mSize[mSize.length-1]);
-    if (mWeight < MIN_WEIGHT)
-    setWeight(MIN_WEIGHT);
-    if (plays%6==0 && dogSize <= mSize.length-1 && dogSize >0){
-    dogSize --;  
-    getSize();
-    plays = 1;
-    }
+    if (plays <6)
+    setSize("large");
+    else if(mSize.equals("large")&& plays%6==0)
+    setSize("average");
+    else if (mSize.equals("average")&&plays%6==0)
+    setSize("small");
+    else if (mSize.equals("small")&& plays%6==0)
+    setSize("tiny");
 
 }
     /*

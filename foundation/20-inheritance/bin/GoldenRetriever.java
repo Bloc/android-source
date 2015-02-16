@@ -1,4 +1,4 @@
-package com.bloc.inherit;
+ 
 
 /************************************************
  *	ASSIGNMENT:
@@ -12,7 +12,7 @@ class GoldenRetriever extends Dog{
     void play(){
         if(++mPlayCounter == 3)
         dogSize --;
-        getSize();
+        changeSize(true);
         mPlayCounter = 0;
     }
 }

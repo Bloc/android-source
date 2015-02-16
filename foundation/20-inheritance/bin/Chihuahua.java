@@ -1,4 +1,4 @@
-package com.bloc.inherit;
+ 
 
 /************************************************
  *	ASSIGNMENT:
@@ -12,7 +12,7 @@ class Chihuahua extends Dog{
     void feed(){
         if(++mFeedCounter ==5){
         dogSize++;
-        getSize();
+        changeSize(true);
         mFeedCounter = 0;}
     }
 }
