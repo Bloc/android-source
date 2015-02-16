@@ -21,19 +21,21 @@ public static HashSet<Listener> household = new HashSet<Listener>();
     Singer whitneyHouston = new Singer();
     Parent mom = new Parent();
     AudienceMember fanGirl = new AudienceMember();
+    AudienceMember fanBoy = new AudienceMember();
     Pet spot = new Pet();
 
     // Register listeners
     audience.add(fanGirl);
     household.add(spot);
+    audience.add(fanBoy);
 
-    // Send messages! - INCOMPLETE
-    whitneyHouston.getMessage();
-    mom.getMessage();
+    // Remove listeners
+    audience.remove(fanBoy);
 
-    fanGirl.onMessageReceived();
+    // Send messages!
+    fanGirl.onMessageReceived(whitneyHouston.getMessage());
 
-    // audience.shoutMessage(Singer(whitneyHouston));
+    household.shoutMessage(mom); // why won't this work?
 
 	}
 
