@@ -11,6 +11,9 @@ public class Main extends Object {
 
 		// Extract content beneath to ImageGetter
 
+		ImageGetter thread = new ImageGetter();
+		thread.start(); // instantiates a new thread
+
     File logo = new File("google_logo.png");
     boolean exists = false;
     try {
