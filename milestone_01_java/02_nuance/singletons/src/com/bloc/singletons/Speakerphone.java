@@ -14,11 +14,11 @@ public class Speakerphone extends Object {
 	 */
 
 // a set of listeners, stored as an HashSet
-public static HashSet<Listener> listenerList;
+public static HashSet<Listener> listenerList = new HashSet<Listener>();
 
 public static Speakerphone _speakerphone; // contains the global instance: adding _ is general practice for signaling a singleton
 
-	public Speakerphone get() {
+	public static Speakerphone get() {
 		if (_speakerphone == null) {
 			_speakerphone = new Speakerphone();
 		}
