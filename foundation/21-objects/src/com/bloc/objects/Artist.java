@@ -1,4 +1,4 @@
-package com.bloc.objects;
+ 
 
 class Artist extends Object {
 	// The artist's first name
@@ -16,4 +16,8 @@ class Artist extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the Artist constructor
 	/************************************************/
+Artist(String firstName, String lastName){
+mFirstName = firstName;
+mLastName = lastName;
+}
 }
