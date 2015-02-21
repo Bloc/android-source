@@ -1,6 +1,0 @@
-#BlueJ class context
-comment0.params=red\ green\ blue
-comment0.target=Color(int,\ int,\ int)
-comment1.params=name\ red\ green\ blue
-comment1.target=Color(java.lang.String,\ int,\ int,\ int)
-numComments=2
