@@ -19,7 +19,7 @@ abstract class Dog {
 	// Gender, either "male" or "female"
 	String mGender;
 	// Size, either "tiny", "small", "average", or "large"
-	String [] mSize = {"tiny", "small", "average", "large", "huge"};
+	String mSize;
 	// Its age
 	int mAge;
 	// Its weight in pounds
@@ -31,7 +31,7 @@ abstract class Dog {
 	// Tracks how many times the dog has played
 	int mPlayCounter;
 
-	int dogSize = 0;
+	
 
 	/* Abstract Methods */
 
@@ -77,7 +77,7 @@ abstract class Dog {
 	 * @return the size of the dog
 	 */
 	String getSize() {
-		return mSize[dogSize];
+		return mSize;
 	}
 
 	/*
@@ -87,7 +87,7 @@ abstract class Dog {
 	 * @return nothing
 	 */
 	void setSize(String size) {
-		mSize[dogSize] = size;
+		mSize = size;
 	}
 
 	/*
@@ -201,8 +201,8 @@ abstract class Dog {
 	void changeSize(boolean grow) {
 		int sizeIndex = getSizeIndex();
 		sizeIndex = sizeIndex + (grow ? 1 : -1);
-		if (sizeIndex > 4) {
-			sizeIndex = 4;
+		if (sizeIndex > 3) {
+			sizeIndex = 3;
 		} else if (sizeIndex < 0) {
 			sizeIndex = 0;
 		}
@@ -238,10 +238,9 @@ abstract class Dog {
 			return 2;
 		} else if( "large".equals(size) ) {
 			return 3;
-		}  else if("huge".equals(size)){
+		} else if ("huge".equals(size)) {
 			return 4;
-		} 
-		else {
+		} else {
 			return 2;
 		}
 	}
@@ -256,8 +255,7 @@ abstract class Dog {
 			case 0: return "tiny";
 			case 1: return "small";
 			case 2: return "average";
-			case 3: return "large";
-			case 4: return "huge";
+			case 3: 
 			default: return "large";
 		}
 	}

@@ -1,11 +1,11 @@
-package colors;
+package com.bloc.securitypackages.apples;
 
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
 /************************************************/
 
-public class Red extends Color{
-	public Red() {
-		super(Red.class.getSimpleName(), 255, 0, 0);
-	}
+abstract class Apple extends Fruit {
+
+	abstract void bite();
+
 }

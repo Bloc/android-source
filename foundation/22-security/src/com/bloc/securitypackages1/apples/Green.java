@@ -1,12 +1,12 @@
-package apples;
-import colors.LimeGreen;
+package com.bloc.securitypackages.apples;
+
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
 /************************************************/
 
-public class Green extends Fruit {
+class Green extends Apple {
 
-	public Green() {
+	Green() {
 		super(Green.class.getSimpleName(), 230, new LimeGreen(), 0.21d);
 	}
 

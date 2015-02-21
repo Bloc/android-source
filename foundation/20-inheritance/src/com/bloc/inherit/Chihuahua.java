@@ -10,9 +10,16 @@ package com.bloc.inherit;
 class Chihuahua extends Dog{
     @Override
     void feed(){
-        if(++mFeedCounter ==5){
-        dogSize++;
-        getSize();
-        mFeedCounter = 0;}
+    	mFeedCounter++;
+
+    if (mFeedCounter < 5)
+    setSize("tiny");
+    else if(getSize().equals("tiny")&&mFeedCounter%5==0)
+    setSize("small");
+    else if (getSize().equals("small")&& mFeedCounter%5==0)
+    setSize("average");
+    else if (getSize().equals("average")&& mFeedCounter%5==0)
+    setSize("large");
+        
     }
 }

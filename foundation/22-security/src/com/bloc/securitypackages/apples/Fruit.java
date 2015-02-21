@@ -1,20 +1,20 @@
-package com.bloc.securitypackages;
-
+package apples; 
+import colors.*;
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
 /************************************************/
 
-public abstract class Fruit extends Object {
+public class Fruit extends Object {
 	// The name of the fruit
-	private String mName;
+	public String mName;
 	// Number of calories
-	private int mCalories;
+	public int mCalories;
 	// Color of the fruit
-	private Color mColor;
+	public Color mColor;
 	// Weight of the fruit, in pounds
-	private double mWeight;
+	public double mWeight;
 
-	Fruit() {
+	public Fruit() {
 		this("Apple");
 		// Default fruit
 	}
@@ -31,7 +31,7 @@ public abstract class Fruit extends Object {
 		this(name, calories, color, 0d);
 	}
 
-	Fruit(String name, int calories, Color color, double weight) {
+	public Fruit(String name, int calories, Color color, double weight) {
 		this.mName = name;
 		this.mCalories = calories;
 		this.mColor = color;
@@ -54,7 +54,7 @@ public abstract class Fruit extends Object {
 		mCalories = calories;
 	}
 
-	private Color getColor() {
+	public Color getColor() {
 		return mColor;
 	}
 
@@ -66,7 +66,7 @@ public abstract class Fruit extends Object {
 		return mWeight;
 	}
 
-	private void setWeight(double weight) {
+	public void setWeight(double weight) {
 		mWeight = weight;
 	}
 }

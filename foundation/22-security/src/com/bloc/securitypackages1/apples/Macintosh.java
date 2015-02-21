@@ -1,12 +1,12 @@
-package apples;
-import colors.*;
+package com.bloc.securitypackages.apples;
+
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
 /************************************************/
 
-public class Macintosh extends Fruit {
+class Macintosh extends Apple {
 
-	public Macintosh() {
+	Macintosh() {
 		super(Macintosh.class.getSimpleName(), 200, new Red(), 0.14d);
 	}
 

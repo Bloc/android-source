@@ -9,26 +9,25 @@ package com.bloc.inherit;
  *	to an additional, "huge" size after 3 meals.
 /************************************************/
 class GreatDane extends Dog{
-	  
-   
      
     @Override
     void feed(){
-      GreatDane greatDane = new GreatDane();
-        if(++mFeedCounter == 3){
-        dogSize ++;
-          // if ("large".equals(getSize())){
-          //   mSize = new String[]{"tiny","small","average","large","huge"};
-          //   dogSize++;
-          //   getSizeIndex("huge");
-          // }
-        getSize();
-          
-        mFeedCounter = 0;}
+      mFeedCounter++;
+        if (mFeedCounter < 3)
+    setSize("large");
+    else if(getSize().equals("large")&&mFeedCounter%3==0)
+    setSize("huge");
+  //   else if (getSize().equals("small")&& mFeedCounter%3==0)
+  //   setSize("average");
+  //   else if (getSize().equals("average")&& mFeedCounter%3==0)
+  //   setSize("large");
+  // else if (getSize().equals("large")&& mFeedCounter%3==0)
+  //   setSize("huge");
+      }
       }
 
       
-    }
+    
 
           
     

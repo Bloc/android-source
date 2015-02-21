@@ -10,9 +10,14 @@ package com.bloc.inherit;
 class GoldenRetriever extends Dog{
     @Override
     void play(){
-        if(++mPlayCounter == 3)
-        dogSize --;
-        getSize();
-        mPlayCounter = 0;
+    	mPlayCounter++;
+        if(mPlayCounter<3)
+        	setSize("large");
+        else if (getSize().equals("large") && mPlayCounter%3==0)
+        	setSize("average");
+        else if (getSize().equals("average") && mPlayCounter%3==0)
+			setSize("small");
+		else if (getSize().equals("small") && mPlayCounter%3==0)
+			setSize("tiny");
     }
 }

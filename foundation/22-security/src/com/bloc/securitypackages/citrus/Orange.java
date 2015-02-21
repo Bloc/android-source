@@ -1,11 +1,12 @@
-package com.bloc.securitypackages.citrus;
-
+package citrus;
+import apples.Fruit;
+import colors.*;
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
 /************************************************/
 
-class Orange extends Fruit {
-	Orange() {
-		super("Orange", 130, new Orange(), .21d);
+public class Orange extends Fruit {
+	public Orange() {
+		super("Orange", 130, new OrangeColor(), .21d);
 	}
 }

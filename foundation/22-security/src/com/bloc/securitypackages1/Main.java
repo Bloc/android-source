@@ -1,4 +1,4 @@
-
+ 
 
 /************************************************
  *	ASSIGNMENT:
@@ -6,9 +6,7 @@
 /************************************************/
 
 // e.g. import com.bloc.{your_package};
-import apples.*;
-import citrus.*;
-import colors.*;
+
 /************************************************
  *	DO NOT MODIFY BELOW THIS BLOCK
 /************************************************/
@@ -27,7 +25,7 @@ public class Main extends Object {
 		colors[1] = fruits[1].getColor();
 		colors[2] = fruits[2].getColor();
 		colors[3] = fruits[3].getColor();
-		colors[4] = new OrangeColor();
+		colors[4] = new Orange();
 
 		
 		System.out.println("/************************/");
