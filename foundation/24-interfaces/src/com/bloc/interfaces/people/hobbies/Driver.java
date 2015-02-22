@@ -13,7 +13,7 @@ public interface Driver {
 	 *
 	 * @return nothing
 	 */
-
+public void getInCar();
 	/*
 	 * startEngine
 	 *
@@ -21,7 +21,7 @@ public interface Driver {
 	 *
 	 * @return nothing
 	 */
-
+public void startEngine();
 	/*
 	 * driveFast
 	 *
@@ -29,4 +29,5 @@ public interface Driver {
 	 *
 	 * @return nothing
 	 */
+public void driveFast();
 }
