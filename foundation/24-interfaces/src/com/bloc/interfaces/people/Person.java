@@ -1,4 +1,4 @@
-package people;
+package com.bloc.interfaces.people;
 
 /************************************************
  *	YOU MAY NOT MODIFY THIS FILE
