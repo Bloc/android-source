@@ -1,17 +1,19 @@
 ## Inheritance
 
-Open your command prompt and `cd` into this README's directory (`foundation/20-inheritance`). Edit the following 3 files:
+Open your command prompt and `cd` to this README's directory (`foundation/20-inheritance`). Edit the following 3 files:
 
 * `Chihuahua.java`
-Extend the **Dog** class. Chihuahuas have a high metabolism, they only grow to a new size after being fed _5 times._
+Extend the `Dog` class. Chihuahuas have a high metabolism; they only grow to a new size after being fed *5 times*.
 
 * `GreatDane.java`
-Extend the **Dog** class. Great Danes can get rather large… Let's add another size category for them,`"huge"`. If a Great Dane is "large," after *3 additional meals* it will become "huge".
+Extend the `Dog` class. Great Danes can get rather large. Add another size category for them, “huge”. If a Great Dane is “large,” it becomes “huge” after *3 additional meals*.
 
 * `GoldenRetriever.java`
-Extend the **Dog** class. Golden Retrievers are incredibly athletic, they shrink by one size after _only 3 plays._
+Extend the `Dog` class. Golden Retrievers are incredibly athletic. They shrink by one size after *only 3 plays*.
 
-Make sure you name the classes _identically_ to their respective file names, otherwise the tests will fail. After you've finished, compile your Java code by running the following command:
+Make sure you name the classes *identically* to their respective file names. Otherwise, the tests will fail. Most importantly, the implementation of `Dog` differs from the previous assignment. Pay particular attention to the following four methods: `changeSize(boolean)`, `getSizeIndex()`, `getSizeIndex(String)` and `fromSizeIndex(int)`. These are helper methods that you may override.
+
+After you've finished, compile your Java code by running the following command:
 
 ```bash
 $ javac -d bin/ src/com/bloc/inherit/*
@@ -19,7 +21,7 @@ $ javac -d bin/ src/com/bloc/inherit/*
 
 Correct compilation errors as they are a result of modifications made by you.
 
-After it returns successfully, `cd` into the bin directory:
+After it returns successfully, `cd` to the bin directory:
 
 ```bash
 $ cd bin/

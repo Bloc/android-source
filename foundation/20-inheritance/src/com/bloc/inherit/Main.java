@@ -68,11 +68,6 @@ public class Main extends Object {
 			}
 
 			greatDane.feed(); // Third
-			if (greatDane.getSizeIndex() != 4) {
-				System.out.println("Your great dane should be at size index 4");
-				System.exit(1);
-			}
-
 			if (!"huge".equals(greatDane.getSize())) {
 				System.out.println("Your great dane should be \"huge\"");
 				System.exit(1);
@@ -83,7 +78,7 @@ public class Main extends Object {
 			greatDane.feed(); // Sixth
 
 			if (greatDane.getSizeIndex() != 4) {
-				System.out.println("Your great dane should still be at size index 4");
+				System.out.println("Your great dane should still be \"huge\"");
 				System.exit(1);
 			}
 
