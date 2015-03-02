@@ -151,11 +151,11 @@ public class Main extends Object {
 			setter.invoke(dog, arg);
 			Object result = getter.invoke(dog, new Object[0]);
 			if (result == null || !(result.getClass().isAssignableFrom(arg.getClass()))) {
-				System.out.println(getter.getName() + " returning incorrect type");
+				System.out.println("'" + getter.getName() + "' returning incorrect type");
 				System.exit(1);
 			}
 			if (!result.equals(arg)) {
-				System.out.println(setter.getName() + " may have a bug in it");
+				System.out.println("'" + setter.getName() + "' may have a bug in it");
 				System.exit(1);
 			}
 		} catch (Exception e) {
@@ -173,8 +173,7 @@ public class Main extends Object {
 		try {
 			method = Dog.class.getDeclaredMethod(name, params);
 		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println(name + " method missing");
+			System.out.println("'" + name + "' method is either missing or has an inaccurate signature");
 			System.exit(1);
 		}
 		return method;
