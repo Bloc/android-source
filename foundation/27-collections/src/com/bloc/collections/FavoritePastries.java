@@ -24,12 +24,13 @@ public class FavoritePastries {
 	 *	Use a HashMap to store the relationship
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
-
+    HashMap<Integer, List<Pastry>> mPastryRatings;
 
 	public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		mPastryRatings = new HashMap<Integer, List<Pastry>>();
 	}
 
 	/* 
@@ -51,6 +52,32 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		boolean pastryFound = false;
+        List<Pastry> mThisList = mPastryRatings.get(rating);
+
+        if (mThisList == null)
+        mThisList = new ArrayList<Pastry>();
+
+        for (Integer key : mPastryRatings.keySet()){
+        	List <Pastry> thisPastryList = mPastryRatings.get(key);
+
+            if (thisPastryList.contains(pastry) && rating != key){
+            	 thisPastryList.remove(pastry);
+            	 List<Pastry> newPastryList = mPastryRatings.get(rating);
+            	 newPastryList.add(pastry);
+            	 mPastryRatings.put(rating,newPastryList);
+            return;
+            }
+              else if (thisPastryList.contains(pastry)) 
+          pastryFound = true;
+           } 
+         if (pastryFound == false){
+          List<Pastry> thisPastryList = mPastryRatings.get(rating);
+         if(thisPastryList == null)
+          thisPastryList = new ArrayList<Pastry>();
+          thisPastryList.add(pastry);
+         mPastryRatings.put(rating, thisPastryList);
+       }
 	}
 
 	/* 
@@ -69,8 +96,13 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return false;
-	}
+		for (Integer key : mPastryRatings.keySet()){
+        List<Pastry> mThisList = mPastryRatings.get(key);
+        if (mThisList.contains(pastry))
+        return mThisList.remove(pastry);
+         }
+     return false;
+	  }
 
 	/* 
 	 * getRatingForPastry
@@ -90,7 +122,12 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return -1;
+		for (int key: mPastryRatings.keySet()){
+            List<Pastry> mThisPastryList = mPastryRatings.get(key);
+               if (mThisPastryList.contains(pastry))
+            return key;
+          }
+          return -1;
 	}
 
 	/* 
@@ -113,7 +150,11 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+		List<Pastry> thisPastryList = mPastryRatings.get(rating);
+        if(thisPastryList == null)
+        thisPastryList = new ArrayList<Pastry>();
+        Set<Pastry> pastries = new HashSet<>(thisPastryList);
+        return pastries;
 	}
 
 }
