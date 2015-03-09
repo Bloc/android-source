@@ -1,5 +1,6 @@
 package com.bloc.singletons;
 
+import java.util.*;
 /************************************************
  *	ASSIGNMENT:
  *	Populate this class with the defined methods.
@@ -95,12 +96,9 @@ public class Speakerphone extends Object {
 	 *	Implement the contains method
 	/************************************************/	
 	 public boolean contains(Listener listener){
-       boolean hasListener = false;
-       Iterator<Listener> listenIterator = mListener.iterator();
-       if(listenIterator.hasNext()){
-        hasListener = true;
-    }
-    return hasListener;
+     if (mListener.contains(listener))
+		return true;
+		else return false;
     }
 
 	/*
@@ -142,10 +140,9 @@ public class Speakerphone extends Object {
 	public void shoutMessage(Talker talker, Class<?> cls){
 	    
 	    if (Listener.class.isAssignableFrom(cls)){
-	    Iterator<Talker> talkIterator = mTalker.iterator();
-	    while(talkIterator.hasNext())
-	    talkIterator.next().getMessage();
-	   }
+        Iterator<Listener> listenIterator = mListener.iterator();
+        while(listenIterator.hasNext())
+        listenIterator.next().onMessageReceived(talker.getMessage());
+    }
 }
-
 }
