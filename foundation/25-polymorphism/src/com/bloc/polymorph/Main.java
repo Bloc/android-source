@@ -6,36 +6,36 @@ public class Main extends Object {
 
 	public static void main(String [] args) {
 
-		Dog dog = new Dog();
-		Cat cat = new Cat();
-		Bird bird = new Bird();
-		Snake snake = new Snake();
-		Tarantula tarantula = new Tarantula();
+		Pet dog = new Dog();
+		Pet cat = new Cat();
+		Pet bird = new Bird();
+		Pet snake = new Snake();
+		Pet tarantula = new Tarantula();
 
 		/************************************************
 	 	 *	ASSIGNMENT:
 	 	 *	Replace the operations below by employing polymorphism
 		/************************************************/
 
-		dog.feed();
-		dog.wash();
-		dog.exercise();
+		((Pet)dog).feed();
+		((Pet)dog).wash();
+		((Pet)dog).exercise();
 
-		cat.feed();
-		cat.wash();
-		cat.exercise();
+		((Pet)cat).feed();
+		((Pet)cat).wash();
+		((Pet)cat).exercise();
 
-		bird.feed();
-		bird.wash();
-		bird.exercise();
+		((Pet)bird).feed();
+		((Pet)bird).wash();
+		((Pet)bird).exercise();
 
-		snake.feed();
-		snake.wash();
-		snake.exercise();
+		((Pet)snake).feed();
+		((Pet)snake).wash();
+		((Pet)snake).exercise();
 
-		tarantula.feed();
-		tarantula.wash();
-		tarantula.exercise();
+		((Pet)tarantula).feed();
+		((Pet)tarantula).wash();
+		((Pet)tarantula).exercise();
 
 		/************************************************
 	 	 *	ASSIGNMENT:
