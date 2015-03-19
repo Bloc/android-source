@@ -37,7 +37,7 @@ public class DataSource {
                     "You won't believe how exciting this news story is, get ready to be blown away by its amazingness.",
                     "http://favoritefeed.net?story_id=an-incredible-news-story",
                     "http://rs1img.memecdn.com/silly-dog_o_511213.jpg",
-                    0, System.currentTimeMillis(), false, false));
+                    0, System.currentTimeMillis(), false, false, true));
         }
     }
 }
