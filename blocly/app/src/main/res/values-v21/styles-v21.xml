@@ -32,5 +32,7 @@
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">14sp</item>
         <item name="robotoFont">Regular</item>
+
+
     </style>
 </resources>
