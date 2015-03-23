@@ -4,34 +4,28 @@
     android:layout_height="match_parent"
     android:padding="16dp">
 
-   <TextView
-    android:id="@+id/tv_rss_item_feed_title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:text="The Gotham Gazette"
-    android:singleLine="true"
-    android:textSize="14sp"
-    android:textColor="@color/text_secondary"/>
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        style="@style/Headline"
+        android:id="@+id/tv_rss_item_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Joker Escapes: Will Batgirl Save the Day??"/>
 
-    <TextView
-    android:id="@+id/tv_rss_item_title"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="6dp"
-    android:layout_below="@+id/tv_rss_item_feed_title"
-    android:text="Joker Escapes: Will Batgirl Save the Day??"
-    android:textSize="18sp"
-    android:textColor="@color/text_primary"/>
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        style="@style/Caption"
+        android:id="@+id/tv_rss_item_feed_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rss_item_title"
+        android:layout_marginTop="8dp"
+        android:text="The Gotham Gazette"/>
 
-    <TextView
-    android:id="@+id/tv_rss_item_content"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/tv_rss_item_title"
-    android:text="Returning to Gotham City after a long absence, the Clown Prince of Crime is out to free Batman from his closest allies-his “\family.\” He targets Batgirl, putting Barbara face-to-face with her worst nightmare: the man who put her in a wheelchair."
-    android:layout_marginTop="8dp"
-    android:textSize="14sp"
-    android:textColor="@color/text_primary"/>
-
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        style="@style/Body1"
+        android:id="@+id/tv_rss_item_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rss_item_feed_title"
+        android:text="Returning to Gotham City after a long absence, the Clown Prince of Crime is out to free Batman from his closest allies-his “\family.\” He targets Batgirl, putting Barbara face-to-face with her worst nightmare: the man who put her in a wheelchair."
+        android:layout_marginTop="8dp"/>
 </RelativeLayout>
