@@ -2,13 +2,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@drawable/batgirl"
+    >
+
+    <FrameLayout
+        android:id="@+id/fl_rss_item_image_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp">
+
+        <ProgressBar
+            android:id="@+id/pb_rss_item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminateOnly="true"
+            android:indeterminate="true"/>
+
+        <ImageView
+            android:id="@+id/iv_rss_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:scaleType="centerCrop"/>
+
+    </FrameLayout>
 
     <io.bloc.android.blocly.ui.widget.RobotoTextView
         style="@style/Headline"
         android:id="@+id/tv_rss_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/fl_rss_item_image_header"
         android:text="Joker Escapes: Will Batgirl Save the Day??"/>
 
     <io.bloc.android.blocly.ui.widget.RobotoTextView
