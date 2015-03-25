@@ -18,6 +18,7 @@
         android:layout_gravity="center"
 
         android:indeterminateOnly="true"
+
         android:indeterminate="true"/>
 
     <ImageView
