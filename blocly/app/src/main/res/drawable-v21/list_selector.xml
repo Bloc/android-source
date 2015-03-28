@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="oval">
-            <solid android:color="@color/primary"/>
-            <size android:height="4dp"></size>
-            <size android:width="4dp"></size>
-        </shape>
-    </item>
-    <item android:state_pressed="false">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/windowBackground"/>
-            <size android:height="4dp"></size>
-            <size android:width="6dp"></size>
-        </shape>
-    </item>
-    </selector>
+
+    <ripple xmlns:android="http://schemas.android.com/apk/res/android"
+        android:color="@color/black_26">
+        <item android:drawable="?android:windowBackground"/>
+    </ripple>
