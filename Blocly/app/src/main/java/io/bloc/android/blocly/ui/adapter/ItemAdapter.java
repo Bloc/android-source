@@ -99,7 +99,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
           */
 
         @Override
-        public void onLoadingStarted(String imageUri, View view) {}
+        public void onLoadingStarted(String imageUri, View view) {
+        }
 
 
         @Override
@@ -139,10 +140,14 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
 
         @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                Log.v(TAG, "Checked changed to: " + isChecked);
+        public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+            if (compoundButton == (CheckBox) itemView.findViewById(R.id.cb_rss_item_check_mark)) {
+                Log.v(TAG, "Archived box checked changed to: " + isChecked);
+            } else if (compoundButton == (CheckBox) itemView.findViewById(R.id.cb_rss_item_favorite_star)) {
+                Log.v(TAG, "Favorites box checked changed to: " + isChecked);
+            }
         }
-    }
 
+    }
 }
 
