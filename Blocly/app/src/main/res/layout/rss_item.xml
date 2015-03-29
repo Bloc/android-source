@@ -35,6 +35,23 @@
         android:layout_below="@+id/fl_rss_item_image_header"
         android:text="Joker Escapes: Will Batgirl Save the Day??"/>
 
+    <CheckBox
+        android:id="@+id/cb_rss_item_check_mark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/btn_check_checkbox"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tv_rss_item_title"/>
+
+    <CheckBox
+        android:id="@+id/cb_rss_item_favorite_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/btn_star_checkbox"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/cb_rss_item_check_mark"/>
+
     <io.bloc.android.blocly.ui.widget.RobotoTextView
         style="@style/Caption"
         android:id="@+id/tv_rss_item_feed_title"
@@ -42,6 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_rss_item_title"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/cb_rss_item_check_mark"
         android:text="The Gotham Gazette"/>
 
     <io.bloc.android.blocly.ui.widget.RobotoTextView
@@ -51,5 +70,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_rss_item_feed_title"
         android:text="Returning to Gotham City after a long absence, the Clown Prince of Crime is out to free Batman from his closest allies-his “\family.\” He targets Batgirl, putting Barbara face-to-face with her worst nightmare: the man who put her in a wheelchair."
-        android:layout_marginTop="8dp"/>
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/cb_rss_item_check_mark"/>
+
 </RelativeLayout>
