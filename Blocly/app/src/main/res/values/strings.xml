@@ -3,4 +3,7 @@
     <string name="app_name">Blocly</string>
     <!-- Secondary Title, credits to Tony -->
     <string name="app_title">Cool News</string>
+    <string name="placeholder_headline">Joker Escapes: Will Batgirl Save the Day??</string>
+    <string name="placeholder_content">Returning to Gotham City after a long absence, the Clown Prince of Crime is out to free Batman from his closest allies-his “family.” He targets Batgirl, putting Barbara face-to-face with her worst nightmare: the man who put her in a wheelchair.</string>
+    <string name="placeholder_newssource">The Gotham Gazette</string>
 </resources>
