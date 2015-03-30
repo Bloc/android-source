@@ -88,22 +88,63 @@
         android:orientation="vertical"
         android:visibility="gone">
 
-    <io.bloc.android.blocly.ui.widget.RobotoTextView
-        style="@style/Body1"
-        android:id="@+id/tv_rss_item_content_full"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <!--<io.bloc.android.blocly.ui.widget.RobotoTextView-->
+        <!--style="@style/Body1"-->
+        <!--android:id="@+id/tv_rss_item_content_full"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"/>-->
 
-    <io.bloc.android.blocly.ui.widget.RobotoTextView
-        style="@style/Button"
-        android:id="@+id/tv_rss_item_visit_site"
-        android:text="visit site"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:paddingTop="8dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="8dp"/>
+    <!--<io.bloc.android.blocly.ui.widget.RobotoTextView-->
+        <!--style="@style/Button"-->
+        <!--android:id="@+id/tv_rss_item_visit_site"-->
+        <!--android:text="visit site"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:paddingTop="8dp"-->
+        <!--android:paddingRight="8dp"-->
+        <!--android:paddingBottom="8dp"/>-->
+
+        <!--<io.bloc.android.blocly.ui.widget.RobotoTextView-->
+            <!--style="@style/Button"-->
+            <!--android:id="@+id/tv_rss_item_visit_site"-->
+            <!--android:text="visit site"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:paddingTop="8dp"-->
+            <!--android:paddingRight="8dp"-->
+            <!--android:paddingBottom="8dp"/>-->
+
+        <io.bloc.android.blocly.ui.widget.RobotoButton
+            style="@style/Body1"
+            android:id="@+id/tv_rss_item_content_full"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <io.bloc.android.blocly.ui.widget.RobotoButton
+            style="@style/Button"
+            android:id="@+id/tv_rss_item_visit_site"
+            android:text="Renee's button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"/>
+
+        <!--<io.bloc.android.blocly.ui.widget.RobotoButton-->
+            <!--style="@style/Button"-->
+            <!--android:id="@+id/tv_rss_item_visit_site"-->
+            <!--android:text="new button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:paddingTop="8dp"-->
+            <!--android:paddingRight="8dp"-->
+            <!--android:paddingBottom="8dp"/>-->
+
+
 </LinearLayout>
 
 </RelativeLayout>

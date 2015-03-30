@@ -5,12 +5,12 @@
     <selector
         xmlns:android="http://schemas.android.com/apk/res/android">
         <item android:state_pressed="true">
-            <shape android:shape="rectangle">
+            <shape android:shape="oval">
                 <solid android:color="@color/primary"/>
             </shape>
         </item>
         <item android:drawable="?android:windowBackground">
-            <shape android:shape="oval">
+            <shape android:shape="rectangle">
                 <solid android:color="@color/white_primary_28"/>
             </shape>
         </item>

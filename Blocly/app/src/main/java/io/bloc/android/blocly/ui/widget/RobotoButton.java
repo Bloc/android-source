@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.widget.TextView;
+import android.widget.Button;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -12,22 +12,22 @@ import java.util.Map;
 import io.bloc.android.blocly.R;
 
 /**
- * Created by ReneeCS on 3/22/15.
+ * Created by ReneeCS on 3/30/15.
  */
-public class RobotoTextView extends TextView {
+public class RobotoButton extends Button {
 
     private static Map<String, Typeface> sTypefaces = new HashMap<String, Typeface>();
 
-    public RobotoTextView(Context context) {
+    public RobotoButton(Context context) {
         super(context);
     }
 
-    public RobotoTextView(Context context, AttributeSet attrs) {
+    public RobotoButton(Context context, AttributeSet attrs) {
         super(context, attrs);
         extractFont(attrs);
     }
 
-    public RobotoTextView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public RobotoButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         extractFont(attrs);
     }
@@ -57,5 +57,4 @@ public class RobotoTextView extends TextView {
         }
         setTypeface(robotoTypeface);
     }
-
 }
