@@ -1,27 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_activity_blocly"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!--<TextView-->
-        <!--android:id="@+id/appTitle"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:text="Hello, world! @voiceofrae"-->
-        <!--android:textSize="26sp"-->
-        <!--android:gravity="center"-->
-        <!--android:layout_gravity="center"/>-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_activity_blocly"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/rss_feed_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tb_activity_blocly"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"/>
 
-</LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_activity_blocly"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="match_parent"
+            android:text="Welcome to the Drawer, We've Got Fun and Games!"
+            android:textSize="32sp"
+            android:gravity="center"
+            android:background="?android:windowBackground"
+            android:layout_gravity="left"/>
+
+        <ImageView
+            android:id="@+id/rss_feed_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"/>
+
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
