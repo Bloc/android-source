@@ -23,10 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
 
+    </LinearLayout>
+
         <TextView
-            android:layout_width="280dp"
+            android:layout_width="220dp"
             android:layout_height="match_parent"
-            android:text="Welcome to the Drawer, We've Got Fun and Games!"
+            android:text="Batgirl's Drawer"
+            android:textColor="@color/primary"
             android:textSize="32sp"
             android:gravity="center"
             android:background="?android:windowBackground"
@@ -38,6 +41,5 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"/>
 
-    </LinearLayout>
 
 </android.support.v4.widget.DrawerLayout>

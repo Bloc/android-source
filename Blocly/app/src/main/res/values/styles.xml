@@ -5,10 +5,8 @@
     <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Window background -->
         <item name="android:windowBackground">@color/windowBackground</item>
-
         <!-- DrawerArrowStyle -->
         <item name="drawerArrowStyle">@style/DrawerArrow</item>
-
         <!-- AppCompat Colors -->
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
