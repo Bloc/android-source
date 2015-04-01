@@ -1,17 +1,49 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Material">
-        <!-- Customize your theme here. -->
-        <!-- Main theme colors -->
-        <!--   your app's branding color (for the app bar) -->
-        <item name="android:colorPrimary">@color/primary</item>
-        <!--   darker variant of colorPrimary (for status bar, contextual app bars) -->
-        <item name="android:colorPrimaryDark">@color/primary_dark</item>
-        <!--   theme UI controls like checkboxes and text fields -->
-        <item name="android:colorAccent">@color/accent</item>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+
         <!-- Window Background -->
         <item name="android:windowBackground">@color/windowBackground</item>
+        <!-- DrawerArrowStyle -->
+        <item name="drawerArrowStyle">@style/DrawerArrow</item>
+        <!-- AppCompat Colors -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/accent</item>
     </style>
 
+    <style name="DrawerArrow" parent="Base.Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/actionBarItems</item>
+    </style>
+    <style name="Headline">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="robotoFont"> BlackItalic</item>
+    </style>
+
+    <style name="Caption">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="robotoStyle"> Light</item>
+        <item name = "condensed">true</item>
+    </style>
+
+    <style name="Body1">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="robotoFont">Regular</item>
+    </style>
+
+    <style name="Button">
+
+        <item name="android:textColor">@drawable/btn_text_drawable</item>
+
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="robotoFont">Medium</item>
+    </style>
 </resources>
