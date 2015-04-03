@@ -39,11 +39,17 @@
     </style>
 
     <style name="Button">
-
         <item name="android:textColor">@drawable/btn_text_drawable</item>
-
         <item name="android:textSize">14sp</item>
         <item name="android:textAllCaps">true</item>
         <item name="robotoFont">Medium</item>
     </style>
+    <style name ="NavigationItem">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:lines">1</item>
+        <item name="robotoFont">Medium</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>
