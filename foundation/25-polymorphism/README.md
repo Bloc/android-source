@@ -1,5 +1,7 @@
 ## Polymorphism
 
+>This assignment compiles and runs without additional work. However, the assignment requires you to [refactor](http://en.wikipedia.org/wiki/Code_refactoring) the existing code to use the principles introduced in its respective checkpoint.
+
 Open your command prompt and `cd` into this README's directory (`foundation/25-polymorphism`). Edit `Main.java` and re-do the work indicated using polymorphism.
 
 After you've finished, compile your code by running the following command:

@@ -1,5 +1,7 @@
 ## Statics
 
+>This assignment compiles and runs without additional work. However, the assignment requires you to [refactor](http://en.wikipedia.org/wiki/Code_refactoring) the existing code to use the principles introduced in its respective checkpoint.
+
 Open your command prompt and `cd` into this README's directory (`foundation/23-statics`). Convert the source code in this project to use a static copy of **PowerSupply**. You will need to modify `Appliance.java`.
 
 After you've finished, compile your code by running the following command:

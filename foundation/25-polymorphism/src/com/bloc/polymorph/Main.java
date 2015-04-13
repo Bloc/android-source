@@ -51,8 +51,12 @@ public class Main extends Object {
 		System.out.println("/************************/");
 		System.out.println("/*                      */");
 		System.out.println("/*                      */");
-		System.out.println("/*   If you see this,   */");
-		System.out.println("/*   congratulations!   */");
+		System.out.println("/*  If you see this,    */");
+		System.out.println("/*  it only means that  */");
+		System.out.println("/*  the program ran     */");
+		System.out.println("/*  successfully. It    */");
+		System.out.println("/*  may require         */");
+		System.out.println("/*  additional work.    */");
 		System.out.println("/*                      */");
 		System.out.println("/*                      */");
 		System.out.println("/************************/\n");
