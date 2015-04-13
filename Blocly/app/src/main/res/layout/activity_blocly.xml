@@ -25,13 +25,11 @@
 
     </LinearLayout>
 
-        <TextView
+    <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_nav_activity_blocly"
             android:layout_width="220dp"
             android:layout_height="match_parent"
-            android:text="Batgirl's Drawer"
             android:textColor="@color/primary"
-            android:textSize="32sp"
-            android:gravity="center"
             android:background="?android:windowBackground"
             android:layout_gravity="left"/>
 
