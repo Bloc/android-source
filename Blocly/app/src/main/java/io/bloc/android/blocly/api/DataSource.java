@@ -7,7 +7,7 @@ import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
-import io.bloc.android.blocly.api.network.NetworkRequest;
+import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
 
 /**
  * Created by ReneeCS on 3/17/15.
@@ -25,7 +25,7 @@ public class DataSource {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                new NetworkRequest.GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
+                new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
             }
         }).start();
     }
