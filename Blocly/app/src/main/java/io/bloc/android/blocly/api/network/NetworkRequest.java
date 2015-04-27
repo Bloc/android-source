@@ -45,4 +45,6 @@ public abstract class NetworkRequest<Result> {
         return inputStream;
     }
 
+
+
 }
