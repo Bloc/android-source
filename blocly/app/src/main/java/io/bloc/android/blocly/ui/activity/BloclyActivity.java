@@ -31,8 +31,8 @@ public class BloclyActivity extends ActionBarActivity
 implements
     NavigationDrawerAdapter.NavigationDrawerAdapterDelegate,
     ItemAdapter.DataSource,
-    ItemAdapter.Delegate
-{
+    ItemAdapter.Delegate {
+    private RecyclerView recyclerView;
     private ItemAdapter itemAdapter;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
@@ -40,102 +40,104 @@ implements
     private Menu menu;
     private View overflowButton;
 
-@Override
-    protected void onCreate(Bundle savedInstanceState){
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_blocly);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_blocly);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_activity_blocly);
         setSupportActionBar(toolbar);
 
-    itemAdapter = new ItemAdapter();
-    itemAdapter.setDataSource(this);
-    itemAdapter.setDelegate(this);
-    navigationDrawerAdapter = new NavigationDrawerAdapter();
-    navigationDrawerAdapter.setDelegate(this);
-    RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
-    RecyclerView navigationRecyclerView = (RecyclerView) findViewById((R.id.rv_nav_activity_blocly));
+        itemAdapter = new ItemAdapter();
+        itemAdapter.setDataSource(this);
+        itemAdapter.setDelegate(this);
+        navigationDrawerAdapter = new NavigationDrawerAdapter();
+        navigationDrawerAdapter.setDelegate(this);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
+        RecyclerView navigationRecyclerView = (RecyclerView) findViewById((R.id.rv_nav_activity_blocly));
 // #12
-    recyclerView.setLayoutManager(new LinearLayoutManager(this));
-    recyclerView.setItemAnimator(new DefaultItemAnimator());
-    recyclerView.setAdapter(itemAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(itemAdapter);
 
-    navigationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-    navigationRecyclerView.setItemAnimator(new DefaultItemAnimator());
-    navigationRecyclerView.setAdapter(navigationDrawerAdapter);
+        navigationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        navigationRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        navigationRecyclerView.setAdapter(navigationDrawerAdapter);
 
-    getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-    drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
 
-    drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0,0){
-        @Override
-    public void onDrawerClosed(View drawerView){
-            super.onDrawerClosed(drawerView);
-            if (overflowButton != null) {
-                overflowButton.setAlpha(1f);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                if (overflowButton != null) {
+                    overflowButton.setAlpha(1f);
 // #7c
-                overflowButton.setEnabled(true);
-            }
-            if (menu == null) {
-                return;
-            }
-            for (int i = 0; i < menu.size(); i++) {
-                MenuItem item = menu.getItem(i);
+                    overflowButton.setEnabled(true);
+                }
+                if (menu == null) {
+                    return;
+                }
+                for (int i = 0; i < menu.size(); i++) {
+                    MenuItem item = menu.getItem(i);
 // #7d
-                item.setEnabled(true);
-                Drawable icon = item.getIcon();
-                if (icon != null) {
-                    icon.setAlpha(255);
+                    item.setEnabled(true);
+                    Drawable icon = item.getIcon();
+                    if (icon != null) {
+                        icon.setAlpha(255);
+                    }
                 }
             }
-        }
-        @Override
-        public void onDrawerOpened(View drawerView) {
-            super.onDrawerOpened(drawerView);
-            if (overflowButton != null) {
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                if (overflowButton != null) {
 // #7a
-                overflowButton.setEnabled(false);
-            }
-            if (menu == null) {
-                return;
-            }
-            for (int i = 0; i < menu.size(); i++) {
+                    overflowButton.setEnabled(false);
+                }
+                if (menu == null) {
+                    return;
+                }
+                for (int i = 0; i < menu.size(); i++) {
 // #7b
-                menu.getItem(i).setEnabled(false);
+                    menu.getItem(i).setEnabled(false);
+                }
             }
-        }
-        @Override
-        public void onDrawerSlide(View drawerView, float slideOffset) {
-            super.onDrawerSlide(drawerView, slideOffset);
-            if (overflowButton == null) {
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                if (overflowButton == null) {
 // #8
-                ArrayList<View> foundViews = new ArrayList<View>();
-                getWindow().getDecorView().findViewsWithText(foundViews,
-                        getString(R.string.abc_action_menu_overflow_description),
-                        View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
-                if (foundViews.size() > 0) {
-                    overflowButton = foundViews.get(0);
+                    ArrayList<View> foundViews = new ArrayList<View>();
+                    getWindow().getDecorView().findViewsWithText(foundViews,
+                            getString(R.string.abc_action_menu_overflow_description),
+                            View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
+                    if (foundViews.size() > 0) {
+                        overflowButton = foundViews.get(0);
+                    }
                 }
-            }
 // #9a
-            if (overflowButton != null) {
-                overflowButton.setAlpha(1f - slideOffset);
-            }
-            if (menu == null) {
-                return;
-            }
-            for (int i = 0; i < menu.size(); i++) {
-                MenuItem item = menu.getItem(i);
-                Drawable icon = item.getIcon();
-                if (icon != null) {
+                if (overflowButton != null) {
+                    overflowButton.setAlpha(1f - slideOffset);
+                }
+                if (menu == null) {
+                    return;
+                }
+                for (int i = 0; i < menu.size(); i++) {
+                    MenuItem item = menu.getItem(i);
+                    Drawable icon = item.getIcon();
+                    if (icon != null) {
 // #9b
-                    icon.setAlpha((int) ((1f - slideOffset) * 255));
+                        icon.setAlpha((int) ((1f - slideOffset) * 255));
+                    }
                 }
             }
-        }
-    };
-    drawerLayout.setDrawerListener(drawerToggle);
-}
+        };
+        drawerLayout.setDrawerListener(drawerToggle);
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -144,19 +146,20 @@ implements
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig){
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if (drawerToggle.onOptionsItemSelected(item)){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(item);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -164,15 +167,17 @@ implements
         this.menu = menu;
         return super.onCreateOptionsMenu(menu);
     }
-     /*
-      * NavigationDrawerAdapterDelegate
-      */
+
+    /*
+     * NavigationDrawerAdapterDelegate
+     */
     @Override
     public void didSelectNavigationOption(NavigationDrawerAdapter adapter, NavigationDrawerAdapter.NavigationOption
-                                          navigationOption){
+            navigationOption) {
         drawerLayout.closeDrawers();
         Toast.makeText(this, "Show the " + navigationOption.name(), Toast.LENGTH_SHORT).show();
     }
+
     @Override
     public void didSelectFeed(NavigationDrawerAdapter adapter, RssFeed rssFeed) {
         drawerLayout.closeDrawers();
@@ -207,19 +212,42 @@ implements
         int positionToContract = -1;
 
         if (itemAdapter.getExpandedItem() != null) {
-            positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
-            itemAdapter.setExpandedItem(null);
-        } else {
-            itemAdapter.setExpandedItem(null);
+            positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
+
+            View viewToContract = recyclerView.getLayoutManager().findViewByPosition(positionToContract);
+
+            if (viewToContract == null) {
+                positionToContract = -1;
+            }
         }
-        if (positionToContract > -1) {
+
+            if (itemAdapter.getExpandedItem() != rssItem) {
+                positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
+                itemAdapter.setExpandedItem(rssItem);
+            } else {
+                itemAdapter.setExpandedItem(null);
+            }
+            if (positionToContract > -1) {
 // #5a
-            itemAdapter.notifyItemChanged(positionToContract);
-        }
-        if (positionToExpand > -1) {
+                itemAdapter.notifyItemChanged(positionToContract);
+            }
+            if (positionToExpand > -1) {
 // #5b
-            itemAdapter.notifyItemChanged(positionToExpand);
+                itemAdapter.notifyItemChanged(positionToExpand);
+            } else {
+// #1
+                return;
+            }
+
+        int lessToScroll = 0;
+        if (positionToContract > -1 && positionToContract < positionToExpand) {
+            lessToScroll = itemAdapter.getExpandedItemHeight() - itemAdapter.getCollapsedItemHeight();
+        }
+// #2
+            View viewToExpand = recyclerView.getLayoutManager().findViewByPosition(positionToExpand);
+// #3
+            recyclerView.smoothScrollBy(0, viewToExpand.getTop()- lessToScroll);
         }
     }
-}
+
 
