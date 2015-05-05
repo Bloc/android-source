@@ -45,7 +45,7 @@ public class Loops extends Object {
 			*	This is known as an in-line conditional.
 			* 	Learn more here: http://www.cafeaulait.org/course/week2/43.html
 			/************************************************/
-			//boolean[] someBools = {true, false, true, true, false, true, false, false};
+			//boolean[] someBools = {true, false, true, true, false, true, false, false};/
 			//********** Starts Here ************************/
 			for (int i = 0; i < someBools.length; i++) {
 				numArray[i] = !someBools[i] ? 1 : 0;
