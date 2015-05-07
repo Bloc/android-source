@@ -12,12 +12,12 @@ public class WorstPractices extends Object {
 	/************************************************/
 
 	public static void main(String [] args) {
-		int MAGIC_NUMBER = WorstPractices.animals(false);
-			MAGIC_NUMBER *= 5;
-	if (MAGIC_NUMBER > 18) {
-		while(MAGIC_NUMBER > 0)
+		int MagicNumber = WorstPractices.animals(false);
+		MagicNumber *= 5;
+	if (MagicNumber > 18) {
+		while(MagicNumber > 0)
 	{
-	MAGIC_NUMBER--;
+			MagicNumber--;
 			}
 		}
 	}	
