@@ -8,18 +8,24 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import io.bloc.android.blocly.api.model.RssItem;
+
 /**
  * Created by ReneeCS on 4/13/15.
  */
 
-public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkRequest.FeedResponse>> {
+public class GetFeedsNetworkRequest extends NetworkRequest<ArrayList<RssItem>> {
 
     public static final int ERROR_PARSING = 3;
 
@@ -33,6 +39,7 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
     private static final String XML_ATTRIBUTE_URL = "url";
     private static final String XML_ATTRIBUTE_TYPE = "type";
 
+
     String[] feedUrls;
 
     public GetFeedsNetworkRequest(String... feedUrls) {
@@ -40,8 +47,8 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
     }
 
     @Override
-    public List<FeedResponse> performRequest() {
-        List<FeedResponse> responseFeeds = new ArrayList<FeedResponse>(feedUrls.length);
+    public ArrayList<RssItem> performRequest() {
+        ArrayList<RssItem> responseFeeds = new ArrayList<>(feedUrls.length);
         for (String feedUrlString : feedUrls) {
             InputStream inputStream = openStream(feedUrlString);
             if (inputStream == null) {
@@ -91,8 +98,19 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
                                 itemGUID, itemPubDate, itemEnclosureURL, itemEnclosureMIMEType));
                     }
 
-                    responseFeeds.add(new FeedResponse(feedUrlString, channelTitle, channelURL, channelDescription, responseItems));
-                    inputStream.close();
+                for (ItemResponse response: responseItems) {
+
+                    SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss z", Locale.ENGLISH);
+                    Date date = format.parse(response.itemPubDate);
+
+                    // date format matches 27 Apr 2015 20:17:41 GMT
+                    // For reference - RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, long datePublished, boolean read, boolean favorite, boolean archived)
+
+                    responseFeeds.add(new RssItem(response.itemGUID, response.itemTitle, response.itemDescription, response.itemURL, response.itemEnclosureURL,
+                           00, date.getTime(), false, false, false));
+
+                }
+                inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
                 setErrorCode(ERROR_IO);
@@ -105,6 +123,8 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
                 e.printStackTrace();
                 setErrorCode(ERROR_PARSING);
                 return null;
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
         }
         return responseFeeds;
@@ -155,6 +175,17 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
                 this.itemEnclosureURL = itemEnclosureURL;
                 this.itemEnclosureMIMEType = itemEnclosureMIMEType;
             }
+
+            public RssItem toFeedItem () throws ParseException {
+
+                SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss z", Locale.ENGLISH);
+                Date date = format.parse(this.itemPubDate);
+
+                RssItem feedItem = new RssItem(this.itemGUID, this.itemTitle, this.itemDescription, this.itemURL, "", 00, date.getTime(), false, false, false);
+
+                return feedItem;
+            };
+
         }
 
 }

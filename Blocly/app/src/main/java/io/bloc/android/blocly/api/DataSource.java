@@ -20,12 +20,12 @@ public class DataSource {
     public DataSource() {
         feeds = new ArrayList<RssFeed>();
         items = new ArrayList<RssItem>();
-        createFakeData();
+//        createFakeData();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
+                items = new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
             }
         }).start();
     }
@@ -37,6 +37,8 @@ public class DataSource {
     public List<RssItem> getItems() {
         return items;
     }
+
+
 
     void createFakeData() {
         feeds.add(new RssFeed("DC News Feed",
