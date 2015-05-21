@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.bloc.android.blocly.BloclyApplication;
+import io.bloc.android.blocly.BuildConfig;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
@@ -55,7 +56,6 @@ public class DataSource {
     }
 
 
-
     void createFakeData() {
         feeds.add(new RssFeed("DC News Feed",
                 "This feed is just incredible, I can't even begin to tell you…",
@@ -68,6 +68,12 @@ public class DataSource {
                     "http://rs1img.memecdn.com/silly-dog_o_511213.jpg",
                     0, System.currentTimeMillis(), false, false, false));
         }
+    }
+
+    void saveData() { // creating void save method to check what's already in the table
+        databaseOpenHelper.getWritableDatabase().rawQuery("SELECT COUNT(id) FROM blocly_db WHERE id = i;", new String[items]);
+        // rawQuery is formatted properly - figure out what the selectionArgs should be!
+        databaseOpenHelper.getWritableDatabase().insert(); // intended end result
     }
 
 }

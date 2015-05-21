@@ -9,6 +9,7 @@ public class RssFeedTable extends Table {
     private static final String COLUMN_TITLE = "title";
     private static final String COLUMN_DESCRIPTION = "description";
     private static final String COLUMN_FEED_URL = "feed_url";
+//    private static final String AUTHOR = "author"; // example
 
     @Override
     public String getName() {
@@ -22,6 +23,8 @@ public class RssFeedTable extends Table {
                 + COLUMN_LINK + " TEXT,"
                 + COLUMN_TITLE + " TEXT,"
                 + COLUMN_DESCRIPTION + " TEXT,"
+//                + AUTHOR + " TEXT," // example
                 + COLUMN_FEED_URL + " TEXT)";
+
     }
 }
