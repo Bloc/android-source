@@ -30,6 +30,10 @@ public abstract class Table {
         return readonlyDatabase.query(true, getName(), null, COLUMN_ID + " = ?",
                 new String[] {String.valueOf(rowId)}, null, null, null, null);
     }
+
+    public static long getRowId(Cursor cursor){
+        return getLong(cursor, COLUMN_ID);
+    }
     // #1a
     protected static String getString(Cursor cursor, String column) {
         int columnIndex = cursor.getColumnIndex(column);
