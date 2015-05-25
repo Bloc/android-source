@@ -1,5 +1,7 @@
 package io.bloc.android.blocly.api.network;
 
+import org.jsoup.Jsoup;
+import org.jsoup.select.Elements;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
@@ -28,6 +30,8 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
     private static final String XML_TAG_ITEM = "item";
     private static final String XML_TAG_PUB_DATE = "pubDate";
     private static final String XML_TAG_GUID = "guid";
+    private static final String XML_TAG_CONTENT_ENCODED = "content:encoded";
+    private static final String XML_TAG_MEDIA_CONTENT = "media:content";
     private static final String XML_TAG_ENCLOSURE = "enclosure";
     private static final String XML_ATTRIBUTE_URL = "url";
     private static final String XML_ATTRIBUTE_TYPE = "type";
@@ -64,6 +68,10 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
 // #7
                     String itemURL = null;
                     String itemTitle = null;
+                    String itemImageURL = null;
+                    String itemContentEncodedText = null;
+                    String itemMediaURL = null;
+                    String itemMediaMIMEType = null;
                     String itemDescription = null;
                     String itemGUID = null;
                     String itemPubDate = null;
@@ -82,9 +90,10 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
                         } else if (XML_TAG_TITLE.equalsIgnoreCase(tag)) {
                             itemTitle = tagNode.getTextContent();
                         } else if (XML_TAG_DESCRIPTION.equalsIgnoreCase(tag)) {
-                            itemDescription = tagNode.getTextContent();
+                            String descriptionText = tagNode.getTextContent();
+                            itemImageURL = parseImageFromHTML(descriptionText);
+                            itemDescription = parseTextFromHTML(descriptionText);
                         } else if (XML_TAG_ENCLOSURE.equalsIgnoreCase(tag)) {
-// #10
                             NamedNodeMap enclosureAttributes = tagNode.getAttributes();
                             itemEnclosureURL = enclosureAttributes.getNamedItem(XML_ATTRIBUTE_URL).getTextContent();
                             itemEnclosureMIMEType = enclosureAttributes.getNamedItem(XML_ATTRIBUTE_TYPE).getTextContent();
@@ -92,7 +101,24 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
                             itemPubDate = tagNode.getTextContent();
                         } else if (XML_TAG_GUID.equalsIgnoreCase(tag)) {
                             itemGUID = tagNode.getTextContent();
+                        } else if (XML_TAG_CONTENT_ENCODED.equalsIgnoreCase(tag)) {
+                        String contentEncoded = tagNode.getTextContent();
+                        itemImageURL = parseImageFromHTML(contentEncoded);
+                        itemContentEncodedText = parseTextFromHTML(contentEncoded);
+                    } else if (XML_TAG_MEDIA_CONTENT.equalsIgnoreCase(tag)){
+                            NamedNodeMap mediaAttributes = tagNode.getAttributes();
+                            itemMediaURL = mediaAttributes.getNamedItem(XML_ATTRIBUTE_URL).getTextContent();
+                            itemMediaMIMEType = mediaAttributes.getNamedItem(XML_ATTRIBUTE_TYPE).getTextContent();}
                         }
+                    if (itemEnclosureURL == null) {
+                        itemEnclosureURL = itemImageURL;
+                    }
+                    if (itemEnclosureURL == null) {
+                        itemEnclosureURL = itemMediaURL;
+                        itemEnclosureMIMEType = itemMediaMIMEType;
+                    }
+                    if (itemContentEncodedText != null){
+                        itemDescription = itemContentEncodedText;
                     }
                     responseItems.add(new ItemResponse(itemURL, itemTitle, itemDescription,
                             itemGUID, itemPubDate, itemEnclosureURL, itemEnclosureMIMEType));
@@ -122,6 +148,21 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
         }
         return null;
     }
+
+    static String parseTextFromHTML(String htmlString) {
+        org.jsoup.nodes.Document document = Jsoup.parse(htmlString);
+        return document.body().text();
+    }
+
+    static String parseImageFromHTML(String htmlString) {
+        org.jsoup.nodes.Document document = Jsoup.parse(htmlString);
+        Elements imgElements = document.select("img");
+        if (imgElements.isEmpty()) {
+            return null;
+        }
+        return imgElements.attr("src");
+    }
+
     public static class FeedResponse {
         public final String channelFeedURL;
         public final String channelTitle;
