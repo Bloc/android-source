@@ -41,12 +41,12 @@ public class Main extends Object {
 				System.exit(1);
 			}
 			if (nirvana.mName == null || !nirvana.mName.startsWith(kurtCobain.mFirstName)) {
-				System.out.println("Your first Ensemble constructor failed to create a name for the Ensemble");
+				System.out.println("Your first Ensemble constructor failed to create a name for the Ensemble (expected: 'Kurt Cobain')");
 				System.exit(1);	
 			}
 			nirvana = (Ensemble) ensembleConstructor2.newInstance("Nirvana", (Object) new Artist[] {kurtCobain, daveGrohl, kristNovoselic, jasonEverman});
 			if ("Nirvana".equals(nirvana.mName) == false) {
-				System.out.println("Your second Ensemble constructor failed to assign the name");
+				System.out.println("Your second Ensemble constructor failed to assign the name (expected: 'Nirvana')");
 				System.exit(1);
 			}
 		} catch (Exception e) {

@@ -10,7 +10,9 @@ class Ensemble extends Object {
 	/*
 	 * Ensemble
 	 *
-	 * This constructor takes in a variable length of Artist objects
+	 * This constructor takes in a variable length of Artist objects.
+	 * This is an overloaded constructor that calls down to the complete
+	 * constructor below.
 	 *
 	 * @param artists variable length artists (Artist... artists)
 	 */

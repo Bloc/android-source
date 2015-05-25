@@ -11,7 +11,7 @@ class Song extends Object {
 	/*
 	 * Song
 	 *
-	 * Defailt Constructor
+	 * Default Constructor
 	 * Side-effects: Assigns some default ensemble, title and
 	 *				 and year of your choosing
 	 */
