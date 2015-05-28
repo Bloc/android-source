@@ -1,5 +1,7 @@
 package io.bloc.android.blocly.api;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
@@ -71,9 +73,23 @@ public class DataSource {
     }
 
     void saveData() { // creating void save method to check what's already in the table
-        databaseOpenHelper.getWritableDatabase().rawQuery("SELECT COUNT(id) FROM blocly_db WHERE id = i;", new String[items]);
-        // rawQuery is formatted properly - figure out what the selectionArgs should be!
-        databaseOpenHelper.getWritableDatabase().insert(); // intended end result
+        for (RssItem item: items) { // loops through every RssItem
+            Cursor databaseSoftware = databaseOpenHelper.getWritableDatabase().rawQuery("SELECT COUNT(id) FROM blocly_db WHERE id = " + item.getGuid() + ";", new String[0]);
+            if (databaseSoftware.getCount() == 0) { // if the item does not exist
+                ContentValues insertValues = new ContentValues();
+                insertValues.put("link", item.getUrl());
+                insertValues.put("title", item.getTitle());
+                insertValues.put("description", item.getDescription());
+                insertValues.put("guid", item.getGuid());
+                insertValues.put("pub_date", item.getDatePublished());
+                insertValues.put("enclosure", 0); // doesn't seem like we need or use this
+                insertValues.put("mime_type", 0); // doesn't seem like we need or use this
+                insertValues.put("rss_feed", item.getRssFeedId());
+                insertValues.put("is_favorite", item.isFavorite());
+                insertValues.put("is_archived", item.isArchived()); // items correspond to RssItemTable values
+                databaseOpenHelper.getWritableDatabase().insert("RssItemTable", null, insertValues);
+            }
+        }
     }
 
 }
