@@ -25,7 +25,7 @@ import io.bloc.android.blocly.api.model.RssItem;
  * Created by ReneeCS on 4/13/15.
  */
 
-public class GetFeedsNetworkRequest extends NetworkRequest<ArrayList<RssItem>> {
+public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkRequest.FeedResponse>> {
 
     public static final int ERROR_PARSING = 3;
 
@@ -47,8 +47,8 @@ public class GetFeedsNetworkRequest extends NetworkRequest<ArrayList<RssItem>> {
     }
 
     @Override
-    public ArrayList<RssItem> performRequest() {
-        ArrayList<RssItem> responseFeeds = new ArrayList<>(feedUrls.length);
+    public List<FeedResponse> performRequest() {
+        List<FeedResponse> responseFeeds = new ArrayList<FeedResponse>(feedUrls.length);
         for (String feedUrlString : feedUrls) {
             InputStream inputStream = openStream(feedUrlString);
             if (inputStream == null) {
@@ -64,52 +64,54 @@ public class GetFeedsNetworkRequest extends NetworkRequest<ArrayList<RssItem>> {
 
                 NodeList allItemNodes = xmlDocument.getElementsByTagName(XML_TAG_ITEM);
                 List<ItemResponse> responseItems = new ArrayList<ItemResponse>(allItemNodes.getLength());
-                    for (int itemIndex = 0; itemIndex < allItemNodes.getLength(); itemIndex++) {
-                        String itemURL = null;
-                        String itemTitle = null;
-                        String itemDescription = null;
-                        String itemGUID = null;
-                        String itemPubDate = null;
-                        String itemEnclosureURL = null;
-                        String itemEnclosureMIMEType = null;
+                for (int itemIndex = 0; itemIndex < allItemNodes.getLength(); itemIndex++) {
+                    String itemURL = null;
+                    String itemTitle = null;
+                    String itemDescription = null;
+                    String itemGUID = null;
+                    String itemPubDate = null;
+                    String itemEnclosureURL = null;
+                    String itemEnclosureMIMEType = null;
 
-                        Node itemNode = allItemNodes.item(itemIndex);
-                        NodeList tagNodes = itemNode.getChildNodes();
-                        for (int tagIndex = 0; tagIndex < tagNodes.getLength(); tagIndex++) {
-                            Node tagNode = tagNodes.item(tagIndex);
-                            String tag = tagNode.getNodeName();
-                            if (XML_TAG_LINK.equalsIgnoreCase(tag)) {
-                                itemURL = tagNode.getTextContent();
-                            } else if (XML_TAG_TITLE.equalsIgnoreCase(tag)) {
-                                itemTitle = tagNode.getTextContent();
-                            } else if (XML_TAG_DESCRIPTION.equalsIgnoreCase(tag)) {
-                                itemDescription = tagNode.getTextContent();
-                            } else if (XML_TAG_ENCLOSURE.equalsIgnoreCase(tag)) {
-                                NamedNodeMap enclosureAttributes = tagNode.getAttributes();
-                                itemEnclosureURL = enclosureAttributes.getNamedItem(XML_ATTRIBUTE_URL).getTextContent();
-                                itemEnclosureMIMEType = enclosureAttributes.getNamedItem(XML_ATTRIBUTE_TYPE).getTextContent();
-                            } else if (XML_TAG_PUB_DATE.equalsIgnoreCase(tag)) {
-                                itemPubDate = tagNode.getTextContent();
-                            } else if (XML_TAG_GUID.equalsIgnoreCase(tag)) {
-                                itemGUID = tagNode.getTextContent();
-                            }
+                    Node itemNode = allItemNodes.item(itemIndex);
+                    NodeList tagNodes = itemNode.getChildNodes();
+                    for (int tagIndex = 0; tagIndex < tagNodes.getLength(); tagIndex++) {
+                        Node tagNode = tagNodes.item(tagIndex);
+                        String tag = tagNode.getNodeName();
+                        if (XML_TAG_LINK.equalsIgnoreCase(tag)) {
+                            itemURL = tagNode.getTextContent();
+                        } else if (XML_TAG_TITLE.equalsIgnoreCase(tag)) {
+                            itemTitle = tagNode.getTextContent();
+                        } else if (XML_TAG_DESCRIPTION.equalsIgnoreCase(tag)) {
+                            itemDescription = tagNode.getTextContent();
+                        } else if (XML_TAG_ENCLOSURE.equalsIgnoreCase(tag)) {
+                            NamedNodeMap enclosureAttributes = tagNode.getAttributes();
+                            itemEnclosureURL = enclosureAttributes.getNamedItem(XML_ATTRIBUTE_URL).getTextContent();
+                            itemEnclosureMIMEType = enclosureAttributes.getNamedItem(XML_ATTRIBUTE_TYPE).getTextContent();
+                        } else if (XML_TAG_PUB_DATE.equalsIgnoreCase(tag)) {
+                            itemPubDate = tagNode.getTextContent();
+                        } else if (XML_TAG_GUID.equalsIgnoreCase(tag)) {
+                            itemGUID = tagNode.getTextContent();
                         }
-                        responseItems.add(new ItemResponse(itemURL, itemTitle, itemDescription,
-                                itemGUID, itemPubDate, itemEnclosureURL, itemEnclosureMIMEType));
                     }
-
-                for (ItemResponse response: responseItems) {
-
-                    SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss z", Locale.ENGLISH);
-                    Date date = format.parse(response.itemPubDate);
-
-                    // date format matches 27 Apr 2015 20:17:41 GMT
-                    // For reference - RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, long datePublished, boolean read, boolean favorite, boolean archived)
-
-                    responseFeeds.add(new RssItem(response.itemGUID, response.itemTitle, response.itemDescription, response.itemURL, response.itemEnclosureURL,
-                           00, date.getTime(), false, false, false));
-
+                    responseItems.add(new ItemResponse(itemURL, itemTitle, itemDescription,
+                            itemGUID, itemPubDate, itemEnclosureURL, itemEnclosureMIMEType));
                 }
+
+                responseFeeds.add(new FeedResponse(feedUrlString, channelTitle, channelURL, channelDescription, responseItems));
+
+//                for (ItemResponse response: responseItems) {
+
+//                    SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss z", Locale.ENGLISH);
+//                    Date date = format.parse(response.itemPubDate);
+
+                // date format matches 27 Apr 2015 20:17:41 GMT
+                // For reference - RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, long datePublished, boolean read, boolean favorite, boolean archived)
+
+//                    responseFeeds.add(new RssItem(response.itemGUID, response.itemTitle, response.itemDescription, response.itemURL, response.itemEnclosureURL,
+//                           00, date.getTime(), false, false, false)); // CODE FROM Checkpoint 51 assignment which got merged
+
+//                }
                 inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -123,12 +125,14 @@ public class GetFeedsNetworkRequest extends NetworkRequest<ArrayList<RssItem>> {
                 e.printStackTrace();
                 setErrorCode(ERROR_PARSING);
                 return null;
-            } catch (ParseException e) {
-                e.printStackTrace();
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            } // code from Checkpoint 51 assignment
             }
         }
-        return responseFeeds;
-    }
+            return responseFeeds;
+        }
+
 
         private String optFirstTagFromDocument (Document document, String tagName){
             NodeList elementsByTagName = document.getElementsByTagName(tagName);
@@ -184,7 +188,7 @@ public class GetFeedsNetworkRequest extends NetworkRequest<ArrayList<RssItem>> {
                 RssItem feedItem = new RssItem(this.itemGUID, this.itemTitle, this.itemDescription, this.itemURL, "", 00, date.getTime(), false, false, false);
 
                 return feedItem;
-            };
+            }; // toFeedItem is a method from checkpoint 51 assignment, now invalid
 
         }
 

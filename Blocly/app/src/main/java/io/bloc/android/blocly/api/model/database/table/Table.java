@@ -7,14 +7,16 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public abstract class Table {
 
-        // #1
+    public static interface Builder {
+        public long insert(SQLiteDatabase writableDB);
+    }
+
         protected static final String COLUMN_ID = "id";
 
         public abstract String getName();
 
         public abstract String getCreateStatement();
 
-        // #2
         public void onUpgrade(SQLiteDatabase writableDatabase, int oldVersion, int newVersion) {
             // Nothing
         }
