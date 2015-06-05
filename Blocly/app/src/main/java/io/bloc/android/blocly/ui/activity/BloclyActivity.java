@@ -78,5 +78,12 @@ public class BloclyActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Methods to query the database
+//    RssItemTable rssItemTable; // instance of RssItemTable for us to use here
+
+//    DatabaseOpenHelper bloclyOpenHelper = new DatabaseOpenHelper(BloclyApplication.getSharedInstance()); // with help from Tony
+//    SQLiteDatabase readableDatabase = bloclyOpenHelper.getReadableDatabase();
+//    public Cursor cursor =  readableDatabase.query(false, rssItemTable.getName(), null, null, null, null, null, "ORDER BY pub_date, ", "LIMIT 20");
+
 }
 
