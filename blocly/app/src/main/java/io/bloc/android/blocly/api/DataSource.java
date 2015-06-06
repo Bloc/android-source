@@ -71,6 +71,33 @@ public class DataSource {
         }
     }
 
+    public void fetchRSSItemWithId(final long rowId, final Callback<RssItem> callback) {
+        final Handler callbackThreadHandler = new Handler();
+        submitTask(new Runnable() {
+            @Override
+            public void run() {
+                Cursor cursor = rssItemTable.fetchRow(databaseOpenHelper.getReadableDatabase(), rowId);
+                if (cursor.moveToFirst()) {
+                    final RssItem rssItem = itemFromCursor(cursor);
+                    cursor.close();
+                    callbackThreadHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onSuccess(rssItem);
+                        }
+                    });
+                } else {
+                    callbackThreadHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onError("RSS item not found for row Id (" + rowId + ")");
+                        }
+                    });
+                }
+            }
+        });
+    }
+
     public void fetchFeedWithId(final long rowId, final Callback<RssFeed> callback) {
         final Handler callbackThreadHandler = new Handler();
         submitTask(new Runnable() {

@@ -24,6 +24,20 @@
     <style name="DrawerArrow" parent="Base.Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@color/actionBarItems</item>
     </style>
+
+    <style name="RssItemTitle" parent="Base.TextAppearance.AppCompat.Body2">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:singleLine">true</item>
+        <item name="robotoFont">Medium</item>
+    </style>
+
+    <style name="RssItemDetailHeader" parent="Base.TextAppearance.AppCompat.Display1">
+        <item name="android:textColor">@color/black_54</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
     <style name="Headline">
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">24sp</item>
