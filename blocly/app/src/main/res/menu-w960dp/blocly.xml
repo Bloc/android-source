@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:blocly="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/action_search"
+        android:icon="@drawable/ic_search_selector"
+        android:title="@string/menu_search"
+        android:orderInCategory="1"
+        blocly:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+
+    <item android:id="@+id/action_refresh"
+        android:title="@string/menu_refresh"
+        android:orderInCategory="2"
+        blocly:showAsAction="never"
+        tools:ignore="MenuTitle" />
+
+    <item android:id="@+id/action_mark_as_read"
+        android:title="@string/menu_mark_as_read"
+        android:orderInCategory="3"
+        blocly:showAsAction="never"
+        tools:ignore="MenuTitle" />
+
+
+
+</menu>

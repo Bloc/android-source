@@ -276,6 +276,7 @@ implements
         if (shareItem.isEnabled() == enabled) {
             return;
         }
+
         shareItem.setEnabled(enabled);
         final Drawable shareIcon = shareItem.getIcon();
         ValueAnimator valueAnimator = ValueAnimator.ofInt(enabled ? new int[]{0,255}: new int[]{255,0});
