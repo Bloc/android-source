@@ -1,5 +1,7 @@
 package io.bloc.android.blocly.api;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.DateFormat;
@@ -49,7 +51,6 @@ public class DataSource {
                 List<GetFeedsNetworkRequest.FeedResponse> feedResponses =
                         new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
                 GetFeedsNetworkRequest.FeedResponse androidCentral = feedResponses.get(0);
-                // #7
                 long androidCentralFeedId = new RssFeedTable.Builder()
                         .setFeedURL(androidCentral.channelFeedURL)
                         .setSiteURL(androidCentral.channelURL)
@@ -101,6 +102,27 @@ public class DataSource {
                     "http://rs1img.memecdn.com/silly-dog_o_511213.jpg",
                     0, System.currentTimeMillis(), false, false, false));
         }
+    }
+
+    void saveData() { // method for the checkpoint 53 assignment
+        for (RssItem item: items) { // loops through every RssItem
+            Cursor databaseSoftware = databaseOpenHelper.getWritableDatabase().rawQuery("SELECT COUNT(id) FROM blocly_db WHERE id = " + item.getGuid() + ";", new String[0]);
+            if (databaseSoftware.getCount() == 0) { // if the item does not exist
+                ContentValues insertValues = new ContentValues();
+                insertValues.put("link", item.getUrl());
+                insertValues.put("title", item.getTitle());
+                insertValues.put("description", item.getDescription());
+                insertValues.put("guid", item.getGuid());
+                insertValues.put("pub_date", item.getDatePublished());
+                insertValues.put("enclosure", 0); // doesn't seem like we need or use this
+                insertValues.put("mime_type", 0); // doesn't seem like we need or use this
+                insertValues.put("rss_feed", item.getRssFeedId());
+                insertValues.put("is_favorite", item.isFavorite());
+                insertValues.put("is_archived", item.isArchived()); // items correspond to RssItemTable values
+                databaseOpenHelper.getWritableDatabase().insert("RssItemTable", null, insertValues);
+                }
+            }
+
     }
 
 }

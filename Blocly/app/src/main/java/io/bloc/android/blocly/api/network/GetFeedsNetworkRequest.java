@@ -8,12 +8,18 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+
+import io.bloc.android.blocly.api.model.RssItem;
 
 /**
  * Created by ReneeCS on 4/13/15.
@@ -155,6 +161,16 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
                 this.itemEnclosureURL = itemEnclosureURL;
                 this.itemEnclosureMIMEType = itemEnclosureMIMEType;
             }
-        }
 
-}
+            public RssItem toFeedItem () throws ParseException {
+
+                SimpleDateFormat format = new SimpleDateFormat("dd MMMM yyyy HH:mm:ss z", Locale.ENGLISH);
+                Date date = format.parse(this.itemPubDate);
+
+                RssItem feedItem = new RssItem(this.itemGUID, this.itemTitle, this.itemDescription, this.itemURL, "", 00, date.getTime(), false, false, false);
+
+                return feedItem;
+                };
+            }; // toFeedItem is a method from checkpoint 51 assignment, now invalid
+
+        }
