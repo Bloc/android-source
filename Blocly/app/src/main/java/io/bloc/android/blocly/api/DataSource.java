@@ -1,7 +1,5 @@
 package io.bloc.android.blocly.api;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.DateFormat;
@@ -74,7 +72,6 @@ public class DataSource {
                             .setLink(itemResponse.itemURL)
                             .setGUID(itemResponse.itemGUID)
                             .setPubDate(itemPubDate)
-                                    // #10
                             .setRSSFeed(androidCentralFeedId)
                             .insert(writableDatabase);
                 }
@@ -104,25 +101,25 @@ public class DataSource {
         }
     }
 
-    void saveData() { // method for the checkpoint 53 assignment
-        for (RssItem item: items) { // loops through every RssItem
-            Cursor databaseSoftware = databaseOpenHelper.getWritableDatabase().rawQuery("SELECT COUNT(id) FROM blocly_db WHERE id = " + item.getGuid() + ";", new String[0]);
-            if (databaseSoftware.getCount() == 0) { // if the item does not exist
-                ContentValues insertValues = new ContentValues();
-                insertValues.put("link", item.getUrl());
-                insertValues.put("title", item.getTitle());
-                insertValues.put("description", item.getDescription());
-                insertValues.put("guid", item.getGuid());
-                insertValues.put("pub_date", item.getDatePublished());
-                insertValues.put("enclosure", 0); // doesn't seem like we need or use this
-                insertValues.put("mime_type", 0); // doesn't seem like we need or use this
-                insertValues.put("rss_feed", item.getRssFeedId());
-                insertValues.put("is_favorite", item.isFavorite());
-                insertValues.put("is_archived", item.isArchived()); // items correspond to RssItemTable values
-                databaseOpenHelper.getWritableDatabase().insert("RssItemTable", null, insertValues);
-                }
-            }
-
-    }
+//    void saveData() { // method for the checkpoint 53 assignment
+//        for (RssItem item: items) { // loops through every RssItem
+//            Cursor databaseSoftware = databaseOpenHelper.getWritableDatabase().rawQuery("SELECT COUNT(id) FROM blocly_db WHERE id = " + item.getGuid() + ";", new String[0]);
+//            if (databaseSoftware.getCount() == 0) { // if the item does not exist
+//                ContentValues insertValues = new ContentValues();
+//                insertValues.put("link", item.getUrl());
+//                insertValues.put("title", item.getTitle());
+//                insertValues.put("description", item.getDescription());
+//                insertValues.put("guid", item.getGuid());
+//                insertValues.put("pub_date", item.getDatePublished());
+//                insertValues.put("enclosure", 0); // doesn't seem like we need or use this
+//                insertValues.put("mime_type", 0); // doesn't seem like we need or use this
+//                insertValues.put("rss_feed", item.getRssFeedId());
+//                insertValues.put("is_favorite", item.isFavorite());
+//                insertValues.put("is_archived", item.isArchived()); // items correspond to RssItemTable values
+//                databaseOpenHelper.getWritableDatabase().insert("RssItemTable", null, insertValues);
+//                }
+//            }
+//
+//    }
 
 }

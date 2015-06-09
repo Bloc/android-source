@@ -60,21 +60,18 @@ public class BloclyActivity extends ActionBarActivity {
     }
 
 
-    // #7a
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 //        drawerLayout.openDrawer(Gravity.LEFT); // makes drawer open by default
     }
 
-    // #7b
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    // #7c
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
@@ -85,14 +82,12 @@ public class BloclyActivity extends ActionBarActivity {
 
     // Methods to query the database
 
-    RssItemTable rssItemTable; // instance of RssItemTable for us to use here
-
-
     DatabaseOpenHelper bloclyOpenHelper = new DatabaseOpenHelper(BloclyApplication.getSharedInstance()); // with help from Tony
     SQLiteDatabase readableDatabase = bloclyOpenHelper.getReadableDatabase();
 
+    RssItemTable rssItemTable = new RssItemTable(); // instance of RssItemTable for us to use here
 
-    public Cursor cursor =  readableDatabase.query(false, rssItemTable.getName(), null, null, null, null, null, "ORDER BY pub_date, ", "LIMIT 20");
+    public Cursor cursor =  readableDatabase.query(false, rssItemTable.getName(), null, null, null, null, null, "pub_date", " 20");
 
 }
 
