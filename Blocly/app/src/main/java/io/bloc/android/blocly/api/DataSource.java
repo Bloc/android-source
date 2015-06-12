@@ -58,6 +58,8 @@ public class DataSource {
                             .setTitle(androidCentral.channelTitle)
                             .setDescription(androidCentral.channelDescription)
                             .insert(writableDatabase);
+
+
                 for (GetFeedsNetworkRequest.ItemResponse itemResponse : androidCentral.channelItems) {
                     long itemPubDate = System.currentTimeMillis();
                     DateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy kk:mm:ss z", Locale.ENGLISH);
@@ -77,21 +79,9 @@ public class DataSource {
                             .setRSSFeed(androidCentralFeedId)
                             .insert(writableDatabase);
                 }
-
             }
         }).start();
     }
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                if (BuildConfig.DEBUG && false) {
-//                    BloclyApplication.getSharedInstance().deleteDatabase("blocly_db");
-//                }
-//                SQLiteDatabase writableDatabase = databaseOpenHelper.getWritableDatabase();
-//                new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
-//            }
-//        }).start();
-//    } merged code from assignment 53, commented out
 
     public List<RssFeed> getFeeds() {
         return feeds;
@@ -100,7 +90,6 @@ public class DataSource {
     public List<RssItem> getItems() {
         return items;
     }
-
 
     void createFakeData() {
         feeds.add(new RssFeed("DC News Feed",

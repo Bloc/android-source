@@ -1,6 +1,8 @@
 package io.bloc.android.blocly.ui.activity;
 
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -11,7 +13,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
+import io.bloc.android.blocly.api.model.database.DatabaseOpenHelper;
+import io.bloc.android.blocly.api.model.database.table.RssItemTable;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
 import io.bloc.android.blocly.ui.adapter.NavigationDrawerAdapter;
 
@@ -55,21 +60,18 @@ public class BloclyActivity extends ActionBarActivity {
     }
 
 
-    // #7a
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 //        drawerLayout.openDrawer(Gravity.LEFT); // makes drawer open by default
     }
 
-    // #7b
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
-    // #7c
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (drawerToggle.onOptionsItemSelected(item)) {
@@ -77,6 +79,15 @@ public class BloclyActivity extends ActionBarActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    // Methods to query the database
+
+    DatabaseOpenHelper bloclyOpenHelper = new DatabaseOpenHelper(BloclyApplication.getSharedInstance()); // with help from Tony
+    SQLiteDatabase readableDatabase = bloclyOpenHelper.getReadableDatabase();
+
+    RssItemTable rssItemTable = new RssItemTable(); // instance of RssItemTable for us to use here
+
+    public Cursor cursor =  readableDatabase.query(false, rssItemTable.getName(), null, null, null, null, null, "pub_date", " 20");
 
 }
 
