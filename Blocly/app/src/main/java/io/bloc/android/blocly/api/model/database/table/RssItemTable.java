@@ -1,6 +1,7 @@
 package io.bloc.android.blocly.api.model.database.table;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
@@ -58,6 +59,42 @@ public class RssItemTable extends Table {
         }
     }
 
+    public static String getLink(Cursor cursor) {
+        return getString(cursor, COLUMN_LINK);
+    }
+
+    public static String getTitle(Cursor cursor) {
+        return getString(cursor, COLUMN_TITLE);
+    }
+
+    public static String getDescription(Cursor cursor) {
+        return getString(cursor, COLUMN_DESCRIPTION);
+    }
+
+    public static String getGUID(Cursor cursor) {
+        return getString(cursor, COLUMN_GUID);
+    }
+
+    public static long getRssFeedId(Cursor cursor) {
+        return getLong(cursor, COLUMN_RSS_FEED);
+    }
+
+    public static long getPubDate(Cursor cursor) {
+        return getLong(cursor, COLUMN_PUB_DATE);
+    }
+
+    public static String getEnclosure(Cursor cursor) {
+        return getString(cursor, COLUMN_ENCLOSURE);
+    }
+
+    public static boolean getFavorite(Cursor cursor) {
+        return getBoolean(cursor, COLUMN_FAVORITE);
+    }
+
+    public static boolean getArchived(Cursor cursor) {
+        return getBoolean(cursor, COLUMN_ARCHIVED);
+    }
+
     private static final String NAME = "rss_items";
 
     private static final String COLUMN_LINK = "link";
@@ -70,6 +107,7 @@ public class RssItemTable extends Table {
     private static final String COLUMN_RSS_FEED = "rss_feed";
     private static final String COLUMN_FAVORITE = "is_favorite";
     private static final String COLUMN_ARCHIVED = "is_archived";
+
 
     @Override
     public String getName() {
