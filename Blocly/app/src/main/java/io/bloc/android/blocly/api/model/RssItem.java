@@ -11,11 +11,11 @@ public class RssItem {
     private String imageUrl;
     private long rssFeedId;
     private long datePublished;
-    private boolean read;
+//    private boolean read;
     private boolean favorite;
     private boolean archived;
 
-    public RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, long datePublished, boolean read, boolean favorite, boolean archived) {
+    public RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, long datePublished, boolean favorite, boolean archived) { // boolean read removed from between datePublished and favorited
         this.guid = guid;
         this.title = title;
         this.description = description;
@@ -23,7 +23,7 @@ public class RssItem {
         this.imageUrl = imageUrl;
         this.rssFeedId = rssFeedId;
         this.datePublished = datePublished;
-        this.read = read;
+//        this.read = read;
         this.favorite = favorite;
         this.archived = archived;
     }
@@ -56,9 +56,9 @@ public class RssItem {
         return datePublished;
     }
 
-    public boolean isRead() {
-        return read;
-    }
+//    public boolean isRead() {
+//        return read;
+//    }
 
     public boolean isFavorite() {
         return favorite;
