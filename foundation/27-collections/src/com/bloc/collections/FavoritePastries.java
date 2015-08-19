@@ -25,11 +25,13 @@ public class FavoritePastries {
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
 
+	private HashMap<Integer,ArrayList<Pastry>> mFavoritePastries;
 
 	public FavoritePastries() {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		mFavoritePastries = new HashMap<Integer,ArrayList<Pastry>>();
 	}
 
 	/* 
@@ -51,6 +53,12 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE
 		/************************************************/
+		ArrayList<Pastry> listOfPastries = mFavoritePastries.get(rating);
+		if (listOfPastries == null){
+			listOfPastries = new ArrayList<Pastry>();
+		}
+		listOfPastries.add(pastry);
+		mFavoritePastries.put(rating, listOfPastries);
 	}
 
 	/* 
@@ -69,7 +77,25 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return false;
+		ArrayList<Pastry> listOfPastries;
+		Boolean returnBoolean = false;
+		int counter = 0;
+		for(Map.Entry<Integer, ArrayList<Pastry>> entry: mFavoritePastries.entrySet()){
+			listOfPastries = entry.getValue();
+			//System.out.println(listOfPastries.toString());
+			System.out.println("Size is: " + listOfPastries.size());
+			//System.out.println("Counter is: " + counter++);
+			System.out.println("Pastry is: " + pastry);
+			Iterator<Pastry> it = listOfPastries.iterator();
+			while(it.hasNext()){
+				System.out.println("Element is: " + it.next().toString());
+			}
+			if (listOfPastries.remove(pastry)){
+				returnBoolean = true;
+			}
+			System.out.println("Success Removal: " + returnBoolean);
+		}
+		return returnBoolean;
 	}
 
 	/* 
@@ -78,7 +104,7 @@ public class FavoritePastries {
 	 * Return the associated rating for a given Pastry
 	 *
 	 * This method will find the associated rating for
-	 * this Pastry inside of FavoritePastries and return
+	 *7 this Pastry inside of FavoritePastries and return
 	 * it to its caller.
 	 *
 	 * @param  pastry The Pastry for which a rating must
@@ -90,7 +116,17 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return -1;
+		ArrayList<Pastry> listOfPastries;
+		int key = -1;
+		Boolean containsPastry = false;
+		for(Map.Entry<Integer, ArrayList<Pastry>> entry: mFavoritePastries.entrySet()){
+			listOfPastries = entry.getValue();
+			containsPastry = listOfPastries.contains(pastry);
+			if (containsPastry){
+				key = entry.getKey();
+			}
+		}
+		return key;
 	}
 
 	/* 
@@ -113,7 +149,12 @@ public class FavoritePastries {
 		/************************************************
  	 	 *	WORK HERE, you must modify the return value
 		/************************************************/
-		return null;
+		ArrayList<Pastry> returnCollection = mFavoritePastries.get(rating);
+		if(returnCollection != null){
+			return returnCollection;
+		} else {
+			return new ArrayList<Pastry>();
+		}
 	}
 
 }
