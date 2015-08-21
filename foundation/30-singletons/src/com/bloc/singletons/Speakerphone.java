@@ -13,7 +13,7 @@ private HashSet<Talker> mTalker;
 
 public class Speakerphone extends Object {
 	private Speakerphone(){
-		mListener = new HashSet<Lister>();
+		mListener = new HashSet<Listener>();
 		mTalker = new HashSet<Talker>();
 	}
 	/*
@@ -135,6 +135,11 @@ public class Speakerphone extends Object {
 	 *	Implement the shoutMessage method
 	/************************************************/
 	private void shoutMessage(Talker talker,Class cls){
-	
+		String message = talker.getMessage();
+		Iterator<Listener> it = mListener.iterator();
+		
+		while(it.hasNext()){
+			it.next().onMessageReceived(message);
+		}
 	}
 }
