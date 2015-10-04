@@ -17,7 +17,7 @@ public class Operations extends Object {
 		 *	Pre-increment x and assign it to y in a single statement
 		/************************************************/
 
-		--x = int y;
+		int y = --x;
 
 		/************************************************
 		 *	ASSIGNMENT:
@@ -48,7 +48,7 @@ public class Operations extends Object {
 		/************************************************/
 
 		double dubs = 5.3;
-		dubs*dubs = dubs;
+		dubs = dubs * dubs;
 
 		/************************************************
 		 *	DO NOT MODIFY BELOW THIS CALLOUT
