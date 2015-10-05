@@ -32,12 +32,7 @@ public class Methods extends Object {
 	 * @return the logical opposite of the original
 	 */
 	public boolean giveMeTheOpposite(boolean original) {
-		/************************************************
-		 * Your work goes here
-		 ************************************************/
-
-		// You are free to modify the return statement
-		return false;
+		return !original;
 	}
 
 	/*
@@ -57,9 +52,9 @@ public class Methods extends Object {
 	 * @return nothing
 	 */
 	public void flipTheSign(int[] numbers) {
-		/************************************************
-		 * Your work goes here
-		 ************************************************/
+		for(int i  = 0; i < numbers.length; i++){
+		    numbers[i] = numbers[-i];
+		}
 	}
 
 
@@ -87,12 +82,17 @@ public class Methods extends Object {
 	 * @return an array of booleans
 	 */
 	public boolean[] boolsRule(int floor, int[] someNumbers) {
-		/************************************************
-		 * Your work goes here
-		 ************************************************/
-
-		// You are free to modify the return statement
-		return new boolean [0];
+		boolean[] boolOutput = new boolean[someNumbers.length];
+		for(int i = 0; i < someNumbers.length; i++){
+		    if(someNumbers[i] < floor){
+		        boolOutput[i] = false;
+		    }
+		    else{
+		        boolOutput[i] = true;
+		    }
+		        
+		}
+		return boolOutput;
 	}
 
 	/*
@@ -114,12 +114,23 @@ public class Methods extends Object {
 	 * @return an array of length 2: {min, max}
 	 */
 	public int[] getMinAndMax(int[] someNumbers) {
-		/************************************************
-		 * Your work goes here
-		 ************************************************/
+		int[] minMax = new int[1];
+		minMax[0] = someNumbers[0];
 
-		// You are free to modify the return statement
-		return new int[2];
+		for(int i = 0; i < someNumbers.length; i++){
+		    if(someNumbers[i] < minMax[0]){
+		        minMax[0] = someNumbers[i];
+		    }
+		}
+
+		minMax[1] = someNumbers[0];
+		for(int i = 0; i < someNumbers.length; i++){
+		    if(someNumbers[i] > minMax[1]){
+		        minMax[1] = someNumbers[i];
+		    }
+		}
+
+		return minMax;
 	}
 
 
