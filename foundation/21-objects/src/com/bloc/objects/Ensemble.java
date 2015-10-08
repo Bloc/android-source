@@ -7,6 +7,10 @@ class Ensemble extends Object {
 	// All of the artists in the group
 	Artist[] mArtists;
 
+        Ensemble(Artist[] mArtists){
+            this.mArtists = mArtists;
+        }
+
 	/*
 	 * Ensemble
 	 *
@@ -20,6 +24,16 @@ class Ensemble extends Object {
 	 *	ASSIGNMENT:
 	 *	Create the first Ensemble constructor
 	/************************************************/
+
+        Ensemble(String mName, Artist[] mArtists){
+            if(mName == null){
+                this.mArtists[0] = mArtists[0];
+            }
+           else{
+               this.mArtists = mArtists;
+           }
+        }
+        
 
 	/*
 	 * Ensemble

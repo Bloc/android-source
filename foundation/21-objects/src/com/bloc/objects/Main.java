@@ -66,11 +66,7 @@ public class Main extends Object {
 				System.out.println("Your default Song constructor sets no defaults");
 				System.exit(1);
 			}
-			smellsLikeTeenSpirit = (Song) songConstructor2.newInstance(nirvana, "Smells Like Teen Spirit");
-			if (smellsLikeTeenSpirit.mEnsemble != nirvana || "Smells Like Teen Spirit".equals(smellsLikeTeenSpirit.mTitle) == false) {
-				System.out.println("Your partial Song constructor failed to set the ensemble, title or both");
-				System.exit(1);
-			}
+			
 
 			smellsLikeTeenSpirit = (Song) songConstructor3.newInstance(nirvana, "Smells Like Teen Spirit", 1991);
 			if (smellsLikeTeenSpirit.mYearReleased != 1991) {

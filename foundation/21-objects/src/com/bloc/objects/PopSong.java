@@ -4,6 +4,13 @@ class PopSong extends Song {
 	// The number of weeks this song stayed on Billboard's top 100
 	int mWeeksOnBillboard;
 
+        PopSong(){
+            mWeeksOnBillboard = 1;
+            mTitle = "Generic Song #4356";
+            mYearReleased = 2000;
+            mEnsemble = "The ensemblers";
+        }
+
 	/*
 	 * PopSong
 	 *
@@ -14,6 +21,13 @@ class PopSong extends Song {
 	 *	ASSIGNMENT:
 	 *	Create the first PopSong constructor
 	/************************************************/
+
+        PopSong(String mEnsemble, String mTitle){
+            mYearReleased = 0;
+            this.mEnsemble = mEnsemble;
+            this.mTitle = mTitle;
+            mWeeksOnBillboard = 1;
+        }
 
 	/*
 	 * PopSong
@@ -28,6 +42,13 @@ class PopSong extends Song {
 	 *	Create the second PopSong constructor
 	/************************************************/
 
+        PopSong(String mEnsemble, String mTitle, int mYearReleased){
+            this.mEnsemble = mEnsemble;
+            this.mTitle = mTitle;
+            this.mYearReleased = mYearReleased;
+            mWeeksOnBillboard = 1;
+        }
+
 	/*
 	 * PopSong
 	 *
@@ -41,6 +62,13 @@ class PopSong extends Song {
 	 *	ASSIGNMENT:
 	 *	Create the third PopSong constructor
 	/************************************************/
+
+        PopSong(String mEnsemble, String mTitle, int mYearReleased, int mWeeksOnBillboard){
+            this.mEnsemble = mEnsemble;
+            this.mTitle = mTitle;
+            this.mYearReleased = mYearReleased;
+            this.mWeeksOnBillboard = mWeeksOnBillboard;
+        }
 
 	/*
 	 * PopSong
