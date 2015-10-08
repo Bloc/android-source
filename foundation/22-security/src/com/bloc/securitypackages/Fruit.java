@@ -6,13 +6,13 @@ package com.bloc.securitypackages;
 
 public abstract class Fruit extends Object {
 	// The name of the fruit
-	private String mName;
+	protected String mName;
 	// Number of calories
-	private int mCalories;
+	protected int mCalories;
 	// Color of the fruit
-	private Color mColor;
+	protected Color mColor;
 	// Weight of the fruit, in pounds
-	private double mWeight;
+	protected double mWeight;
 
 	Fruit() {
 		this("Apple");
@@ -38,11 +38,11 @@ public abstract class Fruit extends Object {
 		this.mWeight = weight;
 	}
 
-	private String getName() {
+	public String getName() {
 		return mName;
 	}
 
-	private void setName(String name) {
+	public void setName(String name) {
 		mName = name;
 	}
 
@@ -54,11 +54,11 @@ public abstract class Fruit extends Object {
 		mCalories = calories;
 	}
 
-	private Color getColor() {
+	public Color getColor() {
 		return mColor;
 	}
 
-	private void setColor(Color color) {
+	public void setColor(Color color) {
 		mColor = color;
 	}
 
@@ -66,7 +66,7 @@ public abstract class Fruit extends Object {
 		return mWeight;
 	}
 
-	private void setWeight(double weight) {
+	public void setWeight(double weight) {
 		mWeight = weight;
 	}
 }
