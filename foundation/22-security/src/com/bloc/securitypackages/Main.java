@@ -1,9 +1,15 @@
 package com.bloc.securitypackages;
+import com.bloc.securitypackages.apples.*;
+import com.bloc.securitypackages.citrus.*;
+import com.bloc.securitypackages.colors.*;
 
 /************************************************
  *	ASSIGNMENT:
  *	Import the appopriate classes/packages below
 /************************************************/
+
+
+
 
 // e.g. import com.bloc.{your_package};
 

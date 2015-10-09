@@ -1,6 +1,6 @@
 package com.bloc.securitypackages.colors;
+import com.bloc.securitypackages.colors.LimeGreen;
 import com.bloc.securitypackages.Color;
-import com.bloc.securitypackages.Fruit;
 
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION
