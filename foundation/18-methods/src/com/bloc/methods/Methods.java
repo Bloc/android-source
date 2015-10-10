@@ -53,7 +53,7 @@ public class Methods extends Object {
 	 */
 	public void flipTheSign(int[] numbers) {
 		for(int i  = 0; i < numbers.length; i++){
-		    numbers[i] = numbers[-i];
+		    numbers[i] = -numbers[i];
 		}
 	}
 
@@ -114,7 +114,7 @@ public class Methods extends Object {
 	 * @return an array of length 2: {min, max}
 	 */
 	public int[] getMinAndMax(int[] someNumbers) {
-		int[] minMax = new int[1];
+		int[] minMax = new int[2];
 		minMax[0] = someNumbers[0];
 
 		for(int i = 0; i < someNumbers.length; i++){

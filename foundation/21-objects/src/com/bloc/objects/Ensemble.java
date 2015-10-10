@@ -27,7 +27,7 @@ class Ensemble extends Object {
 
         Ensemble(String mName, Artist[] mArtists){
             if(mName == null){
-                this.mArtists[0] = mArtists[0];
+                mArtists[0] = mArtists.mFirstName + mArtists.mLastName;
             }
            else{
                this.mArtists = mArtists;
