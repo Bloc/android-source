@@ -1,5 +1,7 @@
 package com.bloc.securitypackages.apples;
-import com.bloc.securitypackages.colors.*;
+import com.bloc.securitypackages.colors.Red;
+import com.bloc.securitypackages.Fruit;
+import com.bloc.securitypackages.apples.Apple;
 
 /************************************************
  *	YOU MAY MODIFY THIS FILE AND/OR ITS LOCATION

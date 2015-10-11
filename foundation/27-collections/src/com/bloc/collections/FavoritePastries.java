@@ -26,13 +26,12 @@ public class FavoritePastries {
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
 
-	private List<Pastry> mPastryList;	
     private HashMap<Integer, List<Pastry>> mFavoritePastries;
-
 
 	public FavoritePastries() {
 		
-		
+		mFavoritePastries = new HashMap<Integer, List<Pastry>>();
+
 	}
 
 	/* 
@@ -51,7 +50,7 @@ public class FavoritePastries {
 	 * @return nothing
 	 */
 	public void addPastry(Pastry pastry, int rating) {
-		mFavoritePastries.add(pastry, rating);
+		if(mFavoritePastries.keySet(pastry))
 	}
 
 	/* 
