@@ -16,9 +16,11 @@ public class Main extends Object {
 
 		Toy<Book> harryPotter = new Toy<Book>(new Book());
 		Toy<Spoon> shinySpoon = new Toy<Spoon>(new Spoon());
+		Toy<ActionFigure> woody = new Toy<ActionFigure>(new ActionFigure());
 
 		toyBox.addToy(harryPotter);
 		toyBox.addToy(shinySpoon);
+		toyBox.addToy(woody);
 
 
 		assert toyBox.getToyCount() > 0 : "Let's get some toys in that box!";
