@@ -2,6 +2,7 @@ package com.bloc.collections;
 
 import java.util.*;
 
+
 /*
  * FavoritePastries
  * 
@@ -25,11 +26,13 @@ public class FavoritePastries {
 	 *	between rating and pastry: HashMap<Integer, List<Pastry>>
 	/************************************************/
 
+	private List<Pastry> mPastryList;	
+    private HashMap<Integer, List<Pastry>> mFavoritePastries;
+
 
 	public FavoritePastries() {
-		/************************************************
- 	 	 *	WORK HERE
-		/************************************************/
+		
+		
 	}
 
 	/* 
@@ -48,9 +51,7 @@ public class FavoritePastries {
 	 * @return nothing
 	 */
 	public void addPastry(Pastry pastry, int rating) {
-		/************************************************
- 	 	 *	WORK HERE
-		/************************************************/
+		mFavoritePastries.add(pastry, rating);
 	}
 
 	/* 
