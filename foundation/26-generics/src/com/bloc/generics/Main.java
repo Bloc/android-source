@@ -14,13 +14,11 @@ public class Main extends Object {
 		/************************************************/
 
 
-
-		
-
-		Toy<Book> harryPotter = new Toy<Book>();
-		Toy<Spoon> shinySpoon;
+		Toy<Book> harryPotter = new Toy<Book>(new Book());
+		Toy<Spoon> shinySpoon = new Toy<Spoon>(new Spoon());
 
 		toyBox.addToy(harryPotter);
+		toyBox.addToy(shinySpoon);
 
 
 		assert toyBox.getToyCount() > 0 : "Let's get some toys in that box!";
