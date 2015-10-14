@@ -7,16 +7,16 @@ import java.awt.image.BufferedImage;
 public class ImageGetter extends Thread {
 
 	URL mURL;
-
 	boolean openWhenCompleted;
 
-	public ImageGetter(String url, boolean openWhenCompleted){
+	public ImageGetter(String url, boolean openPicture){
 		try{
 			mURL = new URL(url);
 		}
 		catch(Exception e){
 			System.out.println("Invalid URL");
 		}
+		openPicture = openWhenCompleted;
 
 	}
 	/*
@@ -39,19 +39,20 @@ public class ImageGetter extends Thread {
 	@Override
 	public void run() {
 		try {
-			File existingImage = new File("google_logo.png");
+			File existingImage = new File("logo.png");
 			if (existingImage.exists()) {
 				existingImage.delete();
 			}
 			
 			BufferedImage bufferedImage = ImageIO.read(mURL);
-			File outputfile = new File("google_logo.png");
+			File outputfile = new File("logo.png");
 			ImageIO.write(bufferedImage, "png", outputfile);
 			if ("/".equals(System.getProperties().getProperty("file.separator"))) {
-				Runtime.getRuntime().exec("open google_logo.png");
+				Runtime.getRuntime().exec("open logo.png");
 			} else {
-				Runtime.getRuntime().exec("google_logo.png");
+				Runtime.getRuntime().exec("logo.png");
 			}
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);

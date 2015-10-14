@@ -12,7 +12,7 @@ public class Main extends Object {
 		 *	Perform the following block of code on a separate
 		 *	Thread, use the ImageGetter class.
 		/************************************************/
-		new ImageGetter("http://imgur.com/gallery/gYoddrU", true).start();
+		new ImageGetter("http://vignette4.wikia.nocookie.net/pokemon/images/e/e1/025Pikachu_OS_anime_3.png/revision/latest?cb=20150717063942", true).start();
 
 		/************************************************
 		 *	ASSIGNMENT:
