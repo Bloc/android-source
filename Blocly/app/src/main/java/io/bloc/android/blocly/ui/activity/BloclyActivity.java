@@ -19,6 +19,7 @@ public class BloclyActivity extends Activity{
         Button eyo = (Button) findViewById(R.id.button);
         final TextView textView = (TextView) findViewById(R.id.hullo);
         eyo.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 textView.setText("this is a string");
