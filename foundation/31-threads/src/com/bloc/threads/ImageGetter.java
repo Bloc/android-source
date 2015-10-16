@@ -47,12 +47,12 @@ public class ImageGetter extends Thread {
 			BufferedImage bufferedImage = ImageIO.read(mURL);
 			File outputfile = new File("logo.png");
 			ImageIO.write(bufferedImage, "png", outputfile);
-			if ("/".equals(System.getProperties().getProperty("file.separator"))) {
+			if ("/".equals(System.getProperties().getProperty("file.separator")) && (openWhenCompleted == true)) {
 				Runtime.getRuntime().exec("open logo.png");
 			} else {
 				Runtime.getRuntime().exec("logo.png");
 			}
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(1);
