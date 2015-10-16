@@ -8,14 +8,16 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get yer RSS data here"
-        android:id="@+id/button"
+        android:text="Click to view rss title"
+        android:id="@+id/rssbutton"
         android:layout_gravity="center_horizontal" />
 
     <TextView
-        android:id="@+id/hullo"
-        android:text="Hello"
+        android:id="@+id/helloworld"
         android:textIsSelectable="true"
-        style="@style/centerTextStyle" />
+        android:text="Hello World"
+        style="@style/centerTextStyle"
+        android:layout_width="wrap_content" />
+
 
 </LinearLayout>

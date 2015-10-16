@@ -15,7 +15,7 @@ import io.bloc.android.blocly.R;
  */
 public class BloclyActivity extends Activity{
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blocly);
 
@@ -23,12 +23,15 @@ public class BloclyActivity extends Activity{
                 BloclyApplication.getSharedDataSource().getFeeds().get(0).getTitle(),
                 Toast.LENGTH_LONG).show();
 
-        Button eyo = (Button) findViewById(R.id.button);
-        final TextView textView = (TextView) findViewById(R.id.hullo);
-        eyo.setOnClickListener(new View.OnClickListener() {
+        Button rssFeed = (Button) findViewById(R.id.rssbutton);
+
+        final TextView textView = (TextView) findViewById(R.id.helloworld);
+
+        rssFeed.setOnClickListener(new View.OnClickListener(){
+            String rssTitle = (BloclyApplication.getSharedDataSource().getFeeds().get(0).getTitle());
             @Override
             public void onClick(View v) {
-                textView.setText("this is a string");
+                textView.setText(rssTitle);
             }
         });
     }
