@@ -5,9 +5,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
-import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
 
@@ -22,11 +20,6 @@ public class BloclyActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blocly);
-
-        Toast.makeText(this,
-                BloclyApplication.getSharedDataSource().getFeeds().get(0).getTitle(),
-                Toast.LENGTH_LONG).show();
-
 
         itemAdapter = new ItemAdapter();
 
