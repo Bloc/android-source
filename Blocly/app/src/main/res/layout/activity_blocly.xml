@@ -4,20 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Click to view rss title"
-        android:id="@+id/rssbutton"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:id="@+id/helloworld"
-        android:textIsSelectable="true"
-        android:text="Hello World"
-        style="@style/centerTextStyle"
-        android:layout_width="wrap_content" />
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_activity_blocly"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </LinearLayout>

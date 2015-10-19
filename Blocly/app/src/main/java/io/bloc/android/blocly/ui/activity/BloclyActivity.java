@@ -2,18 +2,22 @@ package io.bloc.android.blocly.ui.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
+import io.bloc.android.blocly.ui.adapter.ItemAdapter;
 
 /**
  * Created by Austin on 10/15/2015.
  */
 public class BloclyActivity extends Activity{
+
+    private ItemAdapter itemAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,17 +27,16 @@ public class BloclyActivity extends Activity{
                 BloclyApplication.getSharedDataSource().getFeeds().get(0).getTitle(),
                 Toast.LENGTH_LONG).show();
 
-        Button rssFeed = (Button) findViewById(R.id.rssbutton);
 
-        final TextView textView = (TextView) findViewById(R.id.helloworld);
+        itemAdapter = new ItemAdapter();
 
-        rssFeed.setOnClickListener(new View.OnClickListener(){
-            String rssTitle = (BloclyApplication.getSharedDataSource().getFeeds().get(0).getTitle());
-            @Override
-            public void onClick(View v) {
-                textView.setText(rssTitle);
-            }
-        });
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(itemAdapter);
+
+        }
     }
-}
+
 
