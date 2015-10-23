@@ -11,21 +11,42 @@ public class Loops extends Object {
 		boolean temp = false;
 
 		//********** Starts Here ************************/
-		temp = someBools[7];
-		someBools[7] = someBools[0];
-		someBools[0] = temp;
 
-		temp = someBools[6];
-		someBools[6] = someBools[1];
-		someBools[1] = temp;
+		//int i = 0;
+		//while (i < 8) {
+		//	temp = someBools[i];
+		//	System.out.println(temp);
+		//	i++;
+		//}
 
-		temp = someBools[5];
-		someBools[5] = someBools[2];
-		someBools[2] = temp;
+		
+		// temp = someBools[7];
+		// someBools[7] = someBools[0];
+		// someBools[0] = temp;
 
-		temp = someBools[4];
-		someBools[4] = someBools[3];
-		someBools[3] = temp;
+		// temp = someBools[6];
+		// someBools[6] = someBools[1];
+		// someBools[1] = temp;
+
+		// temp = someBools[5];
+		// someBools[5] = someBools[2];
+		// someBools[2] = temp;
+
+		// temp = someBools[4];
+		// someBools[4] = someBools[3];
+		// someBools[3] = temp; 
+
+
+		int position = 0;
+		int i = someBools.length - 1;
+		while (i >= 4) {
+			temp = someBools[i];
+			someBools[i] = someBools[position];
+			someBools[position] = temp;
+			position++;
+			i--;
+ 		}
+		
 		//********** Ends Here **************************/
 		
 
@@ -49,15 +70,22 @@ public class Loops extends Object {
 		 * 	Learn more here: http://www.cafeaulait.org/course/week2/43.html
 		/************************************************/
 
+		
+
 		//********** Starts Here ************************/
-		numArray[0] = !someBools[0] ? 1 : 0;
-		numArray[1] = !someBools[1] ? 1 : 0;
-		numArray[2] = !someBools[2] ? 1 : 0;
-		numArray[3] = !someBools[3] ? 1 : 0;
-		numArray[4] = !someBools[4] ? 1 : 0;
-		numArray[5] = !someBools[5] ? 1 : 0;
-		numArray[6] = !someBools[6] ? 1 : 0;
-		numArray[7] = !someBools[7] ? 1 : 0;
+		// numArray[0] = !someBools[0] ? 1 : 0;
+		// numArray[1] = !someBools[1] ? 1 : 0;
+		// numArray[2] = !someBools[2] ? 1 : 0;
+		// numArray[3] = !someBools[3] ? 1 : 0;
+		// numArray[4] = !someBools[4] ? 1 : 0;
+		// numArray[5] = !someBools[5] ? 1 : 0;
+		// numArray[6] = !someBools[6] ? 1 : 0;
+		// numArray[7] = !someBools[7] ? 1 : 0;
+
+		for (int j = 0; j < numArray.length; j++) {
+			numArray[j] = !someBools[j] ? 1 : 0;
+		}
+
 		//********** Ends Here **************************/
 
 
