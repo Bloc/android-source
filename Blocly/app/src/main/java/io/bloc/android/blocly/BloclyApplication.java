@@ -32,25 +32,31 @@ import io.bloc.android.blocly.api.DataSource;
         super.onCreate();
         sharedInstance = this;
         dataSource = new DataSource();
+
+        DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
+                .cacheOnDisk(true)
+                .cacheInMemory(true)
+                .build();
+
+        // #2
+        ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this)
+                .tasksProcessingOrder(QueueProcessingType.LIFO)
+                .denyCacheImageMultipleSizesInMemory()
+                .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
+                .memoryCacheSize(2 * 1024 * 1024)
+                .diskCacheSize(50 * 1024 * 1024)
+                .diskCacheFileCount(100)
+                .defaultDisplayImageOptions(defaultOptions)
+                .build();
+
+        ImageLoader loader = ImageLoader.getInstance();
+
+        loader.init(configuration);
+
     }
 
-    DisplayImageOptions defaultOptions = new DisplayImageOptions.Builder()
-            .cacheOnDisk(true)
-            .cacheInMemory(true)
-            .build();
 
-    // #2
-    ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this)
-            .tasksProcessingOrder(QueueProcessingType.LIFO)
-            .denyCacheImageMultipleSizesInMemory()
-            .memoryCache(new LruMemoryCache(2 * 1024 * 1024))
-            .memoryCacheSize(2 * 1024 * 1024)
-            .diskCacheSize(50 * 1024 * 1024)
-            .diskCacheFileCount(100)
-            .defaultDisplayImageOptions(defaultOptions)
-            .build();
-
-    ImageLoader.getInstance().init(configuration);
+    //ImageLoader.getInstance().init(configuration);
 
 
         public DataSource getDataSource() {
