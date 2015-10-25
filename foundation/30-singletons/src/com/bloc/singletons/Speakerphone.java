@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Speakerphone extends Object {
 
 	private static Speakerphone sPhone;
-	public ArrayList<Listener> listenerList;
+	public ArrayList<Listener> listenerList = new ArrayList<Listener>();
 
 	public static Speakerphone get(){
 		if(sPhone == null){
@@ -65,10 +65,8 @@ public class Speakerphone extends Object {
 	/************************************************/
 
 	public void removeAll(){
-		for(int i = 0; i < listenerList.size(); i++){
-			listenerList.remove(i);
+		listenerList.clear();
 		}
-	}
 
 	/*
 	 * removeAll
@@ -83,14 +81,13 @@ public class Speakerphone extends Object {
 	/************************************************/
 
 	public boolean contains(Listener listener){
+
 		for(int i = 0; i < listenerList.size(); i++){
 			if(listener == listenerList.get(i)){
 				return true;
 			}
-			else{
-				return false;
-			}
 		}
+		return false;
 	}
 
 	/*
@@ -127,7 +124,7 @@ public class Speakerphone extends Object {
 
 	public void shoutMessage(Talker talker, Class<?> cls){
 		for(int i = 0; i < listenerList.size(); i++){
-			if(listenerList.get(i) instanceof cls){
+			if(listenerList.getClass() == cls){
 				talker.getMessage();
 			}
 		}
