@@ -3,6 +3,8 @@ package io.bloc.android.blocly.api;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.bloc.android.blocly.BloclyApplication;
+import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
 
@@ -34,9 +36,9 @@ public class DataSource {
                 "http://favoritefeed.net", "http://feeds.feedburner.com/favorite_feed?format=xml"));
         for (int i = 0; i < 10; i++) {
             items.add(new RssItem(String.valueOf(i),
-                    "An incredible news story #" + i,
-                    "You won't believe how exciting this news story is, get ready to be blown away by its amazingness.",
-                    "http://favoritefeed.net?story_id=an-incredible-news-story",
+                    BloclyApplication.getSharedInstance().getString(R.string.placeholder_headline) + " " + i,
+                    BloclyApplication.getSharedInstance().getString(R.string.placeholder_content),
+                    "http://thisisafakewebsite.com",
                     "http://rs1img.memecdn.com/silly-dog_o_511213.jpg",
                     0, System.currentTimeMillis(), false, false, false));
         }
