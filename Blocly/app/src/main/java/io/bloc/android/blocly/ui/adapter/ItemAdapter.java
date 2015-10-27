@@ -116,7 +116,12 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
         @Override
         public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-            Log.v(TAG, "Checked changed to:" + isChecked);
+            if(compoundButton == archiveCheckBox){
+                Log.v(TAG, "Checked archiveCheckBox changed to:" + isChecked);
+            }
+            else{
+                Log.v(TAG, "Checked favoriteCheckBox changed to:" + isChecked);
+            }
         }
     }
 }
