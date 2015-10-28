@@ -94,16 +94,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <io.bloc.android.blocly.ui.widget.RobotoTextView
-            style="@style/Button"
+        <Button
             android:id="@+id/tv_rss_item_visit_site"
-            android:text="@string/visit_site"
+            style="@style/Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/visit_site"
+            android:layout_below="@id/ll_rss_item_expanded_content_wrapper"
             android:layout_marginTop="8dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:paddingRight="8dp"/>
+            android:textColor="@color/white_primary"/>
 
     </LinearLayout>
 </RelativeLayout>
