@@ -1,16 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Window Background -->
         <item name="android:windowBackground">@color/windowBackground</item>
+        <!-- AppCompat Colors -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- DrawerArrowStyle -->
+        <item name="drawerArrowStyle">@style/DrawerArrow</item>
+    </style>
+
+    <style name="DrawerArrow">
+        <item name="color">@color/actionBarItems</item>
+        <item name="spinBars">true</item>
+        <item name="thickness">2dp</item>
+        <item name="arrowShaftLength">16dp</item>
+        <item name="arrowHeadLength">8dp</item>
+        <item name="barLength">18dp</item>
+        <item name="gapBetweenBars">3dp</item>
+        <item name="drawableSize">24dp</item>
     </style>
 
     <style name="Headline">
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">24sp</item>
+        // #1
         <item name="android:ellipsize">end</item>
-        <item name="robotoFont">CondensedBoldItalic</item>
+        // #2
+        <item name="robotoFont">Regular</item>
     </style>
 
     <style name="Caption">
@@ -18,13 +36,13 @@
         <item name="android:textSize">12sp</item>
         <item name="android:lines">1</item>
         <item name="android:ellipsize">end</item>
-        <item name="robotoFont">Medium</item>
+        <item name="robotoFont">Regular</item>
     </style>
 
     <style name="Body1">
         <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">14sp</item>
-        <item name="robotoFont">CondensedRegular</item>
+        <item name="robotoFont">Regular</item>
     </style>
 
     <style name="Button">
