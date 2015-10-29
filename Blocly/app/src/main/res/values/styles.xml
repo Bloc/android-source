@@ -12,14 +12,14 @@
     </style>
 
     <style name="DrawerArrow">
-        <item name="color">@color/actionBarItems</item>
+        <item name="color">@color/teal</item>
         <item name="spinBars">true</item>
-        <item name="thickness">2dp</item>
-        <item name="arrowShaftLength">16dp</item>
-        <item name="arrowHeadLength">8dp</item>
+        <item name="thickness">3dp</item>
+        <item name="arrowShaftLength">8dp</item>
+        <item name="arrowHeadLength">4dp</item>
         <item name="barLength">18dp</item>
-        <item name="gapBetweenBars">3dp</item>
-        <item name="drawableSize">24dp</item>
+        <item name="gapBetweenBars">5dp</item>
+        <item name="drawableSize">18dp</item>
     </style>
 
     <style name="Headline">
