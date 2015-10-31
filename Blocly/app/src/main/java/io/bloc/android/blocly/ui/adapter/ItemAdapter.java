@@ -90,6 +90,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             title.setText(rssItem.getTitle());
             content.setText(rssItem.getDescription());
             expandedContent.setText(rssItem.getDescription());
+            animateHeader(rssItem);
         }
 
         void animateHeader(RssItem rssItem){
@@ -117,6 +118,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 headerImage.setImageBitmap(loadedImage);
                 headerImage.setVisibility(View.VISIBLE);
             }
+            headerImage.animate().yBy(.2f).setDuration(100);
         }
         @Override
         public void onLoadingCancelled(String imageUri, View view){

@@ -2,7 +2,6 @@ package io.bloc.android.blocly.ui.activity;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,7 +43,6 @@ public class BloclyActivity extends AppCompatActivity{
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0);
         drawerLayout.setDrawerListener(drawerToggle);
-        drawerLayout.openDrawer(GravityCompat.START);
         }
 
     @Override
