@@ -50,7 +50,15 @@ public class FavoritePastries {
 	 * @return nothing
 	 */
 	public void addPastry(Pastry pastry, int rating) {
-		if(mFavoritePastries.keySet(pastry))
+		removePastry(pastry);
+		if(mFavoritePastries.containsKey(rating)){
+			mFavoritePastries.get(rating).add(pastry);
+		}else{
+			List<Pastry> mPastries = new ArrayList<Pastry>();
+			mPastries.add(pastry);
+			mFavoritePastries.put(rating, mPastries);
+		}
+
 	}
 
 	/* 
@@ -66,10 +74,15 @@ public class FavoritePastries {
 	 *		   false otherwise
 	 */
 	public boolean removePastry(Pastry pastry) {
-		/************************************************
- 	 	 *	WORK HERE, you must modify the return value
-		/************************************************/
-		return false;
+		boolean bool = false;
+		for(List<Pastry> mPastries : mFavoritePastries.values()){
+		
+			if(mPastries.contains(pastry)){
+				mPastries.remove(pastry);
+				bool = true;
+			}
+		}
+		return bool;
 	}
 
 	/* 
@@ -87,10 +100,9 @@ public class FavoritePastries {
 	 *		   -1 if not found among FavoritePastries
 	 */
 	public int getRatingForPastry(Pastry pastry) {
-		/************************************************
- 	 	 *	WORK HERE, you must modify the return value
-		/************************************************/
-		return -1;
+		
+		
+
 	}
 
 	/* 
@@ -110,10 +122,10 @@ public class FavoritePastries {
 	 *         found
 	 */
 	public Collection<Pastry> getPastriesForRating(int rating) {
-		/************************************************
- 	 	 *	WORK HERE, you must modify the return value
-		/************************************************/
-		return null;
+		for(List<Pastry> mPastries : mFavoritePastries.values()){
+			return mFavoritePastries.get(rating);
+		}		
+
 	}
 
 }
