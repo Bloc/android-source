@@ -111,6 +111,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         @Override
         public void onLoadingFailed(String imageUri, View view, FailReason failReason){
             Log.e(TAG, "Error on loading: ", failReason.getCause());
+            headerImage.animate().yBy(-.5f).setDuration(100);
         }
 
         public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage){
@@ -123,6 +124,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         @Override
         public void onLoadingCancelled(String imageUri, View view){
             ImageLoader.getInstance().loadImage(imageUri, this);
+            headerImage.animate().yBy(-.5f).setDuration(100);
         }
 
         @Override
