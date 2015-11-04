@@ -52,4 +52,12 @@
         <item name="robotoFont">CondensedBold</item>
     </style>
 
+    <style name="NavigationItem">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@drawable/navigation_item_text</item>
+        <item name="android:singleLine">true</item>
+        <item name="robotoFont">Medium</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>

@@ -21,14 +21,12 @@
               android:layout_width="match_parent"
              android:layout_height="match_parent" />
 
-</LinearLayout>
+    </LinearLayout>
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_nav_activity_blocly"
         android:layout_width="280dp"
         android:layout_height="match_parent"
-        android:text="Welcome to the drawer"
-        android:textSize="32sp"
-        android:gravity="center"
         android:background="?android:windowBackground"
         android:layout_gravity="left"/>
 
