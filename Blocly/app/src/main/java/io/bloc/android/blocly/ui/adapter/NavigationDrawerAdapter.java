@@ -24,8 +24,8 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     public static interface NavigationDrawerAdapterDelegate{
-        public void didSelectNavigationOption(NavigationDrawerAdapter adapter, NavigationOption navigationOption);
-        public void didSelectFeed(NavigationDrawerAdapter adapter, RssFeed rssFeed);
+        void didSelectNavigationOption(NavigationDrawerAdapter adapter, NavigationOption navigationOption);
+        void didSelectFeed(NavigationDrawerAdapter adapter, RssFeed rssFeed);
     }
 
     WeakReference<NavigationDrawerAdapterDelegate> delegate;

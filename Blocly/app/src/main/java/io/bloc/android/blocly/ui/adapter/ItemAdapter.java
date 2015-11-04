@@ -18,6 +18,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import java.lang.ref.WeakReference;
+
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.DataSource;
@@ -28,6 +30,16 @@ import io.bloc.android.blocly.api.model.RssItem;
  * Created by Austin on 10/19/2015.
  */
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
+
+    public static interface ItemAdapterDelegate{
+        void onItemPress(ItemAdapter itemAdapter, RssItem rssItem);
+        void onVisitSiteButtonPress(ItemAdapter itemAdapter, TextView textView);
+        void onFavorite(ItemAdapter itemAdapter, CheckBox checkBox);
+        void onArchive(ItemAdapter itemAdapter, CheckBox checkBox);
+    }
+
+    WeakReference<ItemAdapterDelegate> delegate;
+
 
     //log message location for image loader
     private static String TAG = ItemAdapter.class.getSimpleName();
