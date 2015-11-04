@@ -5,11 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
+import io.bloc.android.blocly.ui.activity.BloclyActivity;
 
 /**
  * Created by Austin on 11/3/2015.
@@ -84,7 +84,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         }
 
         public void onClick(View v){
-            Toast.makeText(v.getContext(), "Nothing yet", Toast.LENGTH_SHORT).show();
+            BloclyActivity.printText(v, "Nothing yet");
         }
 
     }

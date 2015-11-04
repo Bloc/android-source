@@ -10,6 +10,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
@@ -34,16 +36,15 @@ public class BloclyActivity extends AppCompatActivity{
         setSupportActionBar(toolbar);
 
         itemAdapter = new ItemAdapter();
-
+        navigationDrawerAdapter = new NavigationDrawerAdapter();
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
+        RecyclerView navigationRecyclerView = (RecyclerView) findViewById(R.id.rv_nav_activity_blocly);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemAdapter);
 
-
-        RecyclerView navigationRecyclerView = (RecyclerView) findViewById(R.id.rv_nav_activity_blocly);
         navigationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         navigationRecyclerView.setItemAnimator(new DefaultItemAnimator());
         navigationRecyclerView.setAdapter(navigationDrawerAdapter);
@@ -72,6 +73,10 @@ public class BloclyActivity extends AppCompatActivity{
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static void printText(View v, String s) {
+        Toast.makeText(v.getContext(), s, Toast.LENGTH_SHORT).show();
     }
 }
 
