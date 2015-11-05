@@ -40,7 +40,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     WeakReference<ItemAdapterDelegate> delegate;
 
-
     //log message location for image loader
     private static String TAG = ItemAdapter.class.getSimpleName();
 
@@ -75,6 +74,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         View expandedContentWrapper;
         TextView expandedContent;
         TextView visitSite;
+        private WeakReference<ItemAdapterDelegate> delegate;
 
         public ItemAdapterViewHolder(View itemView) {
 
@@ -112,6 +112,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 ImageLoader.getInstance().loadImage(rssItem.getImageUrl(), this);
             }else{
                 headerWrapper.setVisibility(View.GONE);
+            }
+        }
+
+        public void setDelegate(ItemAdapterDelegate delegate){
+            this.delegate = new WeakReference<ItemAdapterDelegate>(delegate);
+        }
+
+        public ItemAdapterDelegate getDelegate(){
+            if(delegate == null){
+                return null;
+            }else{
+                return delegate.get();
             }
         }
 
@@ -157,6 +169,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 Log.v(TAG, "Checked favoriteCheckBox changed to:" + isChecked);
             }
         }
+
+
 
         private void animateContent(final boolean expand) {
             if ((expand && contentExpanded) || (!expand && !contentExpanded)) {
