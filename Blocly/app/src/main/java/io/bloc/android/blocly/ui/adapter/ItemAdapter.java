@@ -31,7 +31,7 @@ import io.bloc.android.blocly.api.model.RssItem;
  */
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
 
-    public static interface ItemAdapterDelegate{
+    public interface ItemAdapterDelegate{
         void onItemPress(ItemAdapter itemAdapter, RssItem rssItem);
         void onVisitSiteButtonPress(ItemAdapter itemAdapter, TextView textView);
         void onFavorite(ItemAdapter itemAdapter, CheckBox checkBox);

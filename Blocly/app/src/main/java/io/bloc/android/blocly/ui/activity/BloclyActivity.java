@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ import io.bloc.android.blocly.ui.adapter.NavigationDrawerAdapter;
 /**
  * Created by Austin on 10/15/2015.
  */
-public class BloclyActivity extends AppCompatActivity implements NavigationDrawerAdapter.NavigationDrawerAdapterDelegate, ItemAdapter.ItemAdapterDelegate{
+public class BloclyActivity extends AppCompatActivity implements NavigationDrawerAdapter.NavigationDrawerAdapterDelegate, ItemAdapter.ItemAdapterDelegate {
 
     private ItemAdapter itemAdapter;
     private ActionBarDrawerToggle drawerToggle;
@@ -58,23 +59,23 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0);
         drawerLayout.setDrawerListener(drawerToggle);
-        }
+    }
 
     @Override
-    protected void onPostCreate(Bundle savedInstanceState){
+    protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         drawerToggle.syncState();
     }
 
     @Override
-    public void onConfigurationChanged(Configuration newConfig){
+    public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        if(drawerToggle.onOptionsItemSelected(item)){
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -91,6 +92,11 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     public void didSelectFeed(NavigationDrawerAdapter adapter, RssFeed rssFeed) {
         drawerLayout.closeDrawers();
         Toast.makeText(this, "Show RSS items from " + rssFeed.getTitle(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void printText(View v, String s) {
+        Toast.makeText(v.getContext(), s, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -112,6 +118,6 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     public void onArchive(ItemAdapter itemAdapter, CheckBox checkBox) {
 
     }
-}
 
+}
 
