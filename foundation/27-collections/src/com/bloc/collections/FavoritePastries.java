@@ -100,9 +100,13 @@ public class FavoritePastries {
 	 *		   -1 if not found among FavoritePastries
 	 */
 	public int getRatingForPastry(Pastry pastry) {
-		
-		
-
+		for(int key : mFavoritePastries.keySet()){
+			List<Pastry> mPastries = mFavoritePastries.get(key);
+			if(mPastries.contains(pastry)){
+				return key;
+			}
+		}
+		return -1;
 	}
 
 	/* 
@@ -122,10 +126,9 @@ public class FavoritePastries {
 	 *         found
 	 */
 	public Collection<Pastry> getPastriesForRating(int rating) {
-		for(List<Pastry> mPastries : mFavoritePastries.values()){
+		if(mFavoritePastries.containsKey(rating)){
 			return mFavoritePastries.get(rating);
-		}		
-
+		}
+		return new ArrayList<Pastry>();
 	}
-
 }
