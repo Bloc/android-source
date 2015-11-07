@@ -55,7 +55,7 @@ public class BloclyActivity extends AppCompatActivity
 
         navigationDrawerAdapter = new NavigationDrawerAdapter();
 
-        navigationDrawerAdapter.setDelegate();
+        navigationDrawerAdapter.setDelegate(this);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
         RecyclerView navigationRecyclerView = (RecyclerView) findViewById(R.id.rv_nav_activity_blocly);
@@ -220,6 +220,7 @@ public class BloclyActivity extends AppCompatActivity
             positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
             itemAdapter.setExpandedItem(rssItem);
             recyclerView.scrollToPosition(positionToExpand);
+
         }else{
             itemAdapter.setExpandedItem(null);
         }

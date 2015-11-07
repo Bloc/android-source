@@ -60,7 +60,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         return delegate.get();
     }
 
-    public void setDelegate() {
+    public void setDelegate(NavigationDrawerAdapterDelegate delegate) {
         this.delegate = new WeakReference<NavigationDrawerAdapterDelegate>((NavigationDrawerAdapterDelegate) delegate);
     }
 
@@ -70,6 +70,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         TextView title;
         View bottomPadding;
         View divider;
+        NavigationDrawerAdapterDelegate delegate = getDelegate();
 
         int position;
         RssFeed rssFeed;
@@ -110,7 +111,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         }
 
         public void onClick(View v){
-            getDelegate().printText(v, "Hullo");
+            delegate.printText(v, "Hullo");
             if(getDelegate() == null){
                 return;
             }
