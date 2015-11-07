@@ -214,7 +214,7 @@ public class BloclyActivity extends AppCompatActivity
             positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
         }
         if(itemAdapter.getExpandedItem() != rssItem){
-            positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
+            positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
             itemAdapter.setExpandedItem(rssItem);
         }else{
             itemAdapter.setExpandedItem(null);

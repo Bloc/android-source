@@ -145,8 +145,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             title.setText(rssItem.getTitle());
             content.setText(rssItem.getDescription());
             expandedContent.setText(rssItem.getDescription());
-            animateHeader(rssItem);
             animateContent(getExpandedItem() == rssItem);
+            animateHeader(rssItem);
         }
 
         void animateHeader(RssItem rssItem){
@@ -157,6 +157,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             }else{
                 headerWrapper.setVisibility(View.GONE);
             }
+
         }
 
         @Override
@@ -186,7 +187,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         @Override
         public void onClick(View view){
             if(view == itemView) {
-               animateContent(!contentExpanded);
+              if(getDelegate() != null){
+                  getDelegate().onItemClicked(ItemAdapter.this, rssItem);
+              }
             }else{
                 Toast.makeText(view.getContext(), "Visit " + rssItem.getUrl(), Toast.LENGTH_SHORT).show();
             }
