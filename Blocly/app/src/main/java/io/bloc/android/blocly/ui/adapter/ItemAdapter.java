@@ -145,7 +145,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             title.setText(rssItem.getTitle());
             content.setText(rssItem.getDescription());
             expandedContent.setText(rssItem.getDescription());
-            animateContent(getExpandedItem() == rssItem);
+
             animateHeader(rssItem);
         }
 
@@ -157,7 +157,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             }else{
                 headerWrapper.setVisibility(View.GONE);
             }
-
+            animateContent(getExpandedItem() == rssItem);
         }
 
         @Override

@@ -105,6 +105,8 @@ public class BloclyActivity extends AppCompatActivity
                     menu.getItem(i).setEnabled(false);
                 }
             }
+
+
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 drawerToggle.onDrawerSlide(drawerView, slideOffset);
@@ -207,6 +209,7 @@ public class BloclyActivity extends AppCompatActivity
 
     @Override
     public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem) {
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
         int positionToExpand = -1;
         int positionToContract = -1;
 
@@ -216,6 +219,7 @@ public class BloclyActivity extends AppCompatActivity
         if(itemAdapter.getExpandedItem() != rssItem){
             positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
             itemAdapter.setExpandedItem(rssItem);
+            recyclerView.scrollToPosition(positionToExpand);
         }else{
             itemAdapter.setExpandedItem(null);
         }
