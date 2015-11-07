@@ -13,12 +13,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
@@ -28,7 +27,11 @@ import io.bloc.android.blocly.ui.adapter.NavigationDrawerAdapter;
 /**
  * Created by Austin on 10/15/2015.
  */
-public class BloclyActivity extends AppCompatActivity implements NavigationDrawerAdapter.NavigationDrawerAdapterDelegate, ItemAdapter.ItemAdapterDelegate {
+public class BloclyActivity extends AppCompatActivity
+        implements
+        NavigationDrawerAdapter.NavigationDrawerAdapterDelegate,
+        ItemAdapter.ItemAdapterDelegate,
+        ItemAdapter.DataSource {
 
     private ItemAdapter itemAdapter;
     private ActionBarDrawerToggle drawerToggle;
@@ -46,6 +49,10 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         setSupportActionBar(toolbar);
 
         itemAdapter = new ItemAdapter();
+        itemAdapter.setDataSource(this);
+        itemAdapter.setDelegate(this);
+
+
         navigationDrawerAdapter = new NavigationDrawerAdapter();
 
         navigationDrawerAdapter.setDelegate();
@@ -184,24 +191,41 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     }
 
     @Override
-    public void onItemPress(ItemAdapter itemAdapter, RssItem rssItem) {
-
+    public RssItem getRssItem(ItemAdapter itemAdapter, int position){
+        return BloclyApplication.getSharedDataSource().getItems().get(position);
     }
 
     @Override
-    public void onVisitSiteButtonPress(ItemAdapter itemAdapter, TextView textView) {
-
+    public RssFeed getRssFeed(ItemAdapter itemAdapter, int position){
+        return BloclyApplication.getSharedDataSource().getFeeds().get(0);
     }
 
     @Override
-    public void onFavorite(ItemAdapter itemAdapter, CheckBox checkBox) {
-
+    public int getItemCount(ItemAdapter itemAdapter){
+        return BloclyApplication.getSharedDataSource().getItems().size();
     }
 
     @Override
-    public void onArchive(ItemAdapter itemAdapter, CheckBox checkBox) {
+    public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem) {
+        int positionToExpand = -1;
+        int positionToContract = -1;
+
+        if(itemAdapter.getExpandedItem() != null){
+            positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
+        }
+        if(itemAdapter.getExpandedItem() != rssItem){
+            positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
+            itemAdapter.setExpandedItem(rssItem);
+        }else{
+            itemAdapter.setExpandedItem(null);
+        }
+        if(positionToContract > -1){
+            itemAdapter.notifyItemChanged(positionToContract);
+        }
+        if(positionToExpand > -1){
+            itemAdapter.notifyItemChanged(positionToExpand);
+        }
 
     }
-
 }
 

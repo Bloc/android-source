@@ -20,9 +20,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.lang.ref.WeakReference;
 
-import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
-import io.bloc.android.blocly.api.DataSource;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
 
@@ -32,16 +30,23 @@ import io.bloc.android.blocly.api.model.RssItem;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
 
     public interface ItemAdapterDelegate{
-        void onItemPress(ItemAdapter itemAdapter, RssItem rssItem);
-        void onVisitSiteButtonPress(ItemAdapter itemAdapter, TextView textView);
-        void onFavorite(ItemAdapter itemAdapter, CheckBox checkBox);
-        void onArchive(ItemAdapter itemAdapter, CheckBox checkBox);
+        public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem);
+    }
+
+    public interface DataSource{
+        public RssItem getRssItem(ItemAdapter itemAdapter, int position);
+        public RssFeed getRssFeed(ItemAdapter itemAdapter, int position);
+        public int getItemCount(ItemAdapter itemAdapter);
     }
 
     WeakReference<ItemAdapterDelegate> delegate;
+    WeakReference<DataSource> dataSource;
 
     //log message location for image loader
     private static String TAG = ItemAdapter.class.getSimpleName();
+
+    //tracking rssItem state
+    private RssItem expandedItem = null;
 
     public ItemAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int index){
         View inflate = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rss_item, viewGroup, false);
@@ -50,13 +55,52 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     @Override
     public void onBindViewHolder(ItemAdapterViewHolder itemAdapterViewHolder, int index) {
-        DataSource sharedDataSource = BloclyApplication.getSharedDataSource();
-        itemAdapterViewHolder.update(sharedDataSource.getFeeds().get(0), sharedDataSource.getItems().get(index));
+       if(getDataSource() == null){
+           return;
+       }
+        RssItem rssItem = getDataSource().getRssItem(this, index);
+        RssFeed rssFeed = getDataSource().getRssFeed(this, index);
+        itemAdapterViewHolder.update(rssFeed, rssItem);
     }
 
     @Override
     public int getItemCount() {
-        return BloclyApplication.getSharedDataSource().getItems().size();
+       if(getDataSource() == null){
+           return 0;
+       }
+        return getDataSource().getItemCount(this);
+    }
+
+    public ItemAdapterDelegate getDelegate(){
+        if(delegate == null){
+            return null;
+        }else{
+            return delegate.get();
+        }
+    }
+
+    public DataSource getDataSource(){
+        if(dataSource == null){
+            return null;
+        }
+        return dataSource.get();
+    }
+
+    public void setDataSource(DataSource dataSource){
+        this.dataSource = new WeakReference<DataSource>(dataSource);
+    }
+
+    public void setDelegate(ItemAdapterDelegate delegate){
+        this.delegate = new WeakReference<ItemAdapterDelegate>(delegate);
+    }
+
+    //rssitem tracking state
+    public RssItem getExpandedItem(){
+        return expandedItem;
+    }
+
+    public void setExpandedItem(RssItem expandedItem){
+        this.expandedItem = expandedItem;
     }
 
 
@@ -74,7 +118,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         View expandedContentWrapper;
         TextView expandedContent;
         TextView visitSite;
-        private WeakReference<ItemAdapterDelegate> delegate;
 
         public ItemAdapterViewHolder(View itemView) {
 
@@ -103,6 +146,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             content.setText(rssItem.getDescription());
             expandedContent.setText(rssItem.getDescription());
             animateHeader(rssItem);
+            animateContent(getExpandedItem() == rssItem);
         }
 
         void animateHeader(RssItem rssItem){
@@ -112,18 +156,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 ImageLoader.getInstance().loadImage(rssItem.getImageUrl(), this);
             }else{
                 headerWrapper.setVisibility(View.GONE);
-            }
-        }
-
-        public void setDelegate(ItemAdapterDelegate delegate){
-            this.delegate = new WeakReference<ItemAdapterDelegate>(delegate);
-        }
-
-        public ItemAdapterDelegate getDelegate(){
-            if(delegate == null){
-                return null;
-            }else{
-                return delegate.get();
             }
         }
 
