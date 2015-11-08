@@ -208,11 +208,21 @@ public class BloclyActivity extends AppCompatActivity
         return BloclyApplication.getSharedDataSource().getItems().size();
     }
 
+    //hide/show share button
+    public void hideShare(MenuItem item){
+        item.setVisible(true);
+        item.setEnabled(true);
+    }
+
+    public void showShare(MenuItem item){
+        item.setVisible(false);
+        item.setEnabled(false);
+    }
+
     @Override
     public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem) {
         int positionToExpand = -1;
         int positionToContract = -1;
-
         if(itemAdapter.getExpandedItem() != null){
             positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
             View viewToContract = recyclerView.getLayoutManager().findViewByPosition(positionToContract);
@@ -223,8 +233,9 @@ public class BloclyActivity extends AppCompatActivity
         if(itemAdapter.getExpandedItem() != rssItem){
             positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
             itemAdapter.setExpandedItem(rssItem);
-
+            hideShare(menu.findItem(R.id.action_share));
         }else{
+            showShare(menu.findItem(R.id.action_share));
             itemAdapter.setExpandedItem(null);
         }
         if(positionToContract > -1){
