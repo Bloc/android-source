@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -31,6 +30,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     public interface ItemAdapterDelegate{
         public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem);
+        public void onVisitClicked(ItemAdapter itemAdapter, RssItem rssItem);
     }
 
     public interface DataSource{
@@ -210,7 +210,9 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                   getDelegate().onItemClicked(ItemAdapter.this, rssItem);
               }
             }else{
-                Toast.makeText(view.getContext(), "Visit " + rssItem.getUrl(), Toast.LENGTH_SHORT).show();
+                if(getDelegate() != null){
+                    getDelegate().onVisitClicked(ItemAdapter.this, rssItem);
+                }
             }
         }
 
@@ -223,8 +225,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 Log.v(TAG, "Checked favoriteCheckBox changed to:" + isChecked);
             }
         }
-
-
 
         private void animateContent(final boolean expand) {
             if ((expand && contentExpanded) || (!expand && !contentExpanded)) {
