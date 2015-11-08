@@ -1,5 +1,6 @@
 package io.bloc.android.blocly.ui.activity;
 
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -160,21 +161,22 @@ public class BloclyActivity extends AppCompatActivity
         if (drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
-        if(item.getItemId() == R.id.action_share){
-            Toast.makeText(this, "I love to share", Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.action_search){
-            Toast.makeText(this, "Searching is fun", Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.action_refresh) {
-            Toast.makeText(this, "Refresh it up", Toast.LENGTH_SHORT).show();
-        }
-        if(item.getItemId() == R.id.action_mark_as_read) {
-            Toast.makeText(this, "Mark em all", Toast.LENGTH_SHORT).show();
-        }
+            if (item.getItemId() != R.id.action_share) {
+                Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+            } else {
+                RssItem itemToShare = itemAdapter.getExpandedItem();
+                if (itemToShare == null) {
+                    return false;
+                }
+
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, String.format("%s (%s)", itemToShare.getTitle(), itemToShare.getUrl()));
+                shareIntent.setType("text/plain");
+                Intent chooser = Intent.createChooser(shareIntent, getString(R.string.share_chooser_title));
+                startActivity(chooser);
+            }
         return super.onOptionsItemSelected(item);
     }
-
 
     @Override
     public void didSelectNavigationOption(NavigationDrawerAdapter adapter, NavigationDrawerAdapter.NavigationOption navigationOption) {
