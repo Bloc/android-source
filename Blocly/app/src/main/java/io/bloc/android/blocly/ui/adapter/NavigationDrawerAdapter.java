@@ -54,10 +54,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     public NavigationDrawerAdapterDelegate getDelegate(){
-        if(delegate == null){
+        if(delegate.get() == null) {
             return null;
+        }else{
+            return delegate.get();
         }
-        return delegate.get();
     }
 
     public void setDelegate(NavigationDrawerAdapterDelegate delegate) {
