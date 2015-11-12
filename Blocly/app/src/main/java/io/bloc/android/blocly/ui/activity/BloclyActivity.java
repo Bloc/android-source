@@ -1,6 +1,9 @@
 package io.bloc.android.blocly.ui.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -18,6 +21,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
@@ -55,6 +59,14 @@ public class BloclyActivity extends AppCompatActivity
         itemAdapter.setDataSource(this);
         itemAdapter.setDelegate(this);
 
+        Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+123-456-7899"));
+        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.reddit.com"));
+        Intent emailIntent = new Intent(Intent.ACTION_VIEW);
+        emailIntent.setData(Uri.parse("mailto:?subject=" + "Obama" + "&body=" + "Just checkin in barry"));
+
+        isIntentAvailable(this, dialIntent);
+        isIntentAvailable(this, webIntent);
+        isIntentAvailable(this, emailIntent);
 
         navigationDrawerAdapter = new NavigationDrawerAdapter();
 
@@ -74,9 +86,10 @@ public class BloclyActivity extends AppCompatActivity
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
         drawerLayout.setDrawerListener(drawerToggle);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0){
+
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0) {
             @Override
-            public void onDrawerClosed(View drawerView){
+            public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
 
                 if (overflowButton != null) {
@@ -95,16 +108,17 @@ public class BloclyActivity extends AppCompatActivity
                     }
                 }
             }
+
             @Override
-            public void onDrawerOpened(View drawerView){
+            public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                if(overflowButton != null){
+                if (overflowButton != null) {
                     overflowButton.setEnabled(false);
                 }
-                if(menu == null){
+                if (menu == null) {
                     return;
                 }
-                for(int i = 0; i < menu.size(); i++){
+                for (int i = 0; i < menu.size(); i++) {
                     menu.getItem(i).setEnabled(false);
                 }
             }
@@ -136,6 +150,16 @@ public class BloclyActivity extends AppCompatActivity
                 }
             }
         };
+    }
+
+    public static boolean isIntentAvailable(Context context, Intent intent) {
+        PackageManager packageManager = context.getPackageManager();
+        boolean test;
+        List<ResolveInfo> intentList = packageManager.queryIntentActivities(intent, 0);
+        if(intentList.size() > 0){
+            return true;
+        }
+        return false;
     }
 
     @Override
