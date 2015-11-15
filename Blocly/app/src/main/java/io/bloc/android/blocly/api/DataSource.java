@@ -14,13 +14,13 @@ import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
  */
 public class DataSource {
 
-    private List<RssFeed> feeds;
-    private List<RssItem> items;
+    private ArrayList<GetFeedsNetworkRequest.FeedResponse> feeds;
+    private ArrayList<GetFeedsNetworkRequest.ItemResponse> items;
 
     public DataSource() {
-        feeds = new ArrayList<RssFeed>();
-        items = new ArrayList<RssItem>();
-        createFakeData();
+        feeds = new ArrayList<GetFeedsNetworkRequest.FeedResponse>();
+        items = new ArrayList<GetFeedsNetworkRequest.ItemResponse>();
+        createRealData();
 
         new Thread(new Runnable() {
             @Override
@@ -38,10 +38,10 @@ public class DataSource {
         return items;
     }
 
-    void createFakeData() {
-        feeds.add(new RssFeed("My Favorite Feed",
-                "This feed is just incredible, I can't even begin to tell you…",
-                "http://favoritefeed.net", "http://feeds.feedburner.com/favorite_feed?format=xml"));
+
+    void createRealData() {
+        feeds.add(new RssFeed(GetFeedsNetworkRequest.FeedResponse.channelTitle, GetFeedsNetworkRequest.FeedResponse.channelDescription,
+                GetFeedsNetworkRequest.FeedResponse.channelURL, GetFeedsNetworkRequest.FeedResponse.channelFeedURL));
         for (int i = 0; i < 10; i++) {
             items.add(new RssItem(String.valueOf(i),
                     BloclyApplication.getSharedInstance().getString(R.string.placeholder_headline) + " " + i,
