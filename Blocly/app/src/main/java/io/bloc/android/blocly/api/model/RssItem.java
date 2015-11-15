@@ -11,12 +11,12 @@ public class RssItem {
     private String url;
     private String imageUrl;
     private long rssFeedId;
-    private long datePublished;
+    private String datePublished;
     private boolean read;
     private boolean favorite;
     private boolean archived;
 
-    public RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, long datePublished, boolean read, boolean favorite, boolean archived) {
+    public RssItem(String guid, String title, String description, String url, String imageUrl, long rssFeedId, String datePublished, boolean read, boolean favorite, boolean archived) {
         this.guid = guid;
         this.title = title;
         this.description = description;
@@ -55,7 +55,7 @@ public class RssItem {
         return rssFeedId;
     }
 
-    public long getDatePublished() {
+    public String getDatePublished() {
         return datePublished;
     }
 

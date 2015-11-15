@@ -132,12 +132,12 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
     }
 
     public static class ItemResponse {
-        public final String itemURL;
-        public final String itemTitle;
-        public final String itemDescription;
-        public final String itemGUID;
-        public final String itemPubDate;
-        public final String itemEnclosureURL;
+        public static String itemURL;
+        public static String itemTitle;
+        public static String itemDescription;
+        public static String itemGUID;
+        public static String itemPubDate;
+        public static String itemEnclosureURL;
         public final String itemEnclosureMIMEType;
 
         ItemResponse(String itemURL, String itemTitle, String itemDescription,

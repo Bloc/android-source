@@ -3,8 +3,6 @@ package io.bloc.android.blocly.api;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.bloc.android.blocly.BloclyApplication;
-import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
 import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
@@ -12,14 +10,14 @@ import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
 /**
  * Created by Austin on 10/16/2015.
  */
-public class DataSource {
+public class DataSource{
 
-    private ArrayList<GetFeedsNetworkRequest.FeedResponse> feeds;
-    private ArrayList<GetFeedsNetworkRequest.ItemResponse> items;
+    private ArrayList<RssFeed> feeds;
+    private ArrayList<RssItem> items;
 
     public DataSource() {
-        feeds = new ArrayList<GetFeedsNetworkRequest.FeedResponse>();
-        items = new ArrayList<GetFeedsNetworkRequest.ItemResponse>();
+        feeds = new ArrayList<RssFeed>();
+        items = new ArrayList<RssItem>();
         createRealData();
 
         new Thread(new Runnable() {
@@ -43,12 +41,13 @@ public class DataSource {
         feeds.add(new RssFeed(GetFeedsNetworkRequest.FeedResponse.channelTitle, GetFeedsNetworkRequest.FeedResponse.channelDescription,
                 GetFeedsNetworkRequest.FeedResponse.channelURL, GetFeedsNetworkRequest.FeedResponse.channelFeedURL));
         for (int i = 0; i < 10; i++) {
-            items.add(new RssItem(String.valueOf(i),
-                    BloclyApplication.getSharedInstance().getString(R.string.placeholder_headline) + " " + i,
-                    BloclyApplication.getSharedInstance().getString(R.string.placeholder_content),
-                    "http://thisisafakewebsite.com",
-                    "http://rs1img.memecdn.com/silly-dog_o_511213.jpg",
-                    0, System.currentTimeMillis(), false, false, false));
+            items.add(new RssItem(GetFeedsNetworkRequest.ItemResponse.itemGUID,
+                    GetFeedsNetworkRequest.ItemResponse.itemTitle,
+                    GetFeedsNetworkRequest.ItemResponse.itemDescription,
+                    GetFeedsNetworkRequest.ItemResponse.itemURL,
+                    GetFeedsNetworkRequest.ItemResponse.itemEnclosureURL,
+                    121212,
+                    GetFeedsNetworkRequest.ItemResponse.itemPubDate, false, false, false));
         }
     }
 
