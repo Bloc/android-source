@@ -17,7 +17,7 @@ import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
 /**
  * Created by Austin on 10/16/2015.
  */
-public class DataSource{
+public class DataSource {
 
     private DatabaseOpenHelper databaseOpenHelper;
     private RssFeedTable rssFeedTable;
@@ -35,16 +35,33 @@ public class DataSource{
 
         new Thread(new Runnable() {
             @Override
-            public void run () {
-                if(BuildConfig.DEBUG && false){
+            public void run() {
+                if (BuildConfig.DEBUG && true) {
                     BloclyApplication.getSharedInstance().deleteDatabase("blocly_db");
                 }
                 SQLiteDatabase writableDatabase = databaseOpenHelper.getWritableDatabase();
 
-               List<GetFeedsNetworkRequest.FeedResponse> feedResponses = new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
+                List<GetFeedsNetworkRequest.FeedResponse> feedResponses = new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
                 List<GetFeedsNetworkRequest.ItemResponse> itemResponses = feedResponses.get(0).getItems();
                 addFeedData(feedResponses);
                 addItemData(itemResponses);
+
+                rssFeedTable.setColumnDescription(feedResponses.get(0).getChannelDescription());
+                rssFeedTable.setColumnTitle(feedResponses.get(0).getChannelTitle());
+                rssFeedTable.setColumnSiteURL(feedResponses.get(0).getChannelURL());
+                rssFeedTable.insert(writableDatabase);
+
+                rssItemTable.setColumnTitle(itemResponses.get(0).itemTitle);
+                rssItemTable.setColumnDescription(itemResponses.get(0).itemDescription);
+                rssItemTable.setColumnEnclosure(itemResponses.get(0).itemEnclosureURL);
+                rssItemTable.setColumnGuid(itemResponses.get(0).itemGUID);
+                rssItemTable.setColumnMimeType(itemResponses.get(0).itemEnclosureMIMEType);
+                rssItemTable.setColumnPubDate(itemResponses.get(0).getItemPubDate());
+                rssItemTable.insert(writableDatabase);
+
+
+
+
             }
         }).start();
     }
@@ -59,7 +76,7 @@ public class DataSource{
 
 
     public List<RssFeed> addFeedData(List<GetFeedsNetworkRequest.FeedResponse> feedResponses) {
-        for(int i = 0; i < feedResponses.size(); i++) {
+        for (int i = 0; i < feedResponses.size(); i++) {
             RssFeed feed = new RssFeed(feedResponses.get(i).getChannelTitle(),
                     feedResponses.get(i).getChannelDescription(),
                     feedResponses.get(i).getChannelURL(),
@@ -69,8 +86,8 @@ public class DataSource{
         return feeds;
     }
 
-    public List<RssItem> addItemData(List<GetFeedsNetworkRequest.ItemResponse> itemResponses){
-        for(int i = 0; i < itemResponses.size(); i++){
+    public List<RssItem> addItemData(List<GetFeedsNetworkRequest.ItemResponse> itemResponses) {
+        for (int i = 0; i < itemResponses.size(); i++) {
             RssItem item = new RssItem(itemResponses.get(i).getItemGUID(),
                     itemResponses.get(i).getItemTitle(),
                     itemResponses.get(i).getItemDescription(),
