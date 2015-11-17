@@ -129,15 +129,36 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
             this.channelDescription = channelDescription;
             this.channelItems = channelItems;
         }
+
+        public String getChannelFeedURL(){
+            return channelFeedURL;
+        }
+
+        public String getChannelTitle(){
+            return channelTitle;
+        }
+
+        public String getChannelURL(){
+            return channelURL;
+        }
+
+        public String getChannelDescription(){
+            return channelDescription;
+        }
+
+        public List<ItemResponse> getItems(){
+            return channelItems;
+        }
     }
 
+
     public static class ItemResponse {
-        public static String itemURL;
-        public static String itemTitle;
-        public static String itemDescription;
-        public static String itemGUID;
-        public static String itemPubDate;
-        public static String itemEnclosureURL;
+        public final String itemURL;
+        public final String itemTitle;
+        public final String itemDescription;
+        public final String itemGUID;
+        public final String itemPubDate;
+        public final String itemEnclosureURL;
         public final String itemEnclosureMIMEType;
 
         ItemResponse(String itemURL, String itemTitle, String itemDescription,
@@ -151,6 +172,25 @@ public class GetFeedsNetworkRequest extends NetworkRequest<List<GetFeedsNetworkR
             this.itemEnclosureURL = itemEnclosureURL;
             this.itemEnclosureMIMEType = itemEnclosureMIMEType;
         }
-    }
 
+        public String getItemURL(){
+            return itemURL;
+        }
+
+        public String getItemTitle(){
+            return itemTitle;
+        }
+
+        public String getItemDescription(){
+            return itemDescription;
+        }
+
+        public String getItemGUID(){
+            return itemGUID;
+        }
+
+        public String getItemPubDate(){
+            return itemPubDate;
+        }
+    }
 }
