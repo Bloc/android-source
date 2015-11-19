@@ -8,6 +8,56 @@ import android.database.sqlite.SQLiteDatabase;
  */
 public class RssItemTable extends Table {
 
+    public static class Builder implements Table.Builder{
+
+        ContentValues values = new ContentValues();
+
+        public Builder setLink(String link){
+            values.put(COLUMN_LINK, link);
+            return this;
+        }
+
+        public Builder setDescription(String description){
+            values.put(COLUMN_DESCRIPTION, description);
+            return this;
+        }
+
+        public Builder setTitle(String title){
+            values.put(COLUMN_TITLE, title);
+            return this;
+        }
+
+        public Builder setPubDate(long pubDate){
+            values.put(COLUMN_PUB_DATE, pubDate);
+            return this;
+        }
+
+        public Builder setEnclosure(String enclosure){
+            values.put(COLUMN_ENCLOSURE, enclosure);
+            return this;
+        }
+
+        public Builder setMimeType(String mimeType){
+            values.put(COLUMN_MIME_TYPE, mimeType);
+            return this;
+        }
+
+        public Builder setRssFeed(long rssFeed){
+            values.put(COLUMN_RSS_FEED, rssFeed);
+            return this;
+        }
+
+        public Builder setGuid(String guid){
+            values.put(COLUMN_GUID, guid);
+            return this;
+        }
+
+        @Override
+        public long insert(SQLiteDatabase writableDB) {
+            return writableDB.insert(NAME, null, values);
+        }
+    }
+
     private static final String COLUMN_LINK = "link";
     private static final String COLUMN_TITLE = "title";
     private static final String COLUMN_DESCRIPTION = "description";
@@ -20,7 +70,6 @@ public class RssItemTable extends Table {
     private static final String COLUMN_ARCHIVED = "is_archived";
     private static final String NAME = "rss_items";
 
-    ContentValues values = new ContentValues();
 
     @Override
     public String getName() {
@@ -41,42 +90,6 @@ public class RssItemTable extends Table {
                 + COLUMN_RSS_FEED + " INTEGER,"
                 + COLUMN_FAVORITE + " INTEGER DEFAULT 0,"
                 + COLUMN_ARCHIVED + " INTEGER DEFAULT 0)";
-    }
-
-    public long insert(SQLiteDatabase writableDB) {
-        return writableDB.insert(NAME, null, values);
-    }
-
-    public void setColumnLink(String link) {
-        values.put(COLUMN_LINK, link);
-    }
-
-    public void setColumnTitle(String title) {
-        values.put(COLUMN_TITLE, title);
-    }
-
-    public void setColumnDescription(String description) {
-        values.put(COLUMN_DESCRIPTION, description);
-    }
-
-    public void setColumnGuid(String guid) {
-        values.put(COLUMN_GUID, guid);
-    }
-
-    public void setColumnPubDate(String pubDate) {
-        values.put(COLUMN_PUB_DATE, pubDate);
-    }
-
-    public void setColumnEnclosure(String enclosure) {
-        values.put(COLUMN_ENCLOSURE, enclosure);
-    }
-
-    public void setColumnMimeType(String mimeType) {
-        values.put(COLUMN_MIME_TYPE, mimeType);
-    }
-
-    public void setColumnRssFeed(long rssFeed) {
-        values.put(COLUMN_RSS_FEED, rssFeed);
     }
 
 }

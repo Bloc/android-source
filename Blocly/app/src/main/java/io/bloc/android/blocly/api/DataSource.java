@@ -2,8 +2,12 @@ package io.bloc.android.blocly.api;
 
 import android.database.sqlite.SQLiteDatabase;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.BuildConfig;
@@ -38,30 +42,45 @@ public class DataSource {
             public void run() {
                 if (BuildConfig.DEBUG && true) {
                     BloclyApplication.getSharedInstance().deleteDatabase("blocly_db");
+
+                    SQLiteDatabase writableDatabase = databaseOpenHelper.getWritableDatabase();
+
+                    List<GetFeedsNetworkRequest.FeedResponse> feedResponses = new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
+                    List<GetFeedsNetworkRequest.ItemResponse> itemResponses = feedResponses.get(0).getItems();
+                    GetFeedsNetworkRequest.FeedResponse androidCentral = feedResponses.get(0);
+
+                    addFeedData(feedResponses);
+                    addItemData(itemResponses);
+
+                    long androidCentralFeedId = new RssFeedTable.Builder()
+                            .setFeedURL(androidCentral.getChannelFeedURL())
+                            .setDescription(androidCentral.getChannelDescription())
+                            .setSiteURL(androidCentral.getChannelURL())
+                            .setTitle(androidCentral.getChannelTitle())
+                            .insert(writableDatabase);
+
+                    for(GetFeedsNetworkRequest.ItemResponse itemResponse : androidCentral.channelItems){
+
+                        long itemPubDate = System.currentTimeMillis();
+                        DateFormat dateFormat = new SimpleDateFormat("EEE, dd MMM yyyy kk:mm:ss z", Locale.ENGLISH);
+                        try{
+                            itemPubDate = dateFormat.parse(itemResponse.itemPubDate).getTime();
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+                        new RssItemTable.Builder()
+                                .setTitle(itemResponse.itemTitle)
+                                .setDescription(itemResponse.itemDescription)
+                                .setEnclosure(itemResponse.itemEnclosureURL)
+                                .setGuid(itemResponse.itemGUID)
+                                .setLink(itemResponse.itemURL)
+                                .setMimeType(itemResponse.itemEnclosureMIMEType)
+                                .setPubDate(itemPubDate)
+                                .setRssFeed(androidCentralFeedId)
+                                .insert(writableDatabase);
+                    }
                 }
-                SQLiteDatabase writableDatabase = databaseOpenHelper.getWritableDatabase();
-
-                List<GetFeedsNetworkRequest.FeedResponse> feedResponses = new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
-                List<GetFeedsNetworkRequest.ItemResponse> itemResponses = feedResponses.get(0).getItems();
-                addFeedData(feedResponses);
-                addItemData(itemResponses);
-
-                rssFeedTable.setColumnDescription(feedResponses.get(0).getChannelDescription());
-                rssFeedTable.setColumnTitle(feedResponses.get(0).getChannelTitle());
-                rssFeedTable.setColumnSiteURL(feedResponses.get(0).getChannelURL());
-                rssFeedTable.insert(writableDatabase);
-
-                rssItemTable.setColumnTitle(itemResponses.get(0).itemTitle);
-                rssItemTable.setColumnDescription(itemResponses.get(0).itemDescription);
-                rssItemTable.setColumnEnclosure(itemResponses.get(0).itemEnclosureURL);
-                rssItemTable.setColumnGuid(itemResponses.get(0).itemGUID);
-                rssItemTable.setColumnMimeType(itemResponses.get(0).itemEnclosureMIMEType);
-                rssItemTable.setColumnPubDate(itemResponses.get(0).getItemPubDate());
-                rssItemTable.insert(writableDatabase);
-
-
-
-
             }
         }).start();
     }
