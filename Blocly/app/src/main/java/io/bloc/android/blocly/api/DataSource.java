@@ -1,5 +1,6 @@
 package io.bloc.android.blocly.api;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.text.DateFormat;
@@ -80,10 +81,16 @@ public class DataSource {
                                 .setRssFeed(androidCentralFeedId)
                                 .insert(writableDatabase);
                     }
+                    queryItems(writableDatabase, androidCentral, itemResponses.get(0).itemPubDate);
                 }
             }
         }).start();
     }
+
+    public Cursor queryItems(SQLiteDatabase writabledb, GetFeedsNetworkRequest.FeedResponse feedResponse, String pubDate){
+        return writabledb.query(feedResponse.getChannelTitle(), null, null, null, null, null, pubDate, "10");
+    }
+
 
     public List<RssFeed> getFeeds() {
         return feeds;
@@ -117,5 +124,4 @@ public class DataSource {
         }
         return items;
     }
-
 }
