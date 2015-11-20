@@ -62,7 +62,7 @@ public class RssItemTable extends Table {
     private static final String COLUMN_TITLE = "title";
     private static final String COLUMN_DESCRIPTION = "description";
     private static final String COLUMN_GUID = "guid";
-    private static final String COLUMN_PUB_DATE = "pub_date";
+    public static final String COLUMN_PUB_DATE = "pub_date";
     private static final String COLUMN_ENCLOSURE = "enclosure";
     private static final String COLUMN_MIME_TYPE = "mime_type";
     private static final String COLUMN_RSS_FEED = "rss_feed";

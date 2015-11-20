@@ -46,7 +46,7 @@ public class DataSource {
 
                     SQLiteDatabase writableDatabase = databaseOpenHelper.getWritableDatabase();
 
-                    List<GetFeedsNetworkRequest.FeedResponse> feedResponses = new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
+                    List<GetFeedsNetworkRequest.FeedResponse> feedResponses = new GetFeedsNetworkRequest("http://www.npr.org/rss/rss.php?id=1001").performRequest();
                     List<GetFeedsNetworkRequest.ItemResponse> itemResponses = feedResponses.get(0).getItems();
                     GetFeedsNetworkRequest.FeedResponse androidCentral = feedResponses.get(0);
 
@@ -81,11 +81,13 @@ public class DataSource {
                                 .setRssFeed(androidCentralFeedId)
                                 .insert(writableDatabase);
                     }
-                    queryItems(writableDatabase, androidCentral, itemResponses.get(0).itemPubDate);
+                   Cursor cursor =  queryItems(writableDatabase, androidCentral, RssItemTable.COLUMN_PUB_DATE);
                 }
             }
         }).start();
     }
+
+
 
     public Cursor queryItems(SQLiteDatabase writabledb, GetFeedsNetworkRequest.FeedResponse feedResponse, String pubDate){
         return writabledb.query(feedResponse.getChannelTitle(), null, null, null, null, null, pubDate, "10");
