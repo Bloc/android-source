@@ -1,9 +1,9 @@
 package io.bloc.android.blocly.ui.activity;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -21,10 +21,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
+import io.bloc.android.blocly.api.DataSource;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
@@ -47,6 +47,14 @@ public class BloclyActivity extends AppCompatActivity
     private Menu menu;
     private View overflowButton;
 
+    private BroadcastReceiver dataSourceBroadcastReceiver = new BroadcastReceiver(){
+        @Override
+        public void onReceive(Context context, Intent intent){
+            itemAdapter.notifyDataSetChanged();
+            navigationDrawerAdapter.notifyDataSetChanged();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,15 +66,6 @@ public class BloclyActivity extends AppCompatActivity
         itemAdapter = new ItemAdapter();
         itemAdapter.setDataSource(this);
         itemAdapter.setDelegate(this);
-
-        Intent dialIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:+123-456-7899"));
-        Intent webIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.reddit.com"));
-        Intent emailIntent = new Intent(Intent.ACTION_VIEW);
-        emailIntent.setData(Uri.parse("mailto:?subject=" + "Obama" + "&body=" + "Just checkin in barry"));
-
-        isIntentAvailable(this, dialIntent);
-        isIntentAvailable(this, webIntent);
-        isIntentAvailable(this, emailIntent);
 
         navigationDrawerAdapter = new NavigationDrawerAdapter();
 
@@ -82,6 +81,8 @@ public class BloclyActivity extends AppCompatActivity
         navigationRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         navigationRecyclerView.setItemAnimator(new DefaultItemAnimator());
         navigationRecyclerView.setAdapter(navigationDrawerAdapter);
+
+        registerReceiver(dataSourceBroadcastReceiver, new IntentFilter(DataSource.ACTION_DOWNLOAD_COMPLETED));
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
@@ -150,16 +151,6 @@ public class BloclyActivity extends AppCompatActivity
                 }
             }
         };
-    }
-
-    public static boolean isIntentAvailable(Context context, Intent intent) {
-        PackageManager packageManager = context.getPackageManager();
-        boolean test;
-        List<ResolveInfo> intentList = packageManager.queryIntentActivities(intent, 0);
-        if(intentList.size() > 0){
-            return true;
-        }
-        return false;
     }
 
     @Override
@@ -286,6 +277,12 @@ public class BloclyActivity extends AppCompatActivity
     public void onVisitClicked(ItemAdapter itemAdapter, RssItem rssItem) {
         Intent visitIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(rssItem.getUrl()));
         startActivity(visitIntent);
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        unregisterReceiver(dataSourceBroadcastReceiver);
     }
 }
 

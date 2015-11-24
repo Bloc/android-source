@@ -1,5 +1,6 @@
 package io.bloc.android.blocly.api;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -23,6 +24,8 @@ import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
  * Created by Austin on 10/16/2015.
  */
 public class DataSource {
+
+    public static final String ACTION_DOWNLOAD_COMPLETED = DataSource.class.getCanonicalName().concat(".ACTION_DOWNLOAD_COMPLETED");
 
     private DatabaseOpenHelper databaseOpenHelper;
     private RssFeedTable rssFeedTable;
@@ -50,9 +53,6 @@ public class DataSource {
                     List<GetFeedsNetworkRequest.ItemResponse> itemResponses = feedResponses.get(0).getItems();
                     GetFeedsNetworkRequest.FeedResponse androidCentral = feedResponses.get(0);
 
-                    addFeedData(feedResponses);
-                    addItemData(itemResponses);
-
                     long androidCentralFeedId = new RssFeedTable.Builder()
                             .setFeedURL(androidCentral.getChannelFeedURL())
                             .setDescription(androidCentral.getChannelDescription())
@@ -60,6 +60,8 @@ public class DataSource {
                             .setTitle(androidCentral.getChannelTitle())
                             .insert(writableDatabase);
 
+
+                    List<RssItem> newRSSItems = new ArrayList<RssItem>();
                     for(GetFeedsNetworkRequest.ItemResponse itemResponse : androidCentral.channelItems){
 
                         long itemPubDate = System.currentTimeMillis();
@@ -70,7 +72,7 @@ public class DataSource {
                             e.printStackTrace();
                         }
 
-                        new RssItemTable.Builder()
+                        long newItemRowId = new RssItemTable.Builder()
                                 .setTitle(itemResponse.itemTitle)
                                 .setDescription(itemResponse.itemDescription)
                                 .setEnclosure(itemResponse.itemEnclosureURL)
@@ -80,19 +82,37 @@ public class DataSource {
                                 .setPubDate(itemPubDate)
                                 .setRssFeed(androidCentralFeedId)
                                 .insert(writableDatabase);
+
+                        Cursor itemCursor = rssItemTable.fetchRow(databaseOpenHelper.getReadableDatabase(), newItemRowId);
+
+                        itemCursor.moveToFirst();
+                        RssItem newRssItem = itemFromCursor(itemCursor);
+                        newRSSItems.add(newRssItem);
+                        itemCursor.close();
                     }
-                   Cursor cursor =  queryItems(writableDatabase, androidCentral, RssItemTable.COLUMN_PUB_DATE);
+                    Cursor androidCentralCursor = rssFeedTable.fetchRow(databaseOpenHelper.getReadableDatabase(), androidCentralFeedId);
+                    RssFeed androidCentralRssFeed = feedFromCursor(androidCentralCursor);
+                    androidCentralCursor.close();
+                    items.addAll(newRSSItems);
+                    feeds.add(androidCentralRssFeed);
+
+                    BloclyApplication.getSharedInstance().sendBroadcast(new Intent(ACTION_DOWNLOAD_COMPLETED));
                 }
             }
         }).start();
     }
 
-
-
-    public Cursor queryItems(SQLiteDatabase writabledb, GetFeedsNetworkRequest.FeedResponse feedResponse, String pubDate){
-        return writabledb.query(feedResponse.getChannelTitle(), null, null, null, null, null, pubDate, "10");
+    static RssFeed feedFromCursor(Cursor cursor){
+        return new RssFeed(RssFeedTable.getTitle(cursor), RssFeedTable.getDescription(cursor), RssFeedTable.getSiteURL(cursor), RssFeedTable.getFeedURL(cursor));
     }
 
+    static RssItem itemFromCursor(Cursor cursor){
+        return new RssItem(RssItemTable.getGUID(cursor), RssItemTable.getTitle(cursor),
+                RssItemTable.getDescription(cursor), RssItemTable.getLink(cursor),
+                RssItemTable.getEnclosure(cursor), RssItemTable.getRssFeedId(cursor),
+                RssItemTable.getPubDate(cursor), false,
+                RssItemTable.getFavorite(cursor), RssItemTable.getArchived(cursor));
+    }
 
     public List<RssFeed> getFeeds() {
         return feeds;
@@ -102,28 +122,4 @@ public class DataSource {
         return items;
     }
 
-
-    public List<RssFeed> addFeedData(List<GetFeedsNetworkRequest.FeedResponse> feedResponses) {
-        for (int i = 0; i < feedResponses.size(); i++) {
-            RssFeed feed = new RssFeed(feedResponses.get(i).getChannelTitle(),
-                    feedResponses.get(i).getChannelDescription(),
-                    feedResponses.get(i).getChannelURL(),
-                    feedResponses.get(i).getChannelFeedURL());
-            feeds.add(i, feed);
-        }
-        return feeds;
-    }
-
-    public List<RssItem> addItemData(List<GetFeedsNetworkRequest.ItemResponse> itemResponses) {
-        for (int i = 0; i < itemResponses.size(); i++) {
-            RssItem item = new RssItem(itemResponses.get(i).getItemGUID(),
-                    itemResponses.get(i).getItemTitle(),
-                    itemResponses.get(i).getItemDescription(),
-                    itemResponses.get(i).getItemURL(),
-                    "http://i.imgur.com/dGfyviu.jpg",
-                    itemResponses.get(i).getItemPubDate(), false, false, false);
-            items.add(i, item);
-        }
-        return items;
-    }
 }
