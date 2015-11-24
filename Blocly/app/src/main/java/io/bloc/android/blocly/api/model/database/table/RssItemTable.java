@@ -129,5 +129,29 @@ public class RssItemTable extends Table {
         return getBoolean(cursor, COLUMN_ARCHIVED);
     }
 
+    public Cursor fetchArchivedItems(SQLiteDatabase readonlyDatabase, long rowId){
+        return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, COLUMN_ARCHIVED, "total(is_archived) = 1", null);
+    }
+
+    public Cursor fetchArchivedItemInFeed(SQLiteDatabase readonlyDatabase, String[] feedColumn, long rowId){
+        return readonlyDatabase.query(getName(), feedColumn, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, COLUMN_ARCHIVED, "total(is_archived) = 1", null);
+    }
+
+    public Cursor fetchFavorites(SQLiteDatabase readonlyDatabase, long rowId){
+        return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, COLUMN_FAVORITE, "total(is_favorite) = 1", null);
+    }
+
+    public Cursor fetchFavoritesInFeed(SQLiteDatabase readonlyDatabase, String[] feedColumn, long rowId){
+        return readonlyDatabase.query(getName(), feedColumn, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, COLUMN_FAVORITE, "total(is_favorite) = 1", null);
+    }
+
+    public Cursor fetchAllItems(SQLiteDatabase readonlyDatabase, long rowId){
+        return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String [] {String.valueOf(rowId)}, null, null, null);
+    }
+
+    public Cursor fetchSelectedItems(SQLiteDatabase readonlyDatabase, int OFFSET, int LIMIT, long rowId){
+        return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, null, null, null, "LIMIT " + LIMIT + " OFFSET " + OFFSET);
+    }
+
 }
 
