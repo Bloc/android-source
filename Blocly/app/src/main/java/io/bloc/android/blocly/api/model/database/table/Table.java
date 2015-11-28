@@ -47,4 +47,7 @@ public abstract class Table {
                 new String[] {String.valueOf(rowId)}, null, null, null, null);
     }
 
+    public static long getRowId(Cursor cursor){
+        return getLong(cursor, COLUMN_ID);
+    }
 }

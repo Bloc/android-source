@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
+import java.util.List;
 
-import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
 
@@ -29,6 +29,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         void printText(View v, String s);
     }
 
+    public static interface NavigationDrawerAdapterDataSource{
+        public List<RssFeed> getFeeds(NavigationDrawerAdapter adapter);
+    }
+
+    WeakReference<NavigationDrawerAdapterDataSource> dataSource;
     WeakReference<NavigationDrawerAdapterDelegate> delegate;
 
     @Override
@@ -42,15 +47,18 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         RssFeed rssFeed = null;
         if(position >= NavigationOption.values().length){
             int feedPosition = position - NavigationOption.values().length;
-            rssFeed = BloclyApplication.getSharedDataSource().getFeeds().get(feedPosition);
+            rssFeed = getDataSource().getFeeds(this).get(feedPosition);
         }
         viewHolder.update(position,rssFeed);
     }
 
     @Override
     public int getItemCount(){
+        if(getDataSource() == null){
+            return NavigationOption.values().length;
+        }
         return NavigationOption.values().length
-        + BloclyApplication.getSharedDataSource().getFeeds().size();
+        + getDataSource().getFeeds(this).size();
     }
 
     public NavigationDrawerAdapterDelegate getDelegate(){
@@ -59,6 +67,18 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         }else{
             return delegate.get();
         }
+    }
+
+    public NavigationDrawerAdapterDataSource getDataSource(){
+        if(dataSource.get() == null){
+            return null;
+        }else{
+            return dataSource.get();
+        }
+    }
+
+    public void setDataSource(NavigationDrawerAdapterDataSource dataSource){
+        this.dataSource = new WeakReference<NavigationDrawerAdapterDataSource>(dataSource);
     }
 
     public void setDelegate(NavigationDrawerAdapterDelegate delegate) {

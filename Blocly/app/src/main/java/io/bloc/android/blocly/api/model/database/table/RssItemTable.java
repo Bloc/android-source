@@ -130,7 +130,7 @@ public class RssItemTable extends Table {
     }
 
     public Cursor fetchArchivedItems(SQLiteDatabase readonlyDatabase, long rowId){
-        return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, COLUMN_ARCHIVED, "total(is_archived) = 1", null);
+        return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String[]{String.valueOf(rowId)}, COLUMN_ARCHIVED, "total(is_archived) = 1", null);
     }
 
     public Cursor fetchArchivedItemInFeed(SQLiteDatabase readonlyDatabase, String[] feedColumn, long rowId){
@@ -151,6 +151,16 @@ public class RssItemTable extends Table {
 
     public Cursor fetchSelectedItems(SQLiteDatabase readonlyDatabase, int OFFSET, int LIMIT, long rowId){
         return readonlyDatabase.query(getName(), null, COLUMN_ID + " = ?", new String[] {String.valueOf(rowId)}, null, null, null, "LIMIT " + LIMIT + " OFFSET " + OFFSET);
+    }
+
+    public static long getRowId(Cursor cursor){
+        return getLong(cursor, COLUMN_ID);
+    }
+
+    public static Cursor fetchItemsForFeed(SQLiteDatabase readonlyDatabase, long feedRowId){
+        return readonlyDatabase.query(true, NAME, null, COLUMN_RSS_FEED + " = ?",
+                new String[]{String.valueOf(feedRowId)},
+               null, null, COLUMN_PUB_DATE + " DESC", null);
     }
 
 }
