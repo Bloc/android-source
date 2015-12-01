@@ -64,33 +64,51 @@ public class BloclyActivity extends AppCompatActivity
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.srl_activity_blocly);
         swipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.text_primary));
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
-                                         @Override
-                                               public void onRefresh(){
-                                             BloclyApplication.getSharedDataSource().fetchNewFeed("http://www.npr.org/rss/rss.php?id=1019"),
-                                             new DataSource.Callback<RssFeed>(){
-                                                 @Override
-                                             public void onSuccess(RssFeed rssFeed){
-                                                     if(isFinishing() || isDestroyed()){
-                                                         return;
-                                                     }
-                                                     allFeeds.add(rssFeed);
-                                                     navigationDrawerAdapter.notifyDataSetChanged();
-                                                     BloclyApplication.getSharedDataSource().fetchItemsForFeed(rssFeed,
-                                                             new DataSource.CallbackList<RssItem> rssItems() {
-                                                                 @Override
-                                                                 public void onSuccess(RssItem rssItem) {
-
-                                                                 }
-
-                                                                 @Override
-                                                                 public void onError(String errorMessage) {
-
-                                                                 }
-                                                             });
-                                                 }
-                                             };
-                                         }
+            @Override
+            public void onRefresh() {
+                BloclyApplication.getSharedDataSource().fetchNewFeed("http://feeds.feedburner.com/androidcentral?format=xml",
+                        // #14
+                        new DataSource.Callback<RssFeed>() {
+                            @Override
+                            public void onSuccess(RssFeed rssFeed) {
+                                // #15a
+                                if (isFinishing() || isDestroyed()) {
+                                    return;
+                                }
+                                allFeeds.add(rssFeed);
+                                navigationDrawerAdapter.notifyDataSetChanged();
+                                BloclyApplication.getSharedDataSource().fetchItemsForFeed(rssFeed,
+                                        new DataSource.Callback<List<RssItem>>() {
+                                            @Override
+                                            public void onSuccess(List<RssItem> rssItems) {
+                                                // #16b
+                                                if (isFinishing() || isDestroyed()) {
+                                                    return;
                                                 }
+                                                currentItems.addAll(rssItems);
+                                                // #16
+                                                itemAdapter.notifyItemRangeInserted(0, currentItems.size());
+                                                // #17a
+                                                swipeRefreshLayout.setRefreshing(false);
+                                            }
+
+                                            @Override
+                                            public void onError(String errorMessage) {
+                                                // #17b
+                                                swipeRefreshLayout.setRefreshing(false);
+                                            }
+                                        });
+                            }
+
+                            @Override
+                            public void onError(String errorMessage) {
+                                Toast.makeText(BloclyActivity.this, errorMessage, Toast.LENGTH_LONG).show();
+                                // #17c
+                                swipeRefreshLayout.setRefreshing(false);
+                            }
+                        });
+            }
+        });
 
         navigationDrawerAdapter = new NavigationDrawerAdapter();
 

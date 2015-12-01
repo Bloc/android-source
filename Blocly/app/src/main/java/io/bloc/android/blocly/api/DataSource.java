@@ -85,7 +85,7 @@ public class DataSource {
                         errorMessage = "Network error";
                     } else if (getFeedsNetworkRequest.getErrorCode() == NetworkRequest.ERROR_MALFORMED_URL) {
                         errorMessage = "Malformed URL error";
-                    } else if (getFeedsNetworkRequest.getErrorCode() = GetFeedsNetworkRequest.ERROR_PARSING) {
+                    } else if (getFeedsNetworkRequest.getErrorCode() == GetFeedsNetworkRequest.ERROR_PARSING) {
                         errorMessage = "Error parsing feed";
                     } else {
                         errorMessage = "Unknown error";
