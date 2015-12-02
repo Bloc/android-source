@@ -66,7 +66,7 @@ public class BloclyActivity extends AppCompatActivity
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
             @Override
             public void onRefresh() {
-                BloclyApplication.getSharedDataSource().fetchNewFeed("http://feeds.feedburner.com/androidcentral?format=xml",
+                BloclyApplication.getSharedDataSource().fetchNewFeed("http://www.npr.org/rss/rss.php?id=1001",
                         // #14
                         new DataSource.Callback<RssFeed>() {
                             @Override

@@ -62,7 +62,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     public NavigationDrawerAdapterDelegate getDelegate(){
-        if(delegate.get() == null) {
+        if(delegate == null) {
             return null;
         }else{
             return delegate.get();
@@ -70,11 +70,10 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
     public NavigationDrawerAdapterDataSource getDataSource(){
-        if(dataSource.get() == null){
+        if(dataSource == null) {
             return null;
-        }else{
-            return dataSource.get();
         }
+            return dataSource.get();
     }
 
     public void setDataSource(NavigationDrawerAdapterDataSource dataSource){
