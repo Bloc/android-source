@@ -6,6 +6,8 @@ package com.bloc.interfaces.people.hobbies;
 /************************************************/
 
 public interface SalsaDancer {
+
+	public void putOnShoes();
 	
 	/*
 	 * putOnShoes
@@ -15,6 +17,8 @@ public interface SalsaDancer {
 	 * @return nothing
 	 */
 
+    public void findAPartner();
+
 	/*
 	 * findAPartner
 	 *
@@ -22,6 +26,8 @@ public interface SalsaDancer {
 	 *
 	 * @return nothing
 	 */
+
+    public void salsa();
 
 	/*
 	 * salsa

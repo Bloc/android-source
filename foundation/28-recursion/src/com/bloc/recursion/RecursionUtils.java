@@ -15,11 +15,15 @@ public class RecursionUtils extends Object {
 	 * Hint: your base case may be a comparison of 2 numbers
 	 */
 	public static final int findMaxRecursively(List<Integer> numbers) {
-		/************************************************
-	 	 *	ASSIGNMENT:
-	 	 *	Implement this method, the return value must
-	 	 *	change
-		/************************************************/
-		return 0;
+		if(numbers.size() == 1){
+			return numbers.get(0);
+		}
+
+		int firstHalf = findMaxRecursively(numbers.subList(0, numbers.size()/2));
+
+		int secondHalf = findMaxRecursively(numbers.subList(numbers.size()/2, numbers.size()));
+
+		return firstHalf > secondHalf ? firstHalf : secondHalf;
+		
 	}
 }

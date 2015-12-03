@@ -1,7 +1,24 @@
 package com.bloc.threads;
+import java.net.URL;
+import java.io.*;
+import javax.imageio.*;
+import java.awt.image.BufferedImage;
 
 public class ImageGetter extends Thread {
 
+	URL mURL;
+	boolean openWhenCompleted;
+
+	public ImageGetter(String url, boolean openPicture){
+		try{
+			mURL = new URL(url);
+		}
+		catch(Exception e){
+			System.out.println("Invalid URL");
+		}
+		openPicture = openWhenCompleted;
+
+	}
 	/*
 	 * ImageGetter
 	 *
@@ -21,10 +38,27 @@ public class ImageGetter extends Thread {
 
 	@Override
 	public void run() {
-		/************************************************
- 		 *	ASSIGNMENT:
- 		 *	Perform the work found in `Main.java` in this
- 		 *	Thread instead.
-		/************************************************/
+		try {
+			File existingImage = new File("logo.png");
+			if (existingImage.exists()) {
+				existingImage.delete();
+			}
+			
+			BufferedImage bufferedImage = ImageIO.read(mURL);
+			File outputfile = new File("logo.png");
+			ImageIO.write(bufferedImage, "png", outputfile);
+			if ("/".equals(System.getProperties().getProperty("file.separator")) && (openWhenCompleted == true)) {
+				Runtime.getRuntime().exec("open logo.png");
+			} else {
+				Runtime.getRuntime().exec("logo.png");
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.exit(1);
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 }

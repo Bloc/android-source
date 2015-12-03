@@ -6,13 +6,18 @@ package com.bloc.interfaces.people.hobbies;
 /************************************************/
 
 public interface Skydiver {
-	/*
+
+	public void getInPlane();
+
+     /*
 	 * getInPlane
 	 *
 	 * The brave Skydiver enters a plane
 	 *
 	 * @return nothing
 	 */
+
+	 public void jumpFromPlane();
 
 	/*
 	 * jumpFromPlane
@@ -21,6 +26,8 @@ public interface Skydiver {
 	 *
 	 * @return nothing
 	 */
+
+	public void releaseParachute();
 
 	/*
 	 * releaseParachute
