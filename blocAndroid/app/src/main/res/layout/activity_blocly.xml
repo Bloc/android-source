@@ -9,6 +9,7 @@
         android:text="Hello World!"
         android:layout_gravity="center"
         android:gravity="center"
-        android:textSize="26sp"/>
+        android:textSize="26sp"
+        style="@style/HelloWorldStyle"/>
 
 </LinearLayout>
