@@ -67,4 +67,12 @@ public class RssItem {
     public boolean isArchived() {
         return archived;
     }
+
+    public void makeFavorite(boolean b){
+        favorite = b;
+    }
+
+    public void makeArchive(boolean b){
+        archived = b;
+    }
 }
