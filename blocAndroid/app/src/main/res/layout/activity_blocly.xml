@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.v4.widget.DrawerLayout
+    android:layout_height="match_parent"
+    android:id="@+id/dl_activity_blocly"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
+    <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/background_image"
-        android:scaleType="centerCrop"
-        />
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:id="@+id/tb_activity_blocly"
+        >
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_activity_blocly"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     
-</FrameLayout>
+</LinearLayout>
+    <TextView
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:gravity="center"
+        android:text="Drawer Area"
+        android:textSize="32sp"
+        android:background="@color/windowBackground"/>
+</android.support.v4.widget.DrawerLayout>
