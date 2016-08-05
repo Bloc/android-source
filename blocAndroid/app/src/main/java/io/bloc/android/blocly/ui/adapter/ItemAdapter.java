@@ -1,11 +1,13 @@
 package io.bloc.android.blocly.ui.adapter;
 
+import android.animation.ValueAnimator;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -113,6 +115,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
             Throwable myThrowable = new Throwable();
             Log.e(TAG, "onLoadingFailed: " + failReason.toString() + " for URL: " + imageUri, myThrowable);
+            //Contract Image
+            int startingHeight = headerImage.getMeasuredHeight();
+            int finalHeight = 0;
+            startAnimator(startingHeight, finalHeight, new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float animatedFraction = valueAnimator.getAnimatedFraction();
+                    headerImage.getLayoutParams().height = animatedFraction == 1f ?
+                            ViewGroup.LayoutParams.WRAP_CONTENT:
+                            (Integer)valueAnimator.getAnimatedValue();
+                    headerImage.requestLayout();
+                    if(animatedFraction==1f){
+                        headerImage.setVisibility(View.GONE);
+                    }
+                }
+            });
         }
 
         @Override
@@ -121,6 +139,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 headerImage.setImageBitmap(loadedImage);
                 headerImage.setVisibility(View.VISIBLE);
             }
+            //Expand Image
+            headerImage.measure(View.MeasureSpec.makeMeasureSpec(headerWrapper.getWidth(), View.MeasureSpec.EXACTLY), ViewGroup.LayoutParams.WRAP_CONTENT);
+            int startingHeight = headerImage.getMeasuredHeight();
+            int finalHeight = startingHeight + 1000;
+            startAnimator(startingHeight, finalHeight, new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    headerImage.getLayoutParams().height = (Integer)valueAnimator.getAnimatedValue();
+                    headerImage.requestLayout();
+                }
+            });
         }
 
         @Override
@@ -141,9 +170,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         @Override
         public void onClick(View v) {
             if(v==itemView){
-                contentExpanded = !contentExpanded;
-                expandedContentWrapper.setVisibility(contentExpanded ? View.VISIBLE : View.GONE);
-                content.setVisibility(contentExpanded ? View.GONE : View.VISIBLE);
+                animateContent(!contentExpanded);
             }
             else
                 Toast.makeText(v.getContext(), "Visit " + rssItem.getUrl(), Toast.LENGTH_SHORT).show();
@@ -166,6 +193,63 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             }
             else
                 rssItem.makeFavorite(isChecked);
+        }
+
+        /*
+        *
+        *
+        *
+        * Private Methods
+        *
+        *
+        *
+         */
+        private void animateContent(final boolean expand){
+            if((expand&&contentExpanded)||(!expand&&!contentExpanded)){
+                return;
+            }
+            int startingHeight = expandedContentWrapper.getMeasuredHeight();
+            int finalHeight = content.getMeasuredHeight();
+            if(expand){
+                startingHeight = finalHeight;
+                expandedContentWrapper.setAlpha(0f);
+                expandedContentWrapper.setVisibility(View.VISIBLE);
+                expandedContentWrapper.measure(View.MeasureSpec.makeMeasureSpec(content.getWidth(), View.MeasureSpec.EXACTLY), ViewGroup.LayoutParams.WRAP_CONTENT);
+                finalHeight = expandedContentWrapper.getMeasuredHeight();
+            }
+            else{
+                content.setVisibility(View.VISIBLE);
+            }
+            startAnimator(startingHeight, finalHeight, new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    float animatedFraction = valueAnimator.getAnimatedFraction();
+                    float wrapperAlpha = expand ? animatedFraction : 1f - animatedFraction;
+                    float contentAlpha = 1f - wrapperAlpha;
+                    expandedContentWrapper.setAlpha(wrapperAlpha);
+                    content.setAlpha(contentAlpha);
+                    expandedContentWrapper.getLayoutParams().height = animatedFraction == 1f ?
+                            ViewGroup.LayoutParams.WRAP_CONTENT:
+                            (Integer)valueAnimator.getAnimatedValue();
+                    expandedContentWrapper.requestLayout();
+                    if(animatedFraction==1f){
+                        if(expand){
+                            content.setVisibility(View.GONE);
+                        }
+                        else
+                            expandedContentWrapper.setVisibility(View.GONE);
+                    }
+                }
+            });
+            contentExpanded = expand;
+        }
+
+        private void startAnimator(int start, int end, ValueAnimator.AnimatorUpdateListener animatorUpdateListener){
+            ValueAnimator valueAnimator = ValueAnimator.ofInt(start, end);
+            valueAnimator.addUpdateListener(animatorUpdateListener);
+            valueAnimator.setDuration(itemView.getResources().getInteger(android.R.integer.config_mediumAnimTime));
+            valueAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+            valueAnimator.start();
         }
     }
 }
