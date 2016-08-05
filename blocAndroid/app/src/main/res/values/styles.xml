@@ -26,4 +26,11 @@
         <item name="android:textSize">14sp</item>
         <item name="robotoFont">Thin</item>
     </style>
+
+    <style name="button">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="robotoFont">Medium</item>
+    </style>
 </resources>
