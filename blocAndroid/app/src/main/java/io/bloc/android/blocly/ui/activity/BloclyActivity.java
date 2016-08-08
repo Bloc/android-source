@@ -11,16 +11,17 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
 
 import io.bloc.android.blocly.R;
+import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
 import io.bloc.android.blocly.ui.adapter.NavigationDrawerAdapter;
 
 /**
  * Created by aadik_000 on 7/19/2016.
  */
-public class BloclyActivity extends AppCompatActivity implements View.OnClickListener {
+public class BloclyActivity extends AppCompatActivity implements NavigationDrawerAdapter.NavigationDrawerAdapterDelegate {
 
     private ItemAdapter itemAdapter;
     private ActionBarDrawerToggle drawerToggle;
@@ -48,9 +49,7 @@ public class BloclyActivity extends AppCompatActivity implements View.OnClickLis
         navRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         navRecyclerView.setItemAnimator(new DefaultItemAnimator());
         navRecyclerView.setAdapter(navigationDrawerAdapter);
-        if (navigationDrawerAdapter.getView() != null) {
-            navigationDrawerAdapter.getView().setOnClickListener(navigationDrawerAdapter.getNavHolder());
-        }
+        navigationDrawerAdapter.setDelegate(this);
     }
 
     @Override
@@ -73,7 +72,14 @@ public class BloclyActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     @Override
-    public void onClick(View v) {
-        navigationDrawerAdapter.getNavHolder().onClick(navigationDrawerAdapter.getView());
+    public void didSelectNavigationOption(NavigationDrawerAdapter adapter, NavigationDrawerAdapter.NavigationOption option) {
+        drawerLayout.closeDrawers();
+        Toast.makeText(this, "Show the " + option.name(),Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void didSelectRssFeed(NavigationDrawerAdapter adapter, RssFeed rssFeed) {
+        drawerLayout.closeDrawers();
+        Toast.makeText(this, "Show the " + rssFeed.getTitle(), Toast.LENGTH_SHORT).show();
     }
 }
