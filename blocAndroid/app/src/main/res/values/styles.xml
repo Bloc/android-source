@@ -43,4 +43,11 @@
         <item name="gapBetweenBars">5sp</item>
         <item name="android:thickness">10sp</item>
     </style>
+    <style name="navigationItem">
+        <item name="android:textSize">14sp</item>
+        <item name="robotoFont">Medium</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 </resources>

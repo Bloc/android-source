@@ -24,12 +24,10 @@
         android:layout_height="wrap_content"/>
     
 </LinearLayout>
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_nav_activity_blocly"
         android:layout_width="280dp"
         android:layout_height="match_parent"
         android:layout_gravity="left"
-        android:gravity="center"
-        android:text="Drawer Area"
-        android:textSize="32sp"
         android:background="@color/windowBackground"/>
 </android.support.v4.widget.DrawerLayout>

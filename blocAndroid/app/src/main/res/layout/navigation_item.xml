@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/list_selector"
+    android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_padding"
+        android:id="@+id/v_nav_item_top_padding"/>
+
+    <io.bloc.android.blocly.ui.widget.RobotoTextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/nav_item_title_height"
+        android:paddingLeft="@dimen/tv_nav_item_title_default_padding"
+        android:paddingRight="@dimen/tv_nav_item_title_default_padding"
+        style="@style/navigationItem"
+        android:id="@+id/tv_nav_item_title" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/default_padding"
+        android:id="@+id/v_nav_item_bottom_padding"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_default_height"
+        android:id="@+id/v_nav_item_divider"
+        android:background="@color/divider"/>
+</LinearLayout>
