@@ -1,6 +1,7 @@
 package io.bloc.android.blocly.ui.activity;
 
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -10,8 +11,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
@@ -27,6 +32,8 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawerLayout;
     private NavigationDrawerAdapter navigationDrawerAdapter;
+    private Menu menu;
+    private View overflowButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,61 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         recyclerView.setAdapter(itemAdapter);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0);
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0){
+            @Override
+            public void onDrawerClosed(View drawerView){
+                super.onDrawerClosed(drawerView);
+                if(overflowButton!=null){
+                    overflowButton.setAlpha(1f);
+                    overflowButton.setEnabled(true);
+                }
+                if(menu==null)
+                    return;
+                for (int i = 0; i < menu.size(); i++){
+                    menu.getItem(i).setEnabled(true);
+                    if(menu.getItem(i).getIcon() != null)
+                        menu.getItem(i).getIcon().setAlpha(255);
+                }
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView){
+                super.onDrawerOpened(drawerView);
+                if(overflowButton!=null)
+                    overflowButton.setEnabled(false);
+                if(menu == null)
+                    return;
+                for(int i = 0; i < menu.size(); i++){
+                    menu.getItem(i).setEnabled(false);
+                }
+            }
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+                if (overflowButton == null) {
+                    ArrayList<View> foundViews = new ArrayList<View>();
+                    getWindow().getDecorView().findViewsWithText(foundViews,
+                            getString(R.string.abc_action_menu_overflow_description),
+                            View.FIND_VIEWS_WITH_CONTENT_DESCRIPTION);
+                    if (foundViews.size() > 0) {
+                        overflowButton = foundViews.get(0);
+                    }
+                }
+                if (overflowButton != null) {
+                    overflowButton.setAlpha(1f - slideOffset);
+                }
+                if (menu == null) {
+                    return;
+                }
+                for (int i = 0; i < menu.size(); i++) {
+                    MenuItem item = menu.getItem(i);
+                    Drawable icon = item.getIcon();
+                    if (icon != null) {
+                        icon.setAlpha((int) ((1f - slideOffset) * 255));
+                    }
+                }
+            }
+        };
         drawerLayout.addDrawerListener(drawerToggle);
         drawerLayout.openDrawer(Gravity.LEFT);
         navigationDrawerAdapter = new NavigationDrawerAdapter();
@@ -68,9 +129,28 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (drawerToggle.onOptionsItemSelected(menuItem))
             return true;
+        String toastStr = null;
+        if(menuItem.getTitle().equals("Share"))
+            toastStr = "I love to share!";
+        else if(menuItem.getTitle().equals("Search"))
+            toastStr = "Searching is fun!";
+        else if (menuItem.getTitle().equals("Refresh"))
+            toastStr = "Refresh it up…";
+        else
+            toastStr = "Mark 'em all!";
+        Toast.makeText(this, toastStr, Toast.LENGTH_SHORT).show();
         return super.onOptionsItemSelected(menuItem);
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        this.menu = menu;
+        getMenuInflater().inflate(R.menu.blocly, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+    /*
+    Delegate
+     */
     @Override
     public void didSelectNavigationOption(NavigationDrawerAdapter adapter, NavigationDrawerAdapter.NavigationOption option) {
         drawerLayout.closeDrawers();
