@@ -37,6 +37,8 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     private Menu menu;
     private View overflowButton;
     private RecyclerView recyclerView;
+    private MenuItem actionShare;
+    private boolean isShareShown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemAdapter);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        isShareShown = false;
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, 0, 0){
             @Override
@@ -151,7 +154,18 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     public boolean onCreateOptionsMenu(Menu menu){
         this.menu = menu;
         getMenuInflater().inflate(R.menu.blocly, menu);
+        if(menu.size()>0)
+            actionShare = menu.findItem(R.id.action_share);
         return super.onCreateOptionsMenu(menu);
+    }
+    @Override
+    public boolean onPrepareOptionsMenu (Menu menu) {
+        if (isShareShown) {
+            menu.findItem(R.id.action_share).setEnabled(true);
+        }
+        else
+            menu.findItem(R.id.action_share).setEnabled(false);
+        return true;
     }
     /*
     Delegate
@@ -197,6 +211,9 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         int positionToContract = -1;
         if (itemAdapter.getExpandedItem() != null) {
             positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
+            if(recyclerView.getLayoutManager().findViewByPosition(positionToContract)==null){
+                positionToContract = -1;
+            }
         }
         if (itemAdapter.getExpandedItem() != rssItem) {
             positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
@@ -206,10 +223,25 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         }
         if (positionToContract > -1) {
             itemAdapter.notifyItemChanged(positionToContract);
+            isShareShown = false;
+            if(actionShare!=null)
+                actionShare.setEnabled(false);
+            invalidateOptionsMenu();
         }
         if (positionToExpand > -1) {
             itemAdapter.notifyItemChanged(positionToExpand);
+            isShareShown=true;
+            invalidateOptionsMenu();
         }
-        recyclerView.scrollToPosition(positionToExpand);
+        else{
+            return;
+        }
+        int lessToScroll = 0;
+        if(positionToContract>-1 && positionToContract<positionToExpand)
+            lessToScroll = itemAdapter.getExpandedItemHeight() - itemAdapter.getCollapsedItemHeight();
+        if(positionToContract>-1 && positionToContract>positionToExpand){
+            lessToScroll = 500;
+        }
+        recyclerView.smoothScrollBy(0, recyclerView.getLayoutManager().findViewByPosition(positionToExpand).getTop() - lessToScroll);
     }
 }

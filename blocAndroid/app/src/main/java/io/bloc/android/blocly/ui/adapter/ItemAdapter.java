@@ -40,6 +40,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
     WeakReference<DataSource> dataSource;
     WeakReference<Delegate> delegate;
     RssItem itemExpanded = null;
+    private int expandedItemHeight;
+    private int collapsedItemHeight;
 
     public DataSource getDatasource(){
         if(dataSource!=null)
@@ -60,6 +62,22 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
 
     public RssItem getExpandedItem(){
         return itemExpanded;
+    }
+
+    public int getExpandedItemHeight(){
+        return expandedItemHeight;
+    }
+
+    private void setExpandedItemHeight(int height){
+        expandedItemHeight = height;
+    }
+
+    public int getCollapsedItemHeight(){
+        return collapsedItemHeight;
+    }
+
+    private void setCollapsedItemHeight(int height){
+        collapsedItemHeight = height;
     }
 
     public void setExpandedItem(RssItem item){
@@ -136,7 +154,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             favoriteCheckbox.setChecked(rssItem.isFavorite());
             if (rssItem.getImageUrl() != null) {
                 headerWrapper.setVisibility(View.VISIBLE);
-                headerImage.setVisibility(View.INVISIBLE);
+                headerImage.setVisibility(View.VISIBLE);
                 ImageLoader.getInstance().loadImage(rssItem.getImageUrl(), this);
             } else {
                 headerWrapper.setVisibility(View.GONE);
@@ -183,17 +201,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                 headerImage.setImageBitmap(loadedImage);
                 headerImage.setVisibility(View.VISIBLE);
             }
-            //Expand Image
-            headerImage.measure(View.MeasureSpec.makeMeasureSpec(headerWrapper.getWidth(), View.MeasureSpec.EXACTLY), ViewGroup.LayoutParams.WRAP_CONTENT);
-            int startingHeight = headerImage.getMeasuredHeight();
-            int finalHeight = startingHeight + 1000;
-            startAnimator(startingHeight, finalHeight, new ValueAnimator.AnimatorUpdateListener() {
-                @Override
-                public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                    headerImage.getLayoutParams().height = (Integer)valueAnimator.getAnimatedValue();
-                    headerImage.requestLayout();
-                }
-            });
         }
 
         @Override
@@ -256,11 +263,16 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             int startingHeight = expandedContentWrapper.getMeasuredHeight();
             int finalHeight = content.getMeasuredHeight();
             if(expand){
+                setCollapsedItemHeight(itemView.getHeight());
                 startingHeight = finalHeight;
                 expandedContentWrapper.setAlpha(0f);
                 expandedContentWrapper.setVisibility(View.VISIBLE);
                 expandedContentWrapper.measure(View.MeasureSpec.makeMeasureSpec(content.getWidth(), View.MeasureSpec.EXACTLY), ViewGroup.LayoutParams.WRAP_CONTENT);
                 finalHeight = expandedContentWrapper.getMeasuredHeight();
+                //Expand Image
+                headerImage.measure(View.MeasureSpec.makeMeasureSpec(headerWrapper.getWidth(), View.MeasureSpec.EXACTLY), ViewGroup.LayoutParams.WRAP_CONTENT);
+                headerImage.getLayoutParams().height = headerImage.getMeasuredHeight() + 500;
+                headerImage.requestLayout();
             }
             else{
                 content.setVisibility(View.VISIBLE);
@@ -280,6 +292,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
                     if(animatedFraction==1f){
                         if(expand){
                             content.setVisibility(View.GONE);
+                            setExpandedItemHeight(itemView.getHeight());
                         }
                         else
                             expandedContentWrapper.setVisibility(View.GONE);
