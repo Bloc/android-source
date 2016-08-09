@@ -18,14 +18,53 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-import io.bloc.android.blocly.BloclyApplication;
+import java.lang.ref.WeakReference;
+
 import io.bloc.android.blocly.R;
-import io.bloc.android.blocly.api.DataSource;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
 
 
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterViewHolder> {
+
+    public static interface DataSource{
+        public RssItem getRssItem(ItemAdapter itemAdapter, int position);
+        public RssFeed getRssFeed(ItemAdapter itemAdapter, int position);
+        public int getItemCount(ItemAdapter itemAdapter);
+    }
+
+    public static interface Delegate{
+        public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem);
+    }
+
+    WeakReference<DataSource> dataSource;
+    WeakReference<Delegate> delegate;
+    RssItem itemExpanded = null;
+
+    public DataSource getDatasource(){
+        if(dataSource!=null)
+            return dataSource.get();
+        return null;
+    }
+    public void setDataSource(DataSource d){
+        dataSource = new WeakReference<DataSource>(d);
+    }
+    public Delegate getDelegate(){
+        if(delegate.get()==null)
+            return null;
+        return delegate.get();
+    }
+    public void setDelegate(Delegate d){
+        delegate = new WeakReference<Delegate>(d);
+    }
+
+    public RssItem getExpandedItem(){
+        return itemExpanded;
+    }
+
+    public void setExpandedItem(RssItem item){
+        this.itemExpanded = item;
+    }
 
     private static String TAG = ItemAdapter.class.getSimpleName();
 
@@ -39,14 +78,18 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
     // #7
     @Override
     public void onBindViewHolder(ItemAdapterViewHolder itemAdapterViewHolder, int index) {
-        DataSource sharedDataSource = BloclyApplication.getSharedDataSource();
-        itemAdapterViewHolder.update(sharedDataSource.getFeeds().get(0), sharedDataSource.getItems().get(index));
+        if(getDelegate()!=null){
+            itemAdapterViewHolder.update(getDatasource().getRssFeed(this, index), getDatasource().getRssItem(this, index));
+        }
     }
 
     // #8
     @Override
     public int getItemCount() {
-        return BloclyApplication.getSharedDataSource().getItems().size();
+        if(getDatasource()==null){
+            return 0;
+        }
+        return getDatasource().getItemCount(this);
     }
 
     class ItemAdapterViewHolder extends RecyclerView.ViewHolder implements ImageLoadingListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -98,6 +141,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
             } else {
                 headerWrapper.setVisibility(View.GONE);
             }
+            animateContent(rssItem == getExpandedItem());
         }
         /*
         *
@@ -170,7 +214,8 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ItemAdapterVie
         @Override
         public void onClick(View v) {
             if (v == itemView) {
-                animateContent(!contentExpanded);
+                if(getDelegate()!=null)
+                    getDelegate().onItemClicked(ItemAdapter.this, rssItem);
             } else{
                 Toast.makeText(v.getContext(), "Visit " + rssItem.getUrl(), Toast.LENGTH_SHORT).show();
             }

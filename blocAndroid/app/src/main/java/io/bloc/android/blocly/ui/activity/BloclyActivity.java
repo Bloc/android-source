@@ -18,15 +18,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
 import io.bloc.android.blocly.api.model.RssFeed;
+import io.bloc.android.blocly.api.model.RssItem;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
 import io.bloc.android.blocly.ui.adapter.NavigationDrawerAdapter;
 
 /**
  * Created by aadik_000 on 7/19/2016.
  */
-public class BloclyActivity extends AppCompatActivity implements NavigationDrawerAdapter.NavigationDrawerAdapterDelegate {
+public class BloclyActivity extends AppCompatActivity implements NavigationDrawerAdapter.NavigationDrawerAdapterDelegate, ItemAdapter.Delegate, ItemAdapter.DataSource {
 
     private ItemAdapter itemAdapter;
     private ActionBarDrawerToggle drawerToggle;
@@ -34,6 +36,7 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     private NavigationDrawerAdapter navigationDrawerAdapter;
     private Menu menu;
     private View overflowButton;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +45,7 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         Toolbar toolbar = (Toolbar) findViewById(R.id.tb_activity_blocly);
         setSupportActionBar(toolbar);
         itemAdapter = new ItemAdapter();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_activity_blocly);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemAdapter);
@@ -111,6 +114,8 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         navRecyclerView.setItemAnimator(new DefaultItemAnimator());
         navRecyclerView.setAdapter(navigationDrawerAdapter);
         navigationDrawerAdapter.setDelegate(this);
+        itemAdapter.setDelegate(this);
+        itemAdapter.setDataSource(this);
     }
 
     @Override
@@ -161,5 +166,50 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     public void didSelectRssFeed(NavigationDrawerAdapter adapter, RssFeed rssFeed) {
         drawerLayout.closeDrawers();
         Toast.makeText(this, "Show the " + rssFeed.getTitle(), Toast.LENGTH_SHORT).show();
+    }
+/*
+*ItemAdapter.DataSource
+ */
+    @Override
+    public RssItem getRssItem(ItemAdapter itemAdapter, int position) {
+        if(position>=BloclyApplication.getSharedDataSource().getItems().size())
+            position = 0;
+        return BloclyApplication.getSharedDataSource().getItems().get(position);
+    }
+
+    @Override
+    public RssFeed getRssFeed(ItemAdapter itemAdapter, int position) {
+        if(position>=BloclyApplication.getSharedDataSource().getFeeds().size())
+            position = 0;
+        return BloclyApplication.getSharedDataSource().getFeeds().get(position);
+    }
+
+    @Override
+    public int getItemCount(ItemAdapter itemAdapter) {
+        return BloclyApplication.getSharedDataSource().getItems().size();
+    }
+/*
+*ItemAdapter.Delegate
+ */
+    @Override
+    public void onItemClicked(ItemAdapter itemAdapter, RssItem rssItem) {
+        int positionToExpand = -1;
+        int positionToContract = -1;
+        if (itemAdapter.getExpandedItem() != null) {
+            positionToContract = BloclyApplication.getSharedDataSource().getItems().indexOf(itemAdapter.getExpandedItem());
+        }
+        if (itemAdapter.getExpandedItem() != rssItem) {
+            positionToExpand = BloclyApplication.getSharedDataSource().getItems().indexOf(rssItem);
+            itemAdapter.setExpandedItem(rssItem);
+        } else {
+            itemAdapter.setExpandedItem(null);
+        }
+        if (positionToContract > -1) {
+            itemAdapter.notifyItemChanged(positionToContract);
+        }
+        if (positionToExpand > -1) {
+            itemAdapter.notifyItemChanged(positionToExpand);
+        }
+        recyclerView.scrollToPosition(positionToExpand);
     }
 }
