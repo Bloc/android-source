@@ -10,6 +10,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -151,21 +152,14 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu){
+    public boolean onCreateOptionsMenu(Menu menu) {
         this.menu = menu;
         getMenuInflater().inflate(R.menu.blocly, menu);
-        if(menu.size()>0)
-            actionShare = menu.findItem(R.id.action_share);
-        return super.onCreateOptionsMenu(menu);
+        Log.d(this.getClass().getSimpleName(), new Integer(menu.size()).toString());
+        if (menu.size() > 0){
+            menu.setGroupVisible(R.id.share_group, isShareShown);
     }
-    @Override
-    public boolean onPrepareOptionsMenu (Menu menu) {
-        if (isShareShown) {
-            menu.findItem(R.id.action_share).setEnabled(true);
-        }
-        else
-            menu.findItem(R.id.action_share).setEnabled(false);
-        return true;
+        return super.onCreateOptionsMenu(menu);
     }
     /*
     Delegate
@@ -225,13 +219,12 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
             itemAdapter.notifyItemChanged(positionToContract);
             isShareShown = false;
             if(actionShare!=null)
-                actionShare.setEnabled(false);
-            invalidateOptionsMenu();
+                menu.setGroupVisible(R.id.share_group, isShareShown);
         }
         if (positionToExpand > -1) {
             itemAdapter.notifyItemChanged(positionToExpand);
             isShareShown=true;
-            invalidateOptionsMenu();
+            menu.setGroupVisible(R.id.share_group, isShareShown);
         }
         else{
             return;

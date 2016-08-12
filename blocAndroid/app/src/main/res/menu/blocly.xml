@@ -2,12 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/menu">
+    <group android:id="@+id/share_group">
     <item android:id="@+id/action_share"
         android:icon="@drawable/ic_share_selector"
         android:title="@string/menu_share"
         app:showAsAction="always"
         android:enabled="false"
         android:orderInCategory="0"/>
+    </group>
     <item android:id="@+id/action_search"
         android:icon="@drawable/ic_search_selector"
         android:title="@string/menu_search"
