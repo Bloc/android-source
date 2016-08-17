@@ -15,7 +15,7 @@ import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
 public class DataSource {
     private List<RssFeed> feeds;
     private List<RssItem> items;
-
+    
     public DataSource() {
         feeds = new ArrayList<RssFeed>();
         items = new ArrayList<RssItem>();
@@ -23,9 +23,27 @@ public class DataSource {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest();
+                convertToRssFeed(new GetFeedsNetworkRequest("http://feeds.feedburner.com/androidcentral?format=xml").performRequest());
             }
         }).start();
+    }
+
+    public void convertToRssFeed(List<GetFeedsNetworkRequest.FeedResponse> listFeeds){
+        GetFeedsNetworkRequest.FeedResponse response;
+        for (int i = 0; i<listFeeds.size(); i++){
+            response = listFeeds.get(i);
+            feeds.add(new RssFeed(response.channelTitle, response.channelDescription, response.channelURL, response.channelFeedURL));
+            convertToRssItem(response.channelItems, i);
+        }
+    }
+
+    public void convertToRssItem(List<GetFeedsNetworkRequest.ItemResponse> listItems, int feedId){
+        GetFeedsNetworkRequest.ItemResponse response;
+        for(int i = 0; i<listItems.size(); i++){
+            response = listItems.get(i);
+            items.add(new RssItem(response.itemGUID, response.itemTitle, response.itemDescription,response.itemURL,response.itemEnclosureURL, feedId,
+                    Long.valueOf(response.itemPubDate), false, false, false));
+        }
     }
 
     public List<RssFeed> getFeeds() {

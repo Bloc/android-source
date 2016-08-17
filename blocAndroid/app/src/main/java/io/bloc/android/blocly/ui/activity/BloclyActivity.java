@@ -218,8 +218,7 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         if (positionToContract > -1) {
             itemAdapter.notifyItemChanged(positionToContract);
             isShareShown = false;
-            if(actionShare!=null)
-                menu.setGroupVisible(R.id.share_group, isShareShown);
+            invalidateOptionsMenu();
         }
         if (positionToExpand > -1) {
             itemAdapter.notifyItemChanged(positionToExpand);

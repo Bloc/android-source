@@ -12,6 +12,7 @@ public abstract class NetworkRequest<Result> {
 
     public static final int ERROR_IO = 1;
     public static final int ERROR_MALFORMED_URL = 2;
+    public static final int ERROR_PARSING = 3;
 
     private int errorCode;
 
