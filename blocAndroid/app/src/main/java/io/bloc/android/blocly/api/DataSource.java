@@ -15,11 +15,10 @@ import io.bloc.android.blocly.api.network.GetFeedsNetworkRequest;
 public class DataSource {
     private List<RssFeed> feeds;
     private List<RssItem> items;
-    
+
     public DataSource() {
         feeds = new ArrayList<RssFeed>();
         items = new ArrayList<RssItem>();
-        createFakeData();
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -42,7 +41,7 @@ public class DataSource {
         for(int i = 0; i<listItems.size(); i++){
             response = listItems.get(i);
             items.add(new RssItem(response.itemGUID, response.itemTitle, response.itemDescription,response.itemURL,response.itemEnclosureURL, feedId,
-                    Long.valueOf(response.itemPubDate), false, false, false));
+                    Long.valueOf(response.itemPubDate.substring(12,16)), false, false, false));
         }
     }
 
