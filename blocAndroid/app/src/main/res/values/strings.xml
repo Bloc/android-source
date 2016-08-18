@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Blocly</string>
+    <string name="placeholder_headline">New York Attacked By Giant Squid</string>
+    <string name="placeholder_source">New York Times</string>
+    <string name="placeholder_content">A giant squid appeared abruptly today in lower Manhattan. The squid appeared peaceful at first but violence quickly escalated after a tourist attempted to have their photo taken with the \'big city octopus\'.</string>
+    <string name="visit_site">visit site</string>
+    <string name="inbox">Inbox</string>
+    <string name="favorites">Favorites</string>
+    <string name="archived">Archived</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_search">Search</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_mark_as_read">Mark as Read</string>
+</resources>

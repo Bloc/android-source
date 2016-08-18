@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="default_padding">8dp</dimen>
+    <dimen name="nav_item_title_height">48dp</dimen>
+    <dimen name="tv_nav_item_title_default_padding">16dp</dimen>
+    <dimen name="divider_default_height">1dp</dimen>
+</resources>
