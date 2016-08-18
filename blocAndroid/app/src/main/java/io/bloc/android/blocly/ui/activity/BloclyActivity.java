@@ -180,6 +180,15 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
  */
     @Override
     public RssItem getRssItem(ItemAdapter itemAdapter, int position) {
+        /*new Thread(new Runnable() {
+            @Override
+            public void run() {
+                SQLiteDatabase writableDatabase = new io.bloc.android.blocly.api.model.database.table.DatabaseOpenHelper().getWritableDatabase();
+            }
+        }.start());
+        new io.bloc.android.blocly.api.model.database.table.RssFeedTable().query
+        */
+        BloclyApplication.getSharedDataSource().getWritableDatabase().query("rss_items", null, null, null, null, null, "pub_date", "10");
         if(position>=BloclyApplication.getSharedDataSource().getItems().size())
             position = 0;
         return BloclyApplication.getSharedDataSource().getItems().get(position);
