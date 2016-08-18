@@ -1,6 +1,7 @@
 package io.bloc.android.blocly.api.model.database.table;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 public class RssItemTable extends Table {
@@ -55,6 +56,43 @@ public class RssItemTable extends Table {
         }
     }
 
+
+    public static String getLink(Cursor cursor) {
+        return getString(cursor, COLUMN_LINK);
+    }
+
+    public static String getTitle(Cursor cursor) {
+        return getString(cursor, COLUMN_TITLE);
+    }
+
+    public static String getDescription(Cursor cursor) {
+        return getString(cursor, COLUMN_DESCRIPTION);
+    }
+
+    public static String getGUID(Cursor cursor) {
+        return getString(cursor, COLUMN_GUID);
+    }
+
+    public static long getRssFeedId(Cursor cursor) {
+        return getLong(cursor, COLUMN_RSS_FEED);
+    }
+
+    public static long getPubDate(Cursor cursor) {
+        return getLong(cursor, COLUMN_PUB_DATE);
+    }
+
+    public static String getEnclosure(Cursor cursor) {
+        return getString(cursor, COLUMN_ENCLOSURE);
+    }
+
+    public static boolean getFavorite(Cursor cursor) {
+        return getBoolean(cursor, COLUMN_FAVORITE);
+    }
+
+    public static boolean getArchived(Cursor cursor) {
+        return getBoolean(cursor, COLUMN_ARCHIVED);
+    }
+
     private static final String NAME = "rss_items";
     private static final String COLUMN_LINK = "link";
     private static final String COLUMN_TITLE = "title";
@@ -86,5 +124,35 @@ public class RssItemTable extends Table {
                 + COLUMN_RSS_FEED + " INTEGER,"
                 + COLUMN_FAVORITE + " INTEGER DEFAULT 0,"
                 + COLUMN_ARCHIVED + " INTEGER DEFAULT 0)";
+    }
+
+    public Cursor fetchArchivedRow(SQLiteDatabase readonlyDatabase) {
+        return readonlyDatabase.query(true, getName(), null, COLUMN_ARCHIVED + " = ?",
+                new String[] {"1"}, null, null, null, null);
+    }
+
+    public Cursor fetchArchivedAndFeedRow(SQLiteDatabase readonlyDatabase, int feed) {
+        return readonlyDatabase.query(true, getName(), null, COLUMN_RSS_FEED + " = ? AND " + COLUMN_ARCHIVED + "=?",
+                new String[] {String.valueOf(feed), "1"}, null, null, null, null);
+    }
+
+    public Cursor fetchFavoriteRow(SQLiteDatabase readonlyDatabase) {
+        return readonlyDatabase.query(true, getName(), null, COLUMN_FAVORITE + " = ?",
+                new String[] {"1"}, null, null, null, null);
+    }
+
+    public Cursor fetchFavoriteAndFeedRow(SQLiteDatabase readonlyDatabase, int feed) {
+        return readonlyDatabase.query(true, getName(), null, COLUMN_RSS_FEED + " = ? AND " + COLUMN_FAVORITE + "=?",
+                new String[] {String.valueOf(feed), "1"}, null, null, null, null);
+    }
+
+    public Cursor fetchFeedRow(SQLiteDatabase readonlyDatabase, int feed) {
+        return readonlyDatabase.query(true, getName(), null, COLUMN_RSS_FEED + " = ?",
+                new String[] {String.valueOf(feed)}, null, null, null, null);
+    }
+
+    public Cursor fetchFeedRowWithLimit(SQLiteDatabase readonlyDatabase, int feed) {
+        return readonlyDatabase.query(true, getName(), null, COLUMN_RSS_FEED + " = ?",
+                new String[] {String.valueOf(feed)}, null, null, null, "LIMIT 10 OFFSET 5");
     }
 }

@@ -1,5 +1,9 @@
 package io.bloc.android.blocly.ui.activity;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -21,6 +25,7 @@ import java.util.ArrayList;
 
 import io.bloc.android.blocly.BloclyApplication;
 import io.bloc.android.blocly.R;
+import io.bloc.android.blocly.api.DataSource;
 import io.bloc.android.blocly.api.model.RssFeed;
 import io.bloc.android.blocly.api.model.RssItem;
 import io.bloc.android.blocly.ui.adapter.ItemAdapter;
@@ -41,6 +46,14 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     private MenuItem actionShare;
     private boolean isShareShown;
 
+    private BroadcastReceiver dataSourceBroadcastReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            itemAdapter.notifyDataSetChanged();
+            navigationDrawerAdapter.notifyDataSetChanged();
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +65,7 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(itemAdapter);
+        registerReceiver(dataSourceBroadcastReceiver, new IntentFilter(DataSource.ACTION_DOWNLOAD_COMPLETED));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         isShareShown = false;
         drawerLayout = (DrawerLayout) findViewById(R.id.dl_activity_blocly);
@@ -161,6 +175,12 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
     }
         return super.onCreateOptionsMenu(menu);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterReceiver(dataSourceBroadcastReceiver);
+    }
     /*
     Delegate
      */
@@ -180,15 +200,6 @@ public class BloclyActivity extends AppCompatActivity implements NavigationDrawe
  */
     @Override
     public RssItem getRssItem(ItemAdapter itemAdapter, int position) {
-        /*new Thread(new Runnable() {
-            @Override
-            public void run() {
-                SQLiteDatabase writableDatabase = new io.bloc.android.blocly.api.model.database.table.DatabaseOpenHelper().getWritableDatabase();
-            }
-        }.start());
-        new io.bloc.android.blocly.api.model.database.table.RssFeedTable().query
-        */
-        BloclyApplication.getSharedDataSource().getWritableDatabase().query("rss_items", null, null, null, null, null, "pub_date", "10");
         if(position>=BloclyApplication.getSharedDataSource().getItems().size())
             position = 0;
         return BloclyApplication.getSharedDataSource().getItems().get(position);
