@@ -27,6 +27,10 @@ public abstract class Table {
                 new String[] {String.valueOf(rowId)}, null, null, null, null);
     }
 
+    public static long getRowId(Cursor cursor) {
+        return getLong(cursor, COLUMN_ID);
+    }
+
     protected static String getString(Cursor cursor, String column) {
         int columnIndex = cursor.getColumnIndex(column);
         if (columnIndex == -1) {
